@@ -1,0 +1,30 @@
+{
+  "name": "ratecourses",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "node server.js",
+    "client": "npm run start --prefix client",
+    "start": "concurrently  \"npm run client \" \"npm run server\"   "
+  },
+  "engines": {
+    "npm": "6.9.0",
+    "node": "10.16.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dg022/RateCourses.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dg022/RateCourses/issues"
+  },
+  "homepage": "https://github.com/dg022/RateCourses#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  }
+}
