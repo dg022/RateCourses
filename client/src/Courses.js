@@ -302,3 +302,4 @@ var courses = {
 
 };
 
+exports.COURSES = courses; 

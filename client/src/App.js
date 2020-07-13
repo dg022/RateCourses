@@ -1,9 +1,19 @@
 import React from 'react'
 import './App.css';
+const Courses = require("./Courses.js"); 
+
+
+
 
 class App extends React.Component {
 
+    
+  
+
 render(){
+    
+console.log( Object.keys(Courses).length);
+
 
     return(
 
