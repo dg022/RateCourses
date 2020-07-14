@@ -1,17 +1,17 @@
 import React from "react";
 import { Button, Header, Image, Modal } from "semantic-ui-react";
+import Form from "./Form.js"
 
 const ModalModalExample = () => (
   <Modal trigger={<Button>Show Modal</Button>}>
-    <Modal.Header>Select a Photo</Modal.Header>
+
+    <Modal.Header>  <center> Add a Review!  </center></Modal.Header>
     <Modal.Content image>
       <Modal.Description>
-        <Header>Default Profile Image</Header>
-        <p>
-          We've found the following gravatar image associated with your e-mail
-          address.
-        </p>
-        <p>Is it okay to use this photo?</p>
+
+
+    <Form/>
+
       </Modal.Description>
     </Modal.Content>
   </Modal>
