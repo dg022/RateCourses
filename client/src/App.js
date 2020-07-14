@@ -11,10 +11,6 @@ render(){
         <div>
 
 
-
-
-
-
 <div class="pusher">
   <div class="ui inverted vertical masthead center aligned segment">
 
@@ -24,22 +20,19 @@ render(){
           <i class="sidebar icon"></i>
         </a>
         <a class="active item">Home</a>
-        <a class="item">Work</a>
-        <a class="item">Company</a>
-        <a class="item">Careers</a>
-        <div class="right item">
-          <a class="ui inverted button">Log in</a>
-          <a class="ui inverted button">Sign Up</a>
-        </div>
+        <a class="item">About</a>
+        <a class="item">Feedback</a>
       </div>
     </div>
 
     <div class="ui text container">
       <h1 class="ui inverted header">
-        Rate Courses UWO
+        Welcome to Rate Courses UWO
       </h1>
-      <h2> word word word</h2>
-      <div class="ui huge primary button"> blah blah  <i class="right arrow icon"></i></div>
+      <h3>This platform is designed to provide wholistic reviews of courses offered at Western University</h3>
+      <h4 class = "warning">*Not affiliated with Western University or any of its satellite campuses</h4>
+      <div class="ui huge primary button">Find A Course<i class="right arrow icon"></i></div>
+      <div class="ui huge primary button">Rate A Course<i class="right arrow icon"></i></div>
     </div>
 
   </div>
