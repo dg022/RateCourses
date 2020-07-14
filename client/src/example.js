@@ -2,6 +2,7 @@ import faker from 'faker'
 import _ from 'lodash'
 import React from 'react'
 import { Dropdown } from 'semantic-ui-react'
+import { merge } from 'jquery';
 const Courses = require("./Courses.js"); 
 
 const xah_obj_to_map = ( obj => {
@@ -11,9 +12,14 @@ const xah_obj_to_map = ( obj => {
 });
 
 
+
+
+
 const map =  xah_obj_to_map ( Courses.COURSES )
-let keys = Array.from( map.keys() );
-console.log(keys)
+
+
+let keys = [].concat.apply([], Array.from( map.values() ));
+
 
  
 
