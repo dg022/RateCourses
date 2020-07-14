@@ -1,19 +1,31 @@
 import React from 'react'
 import './App.css';
+import $ from 'jquery';
+import Example from "./example";
 const Courses = require("./Courses.js"); 
+
+
 
 
 
 
 class App extends React.Component {
 
-    
+  xah_obj_to_map = ( obj => {
+    const mp = new Map;
+    Object.keys ( obj ). forEach (k => { mp.set(k, obj[k]) });
+    return mp;
+});
+ 
   
 
 render(){
     
-console.log( Object.keys(Courses).length);
+  const map =  this.xah_obj_to_map ( Courses.COURSES )
+  let keys = Array.from( map.keys() );
+  console.log(keys)
 
+  
 
     return(
 
@@ -43,6 +55,9 @@ console.log( Object.keys(Courses).length);
       <h4 class = "warning">*Not affiliated with Western University or any of its satellite campuses</h4>
       <div class="ui huge primary button">Find A Course<i class="right arrow icon"></i></div>
       <div class="ui huge primary button">Rate A Course<i class="right arrow icon"></i></div>
+
+      <Example />
+
     </div>
 
   </div>
