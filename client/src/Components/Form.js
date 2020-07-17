@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Checkbox, Form,  TextArea,Input  } from 'semantic-ui-react'
 import Example from "./search";
-import SearchCourse from "./CourseSearch"; 
+import SearchCourse from "./DepartmentSearch"; 
 
 const FormExampleForm = () => (
   <Form>
