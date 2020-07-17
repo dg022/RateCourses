@@ -1,10 +1,13 @@
 import React from 'react'
 import './App.css';
 import $ from 'jquery';
-import Example from "./search";
-import Model from "./ReviewAdd"
-import Comment from "./Comment"
-const Courses = require("./Courses.js"); 
+import Example from "./Components/search";
+import Model from "./Components/ReviewAdd"
+import DepartmentSearch from "./Components/DepartmentSearch"
+import CourseSearch from "./Components/search"
+
+const Courses = require("./Components/Courses.js"); 
+
 
 
 
@@ -12,23 +15,29 @@ const Courses = require("./Courses.js");
 
 
 class App extends React.Component {
+  state = {
 
- 
+    Department:"",
   
-
-render(){
-    
-
   
+  
+  };
 
-    return(
+chooseDep = (Dep) =>{
+this.setState({Department:Dep})
 
 
-        <div>
 
 
-<div class="pusher">
-  <div class="ui inverted vertical masthead center aligned segment">
+
+}
+
+
+
+renderHeader = () => {
+
+
+  return(
 
     <div class="ui container">
       <div class="ui large secondary inverted pointing menu">
@@ -41,26 +50,14 @@ render(){
       </div>
     </div>
 
-    <div class="ui text container">
-      <h1 class="ui inverted header">
-        Welcome to Rate Courses UWO
-      </h1>
-      <h3>This platform is designed to provide wholistic reviews of courses offered at Western University</h3>
-      <h4 class = "warning">*Not affiliated with Western University or any of its satellite campuses</h4>
-      <div class="ui huge primary button">Find A Course<i class="right arrow icon"></i></div>
-      <div class="ui huge primary button">Rate A Course<i class="right arrow icon"></i></div>
 
-      
-
-    </div>
-
-  </div>
-
-  <Comment/>
+  );
+}
 
 
+renderFooter  = () => {
 
-
+return(
   <div class="ui inverted vertical footer segment">
     <div class="ui container">
       <div class="ui stackable inverted divided equal height stackable grid">
@@ -83,17 +80,106 @@ render(){
       </div>
     </div>
   </div>
-</div>
+);
+
+
+}
+
+
+
+ 
+  
+
+render(){
+    
+
+  if(this.state.Department!=""){
+
+      return(
+
+
+        <div>
+        <div class="pusher">
+          <div class="ui inverted vertical masthead center aligned segment">
+    
+              {this.renderHeader()}
+    
+            <div class="ui text container">
+              <h1 class="ui inverted header">
+                Welcome to Rate Courses UWO
+              </h1>
+              <h3>This platform is designed to provide wholistic reviews of courses offered at Western University</h3>
+              <h4 class = "warning">*Not affiliated with Western University or any of its satellite campuses</h4>
+              <div class="ui huge primary button">Find A Course<i class="right arrow icon"></i></div>
+              <div class="ui huge primary button">Rate A Course<i class="right arrow icon"></i></div>
+    
+              <DepartmentSearch chooseDep={this.chooseDep}/>
+              <CourseSearch chooseCourse={this.state.Department}/>
+    
+              
+    
+            </div>
+    
+          </div>
+              {this.renderFooter()}
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+                </div>
+
+
+
+      );
 
 
 
 
 
+  }
 
+  
 
+    return(
+            <div>
+    <div class="pusher">
+      <div class="ui inverted vertical masthead center aligned segment">
+
+          {this.renderHeader()}
+
+        <div class="ui text container">
+          <h1 class="ui inverted header">
+            Welcome to Rate Courses UWO
+          </h1>
+          <h3>This platform is designed to provide wholistic reviews of courses offered at Western University</h3>
+          <h4 class = "warning">*Not affiliated with Western University or any of its satellite campuses</h4>
+          <div class="ui huge primary button">Find A Course<i class="right arrow icon"></i></div>
+          <div class="ui huge primary button">Rate A Course<i class="right arrow icon"></i></div>
+
+          <DepartmentSearch chooseDep={this.chooseDep}/>
+
+          
 
         </div>
-        
+
+      </div>
+          {this.renderFooter()}
+    </div>
+
+
+
+
+
+
+
+
+            </div>
+            
        
 
 
