@@ -5,7 +5,7 @@ import Example from "./Components/search";
 import Model from "./Components/ReviewAdd"
 import DepartmentSearch from "./Components/DepartmentSearch"
 import CourseSearch from "./Components/search"
-
+var mongoose = require("mongoose");
 const Courses = require("./Components/Courses.js"); 
 
 
@@ -25,11 +25,38 @@ class App extends React.Component {
 
 chooseDep = (Dep) =>{
 this.setState({Department:Dep})
+}
+
+searchDataBase = () =>{
+
+var cons = "mongodb+srv://davidg022:hxW7DMKbaUt5NW4T@cluster0.i1xkc.mongodb.net/Reviews?retryWrites=true&w=majority"
+
+  
+mongoose.connect(cons, { useNewUrlParser: true });
+
+    var Schema    =   mongoose.Schema;
+    var Users = new Schema({ // example from docs
+        code         :   {
+            type        :   String,
+            require     :   true
+        }, 
+
+        //members         :   {
+        // type        :   [String],
+          //require     :   true
+      //},
+
+      members         :   {
+        type        :   Map,
+        of: String,
+        require     :   true
+    },
 
 
+    });
 
 
-
+var Codes = mongoose.model('Codes', Users);
 }
 
 
