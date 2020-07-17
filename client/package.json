@@ -12,7 +12,8 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "semantic-ui-react": "^0.88.2",
-    "simple-react-comments": "^1.1.0"
+    "simple-react-comments": "^1.1.0",
+    "typescript": "^3.9.7"
   },
   "proxy": "http://localhost:8080/",
   "engines": {
