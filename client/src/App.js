@@ -3,6 +3,7 @@ import './App.css';
 import $ from 'jquery';
 import Example from "./search";
 import Model from "./ReviewAdd"
+import Comment from "./Comment"
 const Courses = require("./Courses.js"); 
 
 
@@ -49,14 +50,13 @@ render(){
       <div class="ui huge primary button">Find A Course<i class="right arrow icon"></i></div>
       <div class="ui huge primary button">Rate A Course<i class="right arrow icon"></i></div>
 
-      <Example />
-      <Model/>
+      
 
     </div>
 
   </div>
 
-
+  <Comment/>
 
 
 
