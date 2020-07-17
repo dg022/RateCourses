@@ -5,6 +5,9 @@ import Example from "./Components/search";
 import Model from "./Components/ReviewAdd"
 import DepartmentSearch from "./Components/DepartmentSearch"
 import CourseSearch from "./Components/search"
+import axios from "axios"
+
+
 var mongoose = require("mongoose");
 const Courses = require("./Components/Courses.js"); 
 
@@ -27,36 +30,13 @@ chooseDep = (Dep) =>{
 this.setState({Department:Dep})
 }
 
-searchDataBase = () =>{
+searchDataBase = async () =>{
 
-var cons = "mongodb+srv://davidg022:hxW7DMKbaUt5NW4T@cluster0.i1xkc.mongodb.net/Reviews?retryWrites=true&w=majority"
-
-  
-mongoose.connect(cons, { useNewUrlParser: true });
-
-    var Schema    =   mongoose.Schema;
-    var Users = new Schema({ // example from docs
-        code         :   {
-            type        :   String,
-            require     :   true
-        }, 
-
-        //members         :   {
-        // type        :   [String],
-          //require     :   true
-      //},
-
-      members         :   {
-        type        :   Map,
-        of: String,
-        require     :   true
-    },
+  const res =  await axios.get("/dbr");
+  console.log(res);
 
 
-    });
 
-
-var Codes = mongoose.model('Codes', Users);
 }
 
 
@@ -138,7 +118,7 @@ render(){
               <h3>This platform is designed to provide wholistic reviews of courses offered at Western University</h3>
               <h4 class = "warning">*Not affiliated with Western University or any of its satellite campuses</h4>
               <div class="ui huge primary button">Find A Course<i class="right arrow icon"></i></div>
-              <div class="ui huge primary button">Rate A Course<i class="right arrow icon"></i></div>
+              <div  onClick={this.searchDataBase}class="ui huge primary button">Rate A Course<i class="right arrow icon"></i></div>
     
               <DepartmentSearch chooseDep={this.chooseDep}/>
               <CourseSearch chooseCourse={this.state.Department}/>
