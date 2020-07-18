@@ -9,6 +9,13 @@ const Courses = require("./Courses.js");
 
 const DropdownExampleSearchSelectionTwo = (props) => {
 
+  const exposedCampaignOnChange = (e, {value}) => {
+    e.persist();
+    
+    props.selectCourse(e.target.textContent);
+    
+  };
+
   const xah_obj_to_map = ( obj => {
       const mp = new Map;
       Object.keys ( obj ). forEach (k => { mp.set(k, obj[k]) });
@@ -16,9 +23,9 @@ const DropdownExampleSearchSelectionTwo = (props) => {
   });
 
   const map =  xah_obj_to_map ( Courses.COURSES )
-  console.log(map)
+  
   let keys = map.get(props.chooseCourse); 
-  console.log(keys)
+  
 
 
   const addressDefinitions = faker.definitions.address
@@ -32,7 +39,7 @@ const DropdownExampleSearchSelectionTwo = (props) => {
 
 
   return(
-  <Dropdown placeholder='Search Courses' search selection options={stateOptions} />
+  <Dropdown onChange={exposedCampaignOnChange} placeholder='Search Courses' search selection options={stateOptions} />
   );
 }
 

@@ -20,18 +20,18 @@ app.get('/', function (req, res) {
 });
 
 // This path is used for get queries, whether to find if a post for a course within a db exists or not, then returning the result. 
-app.get('/dbr', function (req, res) {
+app.get('/dbr', async (req, res) => {
 
-// res.send("Hello this path is working");
-console.log(req.query)
 
-// if(await Codes.exists({ code: term })){
+ if(await Codes.exists({ courseTitle: req.query.department })){
 
-// }else{
-//   socket.emit("enter", "FAIL"); 
+ }else{
+
+  // If this is hit, then it does not exist within the database, we send back false, then we have to render a component that says its not there.  
+   res.send(false)
 
   
-// }
+ }
 
 
 

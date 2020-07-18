@@ -21,6 +21,8 @@ class App extends React.Component {
   state = {
 
     Department:"",
+    Course:"",
+    NotFound:false,
   
   
   
@@ -30,17 +32,28 @@ chooseDep = (Dep) =>{
 this.setState({Department:Dep})
 }
 
+chooseCourse = (Co) =>{
+  this.setState({Course:Co})
+  }
+
 searchDataBase = async () =>{
 
  
 
-  await axios.get('/dbr', {
+  let res = await axios.get('/dbr', {
     params: {
-      foo: this.state.Department
+      department: this.state.Course
     }
   });
 
 
+  if(res.data == false){
+
+    this.setState({NotFound:true})
+
+
+
+  }
 
 
 }
@@ -106,7 +119,7 @@ return(
 render(){
     
 
-  if(this.state.Department!=""){
+  if(this.state.Department!="" && this.state.NotFound == false){
 
       return(
 
@@ -127,7 +140,7 @@ render(){
               <div  onClick={this.searchDataBase}class="ui huge primary button">Rate A Course<i class="right arrow icon"></i></div>
     
               <DepartmentSearch chooseDep={this.chooseDep}/>
-              <CourseSearch chooseCourse={this.state.Department}/>
+              <CourseSearch  selectCourse={this.chooseCourse}  chooseCourse={this.state.Department}/>
     
               
     
@@ -154,6 +167,33 @@ render(){
 
 
 
+  }
+
+  else if( this.state.Department!="" && this.state.NotFound == true){
+
+    return(
+
+      <div>
+      <div class="pusher">
+        <div class="ui inverted vertical masthead center aligned segment">
+  
+            {this.renderHeader()}
+  
+          <div class="ui text container">
+            <h1 class="ui inverted header">
+              No reviews for {this.state.Course} are on record! Be the first!
+            </h1>
+          </div>
+  
+        </div>
+            {this.renderFooter()}
+      </div>
+              </div>
+
+      
+
+
+    );
   }
 
   
