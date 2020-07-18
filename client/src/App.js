@@ -5,7 +5,10 @@ import Example from "./Components/search";
 import Model from "./Components/ReviewAdd"
 import DepartmentSearch from "./Components/DepartmentSearch"
 import CourseSearch from "./Components/search"
+import axios from "axios"
 
+
+var mongoose = require("mongoose");
 const Courses = require("./Components/Courses.js"); 
 
 
@@ -18,6 +21,8 @@ class App extends React.Component {
   state = {
 
     Department:"",
+    Course:"",
+    NotFound:false,
   
   
   
@@ -25,9 +30,30 @@ class App extends React.Component {
 
 chooseDep = (Dep) =>{
 this.setState({Department:Dep})
+}
+
+chooseCourse = (Co) =>{
+  this.setState({Course:Co})
+  }
+
+searchDataBase = async () =>{
+
+ 
+
+  let res = await axios.get('/dbr', {
+    params: {
+      department: this.state.Course
+    }
+  });
+
+
+  if(res.data == false){
+
+    this.setState({NotFound:true})
 
 
 
+  }
 
 
 }
@@ -93,7 +119,7 @@ return(
 render(){
     
 
-  if(this.state.Department!=""){
+  if(this.state.Department!="" && this.state.NotFound == false){
 
       return(
 
@@ -111,10 +137,10 @@ render(){
               <h3>This platform is designed to provide wholistic reviews of courses offered at Western University</h3>
               <h4 class = "warning">*Not affiliated with Western University or any of its satellite campuses</h4>
               <div class="ui huge primary button">Find A Course<i class="right arrow icon"></i></div>
-              <div class="ui huge primary button">Rate A Course<i class="right arrow icon"></i></div>
+              <div  onClick={this.searchDataBase}class="ui huge primary button">Rate A Course<i class="right arrow icon"></i></div>
     
               <DepartmentSearch chooseDep={this.chooseDep}/>
-              <CourseSearch chooseCourse={this.state.Department}/>
+              <CourseSearch  selectCourse={this.chooseCourse}  chooseCourse={this.state.Department}/>
     
               
     
@@ -141,6 +167,33 @@ render(){
 
 
 
+  }
+
+  else if( this.state.Department!="" && this.state.NotFound == true){
+
+    return(
+
+      <div>
+      <div class="pusher">
+        <div class="ui inverted vertical masthead center aligned segment">
+  
+            {this.renderHeader()}
+  
+          <div class="ui text container">
+            <h1 class="ui inverted header">
+              No reviews for {this.state.Course} are on record! Be the first!
+            </h1>
+          </div>
+  
+        </div>
+            {this.renderFooter()}
+      </div>
+              </div>
+
+      
+
+
+    );
   }
 
   
