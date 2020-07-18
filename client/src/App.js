@@ -32,8 +32,14 @@ this.setState({Department:Dep})
 
 searchDataBase = async () =>{
 
-  const res =  await axios.get("/dbr");
-  console.log(res);
+ 
+
+  await axios.get('/dbr', {
+    params: {
+      foo: this.state.Department
+    }
+  });
+
 
 
 
