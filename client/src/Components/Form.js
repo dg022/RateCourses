@@ -5,8 +5,9 @@ import SearchCourse from "./DepartmentSearch";
 import Scale from "./Scale"
 import Radio from "./Radio"
 
-const FormExampleForm = () => (
+const FormExampleForm = (props) => (
   <Form>
+
     <Form.Field>
    
       </Form.Field>
@@ -16,18 +17,18 @@ const FormExampleForm = () => (
     <Form.Field
             label='Would you would take the course again?'    
           />
-  <Radio/>
+  <Radio type={1} TakeAgain={props.TakeAgain} />
  
 
 </Form.Field>
 <Form.Field
             label='How difficult was the course?'    
           />
-      <Scale/>
+      <Scale Difficulty={props.Difficulty}/>
       <Form.Field
             label='Did you actually use the textbook?'    
           />
-      <Radio/>
+      <Radio type={0} TextBook={props.TextBook}  />
 
      <Form.Field
           control={TextArea}

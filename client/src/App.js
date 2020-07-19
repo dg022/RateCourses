@@ -25,6 +25,11 @@ class App extends React.Component {
     Department:"",
     Course:"",
     NotFound:false,
+    TakeAgain:"", 
+    Difficulty:null,
+    TextBook:"",
+    About:""
+
   };
 
 chooseDep = (Dep) =>{
@@ -34,6 +39,24 @@ this.setState({Department:Dep})
 chooseCourse = (Co) =>{
   this.setState({Course:Co})
   }
+
+  TakeAgain = (Choice) =>{
+    console.log(Choice)
+    this.setState({TakeAgain:Choice})
+    }
+Difficulty = (num) =>{
+  console.log(num)
+      this.setState({Difficulty:num})
+      }
+
+TextBook = (num) =>{
+  console.log(num)
+        this.setState({TextBook:num})
+        }
+
+About = (Abt) =>{
+          this.setState({About:Abt})
+     }
 
 searchDataBase = async () =>{
 
@@ -180,13 +203,19 @@ render(){
             </h1>
           </div>
 
-        <Form/>
+        <Form TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook}   />
         </div>
             {this.renderFooter()}
       </div>
               </div>
 
       
+
+
+ 
+
+
+
 
 
     );
