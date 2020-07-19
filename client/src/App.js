@@ -55,7 +55,9 @@ TextBook = (num) =>{
         }
 
 About = (Abt) =>{
+
           this.setState({About:Abt})
+        
      }
 
 searchDataBase = async () =>{
