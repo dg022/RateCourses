@@ -6,6 +6,8 @@ import Model from "./Components/ReviewAdd"
 import DepartmentSearch from "./Components/DepartmentSearch"
 import CourseSearch from "./Components/search"
 import axios from "axios"
+import Form from "./Components/ReviewAdd"
+import Scale from "./Components/Scale"
 
 
 var mongoose = require("mongoose");
@@ -23,9 +25,6 @@ class App extends React.Component {
     Department:"",
     Course:"",
     NotFound:false,
-  
-  
-  
   };
 
 chooseDep = (Dep) =>{
@@ -48,11 +47,7 @@ searchDataBase = async () =>{
 
 
   if(res.data == false){
-
     this.setState({NotFound:true})
-
-
-
   }
 
 
@@ -141,7 +136,7 @@ render(){
     
               <DepartmentSearch chooseDep={this.chooseDep}/>
               <CourseSearch  selectCourse={this.chooseCourse}  chooseCourse={this.state.Department}/>
-    
+             
               
     
             </div>
@@ -184,7 +179,8 @@ render(){
               No reviews for {this.state.Course} are on record! Be the first!
             </h1>
           </div>
-  
+
+        <Form/>
         </div>
             {this.renderFooter()}
       </div>

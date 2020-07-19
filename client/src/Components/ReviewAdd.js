@@ -3,9 +3,9 @@ import { Button, Header, Image, Modal } from "semantic-ui-react";
 import Form from "./Form.js"
 
 const ModalModalExample = () => (
-  <Modal trigger={<Button>Show Modal</Button>}>
+  <Modal trigger={<Button>Add a review!</Button>}>
 
-    <Modal.Header>  <center> Add a Review!  </center></Modal.Header>
+    <Modal.Header>  <center> Review Form   </center></Modal.Header>
     <Modal.Content image>
       <Modal.Description>
 
