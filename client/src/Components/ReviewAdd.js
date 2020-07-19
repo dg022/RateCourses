@@ -11,7 +11,7 @@ const ModalModalExample = (props) => (
 
  
 
-    <Form  TextBook={props.TextBook} Difficulty={props.Difficulty} TakeAgain={props.TakeAgain}   About={props.About}/>
+    <Form SubmitForm={props.SubmitForm}  TextBook={props.TextBook} Difficulty={props.Difficulty} TakeAgain={props.TakeAgain}   About={props.About}/>
 
       </Modal.Description>
     </Modal.Content>

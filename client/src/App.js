@@ -21,7 +21,6 @@ const Courses = require("./Components/Courses.js");
 
 class App extends React.Component {
   state = {
-
     Department:"",
     Course:"",
     NotFound:false,
@@ -36,46 +35,55 @@ chooseDep = (Dep) =>{
 this.setState({Department:Dep})
 }
 
+SubmitForm = () =>{
+
+  if(this.state.TakeAgain!="" && this.state.Difficulty!=null && this.state.TextBook!=""){
+
+    
+    console.log("Query the data base!")
+
+  }else{
+
+    // If this is the case, we want place an error messages saying the mandatory fields have not been filled out  yet
+    console.log("Fields are missing, cannot submit form")
+    
+  }
+
+
+
+  
+
+
+
+}
+
 chooseCourse = (Co) =>{
   this.setState({Course:Co})
   }
-
   TakeAgain = (Choice) =>{
-    console.log(Choice)
+
     this.setState({TakeAgain:Choice})
     }
 Difficulty = (num) =>{
-  console.log(num)
+  
       this.setState({Difficulty:num})
       }
-
 TextBook = (num) =>{
-  console.log(num)
+ 
         this.setState({TextBook:num})
         }
-
 About = (Abt) =>{
-
           this.setState({About:Abt})
-        
      }
-
 searchDataBase = async () =>{
-
- 
-
   let res = await axios.get('/dbr', {
     params: {
       department: this.state.Course
     }
   });
-
-
   if(res.data == false){
     this.setState({NotFound:true})
   }
-
-
 }
 
 
@@ -205,7 +213,7 @@ render(){
             </h1>
           </div>
 
-        <Form TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook}   />
+        <Form SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
         </div>
             {this.renderFooter()}
       </div>

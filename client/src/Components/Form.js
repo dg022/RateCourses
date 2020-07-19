@@ -15,6 +15,11 @@ const FormExampleForm = (props) => {
 
 
   }
+
+  const ClickSubmit = () =>{
+    console.log(props)
+    props.SubmitForm()
+  }
  
   return(
   <Form>
@@ -51,7 +56,7 @@ const FormExampleForm = (props) => {
 
       <Checkbox label='I am not a robot' />
     </Form.Field>
-    <Button type='submit'>Submit</Button>
+    <Button onClick={ClickSubmit}  type='submit'>Submit</Button>
   </Form>
   );
 }
