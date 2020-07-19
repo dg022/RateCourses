@@ -5,7 +5,23 @@ import SearchCourse from "./DepartmentSearch";
 import Scale from "./Scale"
 import Radio from "./Radio"
 
-const FormExampleForm = (props) => (
+
+const FormExampleForm = (props) => {
+
+  const change = (event) =>{
+
+
+    props.About(event.target.value)
+
+
+  }
+
+  const ClickSubmit = () =>{
+    console.log(props)
+    props.SubmitForm()
+  }
+ 
+  return(
   <Form>
 
     <Form.Field>
@@ -31,6 +47,7 @@ const FormExampleForm = (props) => (
       <Radio type={0} TextBook={props.TextBook}  />
 
      <Form.Field
+          onChange={change}
           control={TextArea}
           label='About'
           placeholder='What do you think about this course?'
@@ -39,8 +56,9 @@ const FormExampleForm = (props) => (
 
       <Checkbox label='I am not a robot' />
     </Form.Field>
-    <Button type='submit'>Submit</Button>
+    <Button onClick={ClickSubmit}  type='submit'>Submit</Button>
   </Form>
-)
+  );
+}
 
 export default FormExampleForm
