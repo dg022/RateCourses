@@ -45,6 +45,10 @@ SubmitForm = () =>{
     console.log("Query the data base!")
     this.setState({error:0})
     this.setState({willClose:1})
+    this.AddToDataBase();
+
+
+
     
   }else{
 
@@ -53,12 +57,6 @@ SubmitForm = () =>{
     this.setState({error:1}); 
     
   }
-
-
-
-  
-
-
 
 }
 
@@ -85,12 +83,37 @@ TextBook = (num) =>{
 About = (Abt) =>{
           this.setState({About:Abt})
      }
+
+
 searchDataBase = async () =>{
   let res = await axios.get('/dbr', {
     params: {
       department: this.state.Course
     }
   });
+  if(res.data == false){
+    this.setState({NotFound:true})
+  }
+}
+
+
+AddToDataBase = async () =>{
+   const list = {
+    "body": this.state.About,
+    "difficulty":this.state.Difficulty,
+    "takeAgain":this.state.TakeAgain,
+    "isTextBook":this.state.TextBook,
+  };
+
+
+  let res = await axios.get('/dbrAdd', {
+    params: {
+      courseTitle: this.state.Course,
+      review:list, 
+    }
+  });
+
+  
   if(res.data == false){
     this.setState({NotFound:true})
   }
