@@ -19,6 +19,31 @@ app.get('/', function (req, res) {
   //res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
+
+
+
+
+app.get('/dbrAdd', async (req, res) => {
+
+
+
+
+  var newUser = new Codes({"courseTitle":req.query.courseTitle, "review":[JSON.parse(req.query.review)], "overall":1, "wouldTakeAgain":2}); // you also need here to define _id since, since you set it as required.
+  newUser.save(function(err, result){
+      if(err){
+          console.log(err);
+      }else{
+          console.log('>>>>>> ' + JSON.stringify(result, null, 4));
+     }
+  }); 
+ 
+ 
+ 
+ 
+ 
+ });
+
+
 // This path is used for get queries, whether to find if a post for a course within a db exists or not, then returning the result. 
 app.get('/dbr', async (req, res) => {
 

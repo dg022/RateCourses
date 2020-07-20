@@ -3,19 +3,31 @@ var mongoose = require("mongoose");
 var Schema    =   mongoose.Schema;
 
 var Users = new Schema({ // example from docs
-    courseTitle         :   {
+    courseTitle:{
         type        :   String,
         require     :   true
     }, 
     review: [
-        {
-         body: String, 
-         difficulty: Number,
-         takeAgain: Number,
-         Atttendance:Number, 
-        }
       
-        ],
+
+        {
+            "body": {
+              "type": "String"
+            },
+            "difficulty": {
+              "type": "Number"
+            },
+            "takeAgain": {
+              "type": "String"
+            },
+            "isTextbook": {
+              "type": "String"
+            }
+          }
+    
+    
+    
+    ],
   overall     :   {
     type        :   Number,
     require     :   true
