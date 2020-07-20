@@ -8,6 +8,7 @@ import CourseSearch from "./Components/search"
 import axios from "axios"
 import Form from "./Components/ReviewAdd"
 import Scale from "./Components/Scale"
+import ReviewList from "./Components/ReviewList"
 
 
 var mongoose = require("mongoose");
@@ -29,7 +30,8 @@ class App extends React.Component {
     TextBook:"",
     About:"",
     error:0,
-    willClose:0
+    willClose:0,
+    Reviews:[]
 
   };
 
@@ -92,9 +94,14 @@ searchDataBase = async () =>{
     }
   });
   console.log(res.data)
-  
+
   if(res.data == false){
     this.setState({NotFound:true})
+  }else{
+
+    this.setState({Reviews:res.data.review})
+
+
   }
 
   
@@ -122,7 +129,7 @@ AddToDataBase = async () =>{
   });
 
 
-  console.log(res.data)
+  console.log(res.data.review)
   
 
 
@@ -213,7 +220,13 @@ render(){
               <DepartmentSearch chooseDep={this.chooseDep}/>
               <CourseSearch  selectCourse={this.chooseCourse}  chooseCourse={this.state.Department}/>
             </div>
+
+            
+
+
           </div>
+
+          <ReviewList list={this.state.Reviews} />
               {this.renderFooter()}
         </div>
                 </div>
