@@ -1,21 +1,66 @@
-import React from "react";
-import { Button, Header, Image, Modal } from "semantic-ui-react";
-import Form from "./Form.js"
+import React, { Component } from 'react'
+import { Button, Modal } from 'semantic-ui-react'
+import Form from './Form'
 
-const ModalModalExample = (props) => (
-  <Modal trigger={<Button>Add a review!</Button>}>
+class ModalExampleCloseConfig extends Component {
+  state = { open: false }
 
-    <Modal.Header>  <center> Review Form   </center></Modal.Header>
-    <Modal.Content image>
-      <Modal.Description>
+  closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
+    this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
+  }
 
- 
+  close = () => {
+    
+   
+    this.props.SubmitForm()
+  
+  }
 
-    <Form SubmitForm={props.SubmitForm}  TextBook={props.TextBook} Difficulty={props.Difficulty} TakeAgain={props.TakeAgain}   About={props.About}/>
+  componentWillReceiveProps =(nextProps)=>{
 
-      </Modal.Description>
-    </Modal.Content>
-  </Modal>
-);
+    if(nextProps.willClose ==1){
+      this.setState({ open: false })
+      nextProps.resetClose()
+    }
 
-export default ModalModalExample;
+  }
+
+
+  render() {
+
+  
+    const { open, closeOnEscape, closeOnDimmerClick } = this.state
+
+    return (
+      <div>
+      
+        <Button onClick={this.closeConfigShow(true, false)}>
+          Add a review!
+        </Button>
+
+        <Modal
+          open={open}
+          closeOnEscape={closeOnEscape}
+          closeOnDimmerClick={closeOnDimmerClick}
+          onClose={this.close}
+        >
+          <Modal.Header>Delete Your Account</Modal.Header>
+          <Modal.Content>
+          <Form Error={this.props.Error}  TextBook={this.props.TextBook} Difficulty={this.props.Difficulty} TakeAgain={this.props.TakeAgain}   About={this.props.About}/>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button
+              onClick={this.close}
+              positive
+              labelPosition='right'
+              icon='checkmark'
+              content='submit'
+            />
+          </Modal.Actions>
+        </Modal>
+      </div>
+    )
+  }
+}
+
+export default ModalExampleCloseConfig

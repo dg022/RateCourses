@@ -27,7 +27,9 @@ class App extends React.Component {
     TakeAgain:"", 
     Difficulty:null,
     TextBook:"",
-    About:""
+    About:"",
+    error:0,
+    willClose:0
 
   };
 
@@ -41,11 +43,14 @@ SubmitForm = () =>{
 
     
     console.log("Query the data base!")
-
+    this.setState({error:0})
+    this.setState({willClose:1})
+    
   }else{
 
     // If this is the case, we want place an error messages saying the mandatory fields have not been filled out  yet
     console.log("Fields are missing, cannot submit form")
+    this.setState({error:1}); 
     
   }
 
@@ -55,6 +60,11 @@ SubmitForm = () =>{
 
 
 
+}
+
+resetClose = () =>{
+
+  this.setState({willClose:0})
 }
 
 chooseCourse = (Co) =>{
@@ -109,6 +119,7 @@ renderHeader = () => {
 }
 
 
+
 renderFooter  = () => {
 
 return(
@@ -145,7 +156,8 @@ return(
   
 
 render(){
-    
+
+
 
   if(this.state.Department!="" && this.state.NotFound == false){
 
@@ -157,7 +169,6 @@ render(){
           <div class="ui inverted vertical masthead center aligned segment">
     
               {this.renderHeader()}
-    
             <div class="ui text container">
               <h1 class="ui inverted header">
                 Welcome to Rate Courses UWO
@@ -165,26 +176,13 @@ render(){
               <h3>This platform is designed to provide wholistic reviews of courses offered at Western University</h3>
               <h4 class = "warning">*Not affiliated with Western University or any of its satellite campuses</h4>
               <div class="ui huge primary button">Find A Course<i class="right arrow icon"></i></div>
-              <div  onClick={this.searchDataBase}class="ui huge primary button">Rate A Course<i class="right arrow icon"></i></div>
-    
+              <div  onClick={this.searchDataBase}class="ui huge primary button">Rate A Course<i class="right arrow icon"></i></div>   
               <DepartmentSearch chooseDep={this.chooseDep}/>
               <CourseSearch  selectCourse={this.chooseCourse}  chooseCourse={this.state.Department}/>
-             
-              
-    
             </div>
-    
           </div>
               {this.renderFooter()}
         </div>
-    
-    
-    
-    
-    
-    
-    
-    
                 </div>
 
 
@@ -213,26 +211,13 @@ render(){
             </h1>
           </div>
 
-        <Form SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
+          <Form  resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
         </div>
             {this.renderFooter()}
       </div>
               </div>
-
-      
-
-
- 
-
-
-
-
-
     );
   }
-
-  
-
     return(
             <div>
     <div class="pusher">
@@ -254,18 +239,9 @@ render(){
           
 
         </div>
-
       </div>
-          {this.renderFooter()}
+      {this.renderFooter()}
     </div>
-
-
-
-
-
-
-
-
             </div>
             
        
