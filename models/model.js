@@ -37,6 +37,17 @@ wouldTakeAgain     :   {
     type        :   Number,
     require     :   true
 },
+TextBook     :   {
+    type        :   Number,
+    require     :   true
+},
+
+Total   :   {
+    type        :   Number,
+    require     :   true
+},
+
+
 
 });
 

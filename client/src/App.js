@@ -91,9 +91,16 @@ searchDataBase = async () =>{
       department: this.state.Course
     }
   });
+  console.log(res.data)
+  
   if(res.data == false){
     this.setState({NotFound:true})
   }
+
+  
+
+
+
 }
 
 
@@ -110,13 +117,16 @@ AddToDataBase = async () =>{
     params: {
       courseTitle: this.state.Course,
       review:list, 
+      NotFound:this.state.NotFound
     }
   });
 
+
+  console.log(res.data)
   
-  if(res.data == false){
-    this.setState({NotFound:true})
-  }
+
+
+
 }
 
 
