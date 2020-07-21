@@ -5,10 +5,12 @@ import Example from "./Components/search";
 import Model from "./Components/ReviewAdd"
 import DepartmentSearch from "./Components/DepartmentSearch"
 import CourseSearch from "./Components/search"
+import Feedback from './Feedback'
 import axios from "axios"
 import Form from "./Components/ReviewAdd"
 import Scale from "./Components/Scale"
 import ReviewList from "./Components/ReviewList"
+
 
 
 var mongoose = require("mongoose");
@@ -148,7 +150,7 @@ renderHeader = () => {
         <a class="toc item">
           <i class="sidebar icon"></i>
         </a>
-        <a class="active item">Home</a>
+        <li><link to = {"/Feedback"}><a class="active item">Home</a></Link></li>
         <a class="item">About</a>
         <a class="item">Feedback</a>
       </div>
@@ -215,8 +217,10 @@ render(){
               </h1>
               <h3>This platform is designed to provide wholistic reviews of courses offered at Western University</h3>
               <h4 class = "warning">*Not affiliated with Western University or any of its satellite campuses</h4>
+
               <div class="ui huge primary button">Find A Course<i class="right arrow icon"></i></div>
               <div  onClick={this.searchDataBase}class="ui huge primary button">Rate A Course<i class="right arrow icon"></i></div>   
+
               <DepartmentSearch chooseDep={this.chooseDep}/>
               <CourseSearch  selectCourse={this.chooseCourse}  chooseCourse={this.state.Department}/>
             </div>
@@ -277,8 +281,6 @@ render(){
           </h1>
           <h3>This platform is designed to provide wholistic reviews of courses offered at Western University</h3>
           <h4 class = "warning">*Not affiliated with Western University or any of its satellite campuses</h4>
-          <div class="ui huge primary button">Find A Course<i class="right arrow icon"></i></div>
-          <div class="ui huge primary button">Rate A Course<i class="right arrow icon"></i></div>
 
           <DepartmentSearch chooseDep={this.chooseDep}/>
 
