@@ -9,7 +9,6 @@ import Feedback from './Feedback'
 import axios from "axios"
 import Form from "./Components/ReviewAdd"
 import Scale from "./Components/Scale"
-import ReviewList from "./Components/ReviewList"
 
 
 
@@ -32,8 +31,7 @@ class App extends React.Component {
     TextBook:"",
     About:"",
     error:0,
-    willClose:0,
-    Reviews:[]
+    willClose:0
 
   };
 
@@ -96,14 +94,9 @@ searchDataBase = async () =>{
     }
   });
   console.log(res.data)
-
+  
   if(res.data == false){
     this.setState({NotFound:true})
-  }else{
-
-    this.setState({Reviews:res.data.review})
-
-
   }
 
   
@@ -131,7 +124,7 @@ AddToDataBase = async () =>{
   });
 
 
-  console.log(res.data.review)
+  console.log(res.data)
   
 
 
@@ -224,13 +217,7 @@ render(){
               <DepartmentSearch chooseDep={this.chooseDep}/>
               <CourseSearch  selectCourse={this.chooseCourse}  chooseCourse={this.state.Department}/>
             </div>
-
-            
-
-
           </div>
-
-          <ReviewList list={this.state.Reviews} />
               {this.renderFooter()}
         </div>
                 </div>

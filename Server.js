@@ -132,7 +132,11 @@ app.get('/dbr', async (req, res) => {
 
 
  }else{
+
+  // If this is hit, then it does not exist within the database, we send back false, then we have to render a component that says its not there.  
    res.send(false)
+
+  
  }
 
 
