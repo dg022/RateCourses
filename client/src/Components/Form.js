@@ -1,24 +1,98 @@
 import React from 'react'
-import { Button, Checkbox, Form,  TextArea,Input  } from 'semantic-ui-react'
+import { Button, Checkbox, Form,  TextArea, Input, Message  } from 'semantic-ui-react'
 import Example from "./search";
 import SearchCourse from "./DepartmentSearch"; 
+import Scale from "./Scale"
+import Radio from "./Radio"
 
-const FormExampleForm = () => (
-  <Form>
-    <Form.Field>
-      <label>Department</label>
-      <SearchCourse/>
-    </Form.Field>
-    <Form.Field>
-      <label>Course</label>
-      <Example/>
-    </Form.Field>
-    <Form.Field
-            control={Input}
-            label='Course Review'
-            placeholder='Enter a score out of 10'
+
+const FormExampleForm = (props) => {
+
+  const change = (event) =>{
+
+
+    props.About(event.target.value)
+
+
+  }
+
+
+ 
+if(props.Error == 1){
+
+  return(
+    <Form>
+  
+      <Form.Field>
+     
+        </Form.Field>
+      <Form.Field>
+      </Form.Field>
+      <Form.Field>
+      <Form.Field
+              label='Would you would take the course again?'    
+            />
+    <Radio type={1} TakeAgain={props.TakeAgain} />
+   
+  
+  </Form.Field>
+  <Form.Field
+              label='How difficult was the course?'    
+            />
+        <Scale Difficulty={props.Difficulty}/>
+        <Form.Field
+              label='Did you actually use the textbook?'    
+            />
+        <Radio type={0} TextBook={props.TextBook}  />
+  
+       <Form.Field
+            onChange={change}
+            control={TextArea}
+            label='About'
+            placeholder='What do you think about this course?'
           />
+      <Form.Field>
+  
+        <Checkbox label='I am not a robot' />
+      </Form.Field>
+  
+      <Message negative>
+      <Message.Header>Invalid Submission</Message.Header>
+      <p>Make sure you fill out all the mandatory fields!</p>
+    </Message>
+    </Form>
+    );
+
+}
+
+
+  return(
+  <Form>
+
+    <Form.Field>
+   
+      </Form.Field>
+    <Form.Field>
+    </Form.Field>
+    <Form.Field>
+    <Form.Field
+            label='Would you would take the course again?'    
+          />
+  <Radio type={1} TakeAgain={props.TakeAgain} />
+ 
+
+</Form.Field>
+<Form.Field
+            label='How difficult was the course?'    
+          />
+      <Scale Difficulty={props.Difficulty}/>
+      <Form.Field
+            label='Did you actually use the textbook?'    
+          />
+      <Radio type={0} TextBook={props.TextBook}  />
+
      <Form.Field
+          onChange={change}
           control={TextArea}
           label='About'
           placeholder='What do you think about this course?'
@@ -27,8 +101,9 @@ const FormExampleForm = () => (
 
       <Checkbox label='I am not a robot' />
     </Form.Field>
-    <Button type='submit'>Submit</Button>
+    
   </Form>
-)
+  );
+}
 
 export default FormExampleForm

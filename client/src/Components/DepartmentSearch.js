@@ -35,7 +35,7 @@ const map =  xah_obj_to_map ( Courses.COURSES )
 
 
 let keys =  Array.from( map.keys());
-console.log(keys)
+
 
  
 
