@@ -150,7 +150,7 @@ renderHeader = () => {
         <a class="toc item">
           <i class="sidebar icon"></i>
         </a>
-        <li><link to = {"/Feedback"}><a class="active item">Home</a></Link></li>
+        
         <a class="item">About</a>
         <a class="item">Feedback</a>
       </div>
