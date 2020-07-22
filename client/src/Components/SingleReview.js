@@ -47,6 +47,8 @@ const ItemExampleItems = (props) => {
   return(
 
       <div class="item">
+      
+      <div class="header"> Difficutly</div>
     <div class="image">
 
     <div class=" sb-avatar sb-avatar--icon" id={reviewID}>
