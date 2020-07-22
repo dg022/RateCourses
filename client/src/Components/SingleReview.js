@@ -46,9 +46,8 @@ const ItemExampleItems = (props) => {
 
   return(
 
-      <div class="item">
+      <div id="ir" class="item">
       
-      <div class="header"> Difficutly</div>
     <div class="image">
 
     <div class=" sb-avatar sb-avatar--icon" id={reviewID}>
@@ -60,10 +59,10 @@ const ItemExampleItems = (props) => {
       <div class="meta">
         <span>DifficultyS:{toNumberString(props.list.difficulty)}</span>
       </div>
-      <div class="meta">
+      <div class="meta"> 
         <span>Would Take Again:{props.list.takeAgain}</span>
       </div>
-      <div class="description">
+      <div id ="it" class="description">
         <p>
         {props.list.body} 
 

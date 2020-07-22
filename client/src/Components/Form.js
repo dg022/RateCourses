@@ -37,7 +37,7 @@ if(props.Error == 1){
   
   </Form.Field>
   <Form.Field
-              label='How difficult was the course?'    
+              label='How easy was the course?'    
             />
         <Scale Difficulty={props.Difficulty}/>
         <Form.Field
