@@ -35,77 +35,41 @@ app.get('/dbrAdd', async (req, res) => {
 
 
     var obj = JSON.parse(req.query.review)
-    var wouldTakeAgain = obj.takeAgain
-    var text = obj.isTextBook
-    var TakeAgain  = 1
-    var TextBook  = 1
-    if(wouldTakeAgain == "yes"){
-      TakeAgain = 1
-    }
-    if(wouldTakeAgain == "No"){
-      TakeAgain = 0
-    }
-    if(text == "yes"){
-      TextBook= 1
-    }
-
-    if(text== "No"){
-      TextBook = 0
-    }
+    console.log(obj)
+    
+   
+    countYes = 0; 
   
     
+
 
   if(!(await Codes.exists({"courseTitle":req.query.courseTitle })))  {
    
 
-    var newUser = new Codes({"courseTitle":req.query.courseTitle, "review":[obj], "overall":obj.difficulty, "wouldTakeAgain":TakeAgain, "TextBook":TextBook, "Total":1 } ); // you also need here to define _id since, since you set it as required.
+    var newUser = new Codes({"courseTitle":req.query.courseTitle, "review":[obj]}); // you also need here to define _id since, since you set it as required.
     newUser.save(function(err, result){
         if(err){
-            console.log(err);
+           console.log(err)
         }else{
-            console.log('>>>>>> ' + JSON.stringify(result, null, 4));
-       }
-    }); 
 
+           console.log("saved sucessfuly")
+          
+       }
+
+
+    }); 
+ const loc = await Codes.findOne({"courseTitle":req.query.courseTitle})
+           res.send(loc); const doc = await Codes.findOne({"courseTitle":req.query.courseTitle})
+           res.send(loc);
   }else{
 
-    // a) We want to add it to the list 
-    // b) Calculate the new overall rating 
-    // c) Calculate the % who needed the textbook
-    // d) Calcualte the % that would take it again
-    // e) Increment the number of reviewrs
-
-    
     const doc = await Codes.findOne({"courseTitle":req.query.courseTitle});
-    var newTotal = doc.Total + 1;
-    var newOverall = doc.overall + obj.difficulty;
-    var isTextBook = doc.TextBook + TextBook;
-    var wouldTakeAgain = doc.wouldTakeAgain + TakeAgain;
-
-
     var newList  = doc.review; 
-   
     newList.push(obj); 
     doc.review =  newList;
-    doc.overall =  newOverall;
-    doc.wouldTakeAgain = wouldTakeAgain;
-    doc.TextBook = isTextBook; 
-    doc.Total = newTotal; 
-    
-     newList = [...newList.values()]
-
     await doc.save(); 
 
     res.send(doc);
-
-
-
-
-
-
-
-
-
 
   }
 
