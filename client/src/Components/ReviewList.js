@@ -1,6 +1,7 @@
 
 import React from 'react'; 
 import SingleReview from './SingleReview';
+import "./Review.css";
 
 
 const ReviewList = (props) => {
@@ -8,7 +9,8 @@ const ReviewList = (props) => {
     return <SingleReview list={msg} />;
   });
 
-  return <div className="ui  list"> {images}</div>;
+  return <div id="Review"className="ui items white segment "> {images}</div>;
 };
+
 
 export default ReviewList;

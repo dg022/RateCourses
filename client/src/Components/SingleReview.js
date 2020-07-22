@@ -3,15 +3,37 @@ import {  Item } from 'semantic-ui-react'
 
 const ItemExampleItems = (props) => (
 
-
-<div  style ={{width:'50%' }}class="ui raised  container segment">
-  <h2 class="ui header">Difficulty:{props.list.difficulty} </h2>
-  <h2 class="ui header">Would Take Again:{props.list.takeAgain} </h2>
-  <p>
-  {props.list.body} 
-  </p>
+  <div class="ui  item segment raised">
+<div class="image">
 
 </div>
+<div class="content">
+
+  <div class="meta">
+    <span>Difficulty:{props.list.difficulty}</span>
+  </div>
+  <div class="meta">
+    <span>Would Take Again:{props.list.takeAgain}</span>
+  </div>
+  <div class="description">
+    <p>
+    {props.list.body} 
+
+    </p>
+  </div>
+  <div class="extra">
+    Additional Details
+  </div>
+</div>
+</div>
+
+
+
+
 )
+
+
+
+
 
 export default ItemExampleItems
