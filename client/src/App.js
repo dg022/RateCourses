@@ -18,10 +18,6 @@ const Courses = require("./Components/Courses.js");
 
 
 
-
-
-
-
 class App extends React.Component {
   state = {
     Department:"",
@@ -45,15 +41,11 @@ SubmitForm = () =>{
 
   if(this.state.TakeAgain!="" && this.state.Difficulty!=null && this.state.TextBook!=""){
 
-    
     console.log("Query the data base!")
     this.setState({error:0})
     this.setState({willClose:1})
     this.AddToDataBase();
 
-
-
-    
   }else{
 
     // If this is the case, we want place an error messages saying the mandatory fields have not been filled out  yet
@@ -204,8 +196,6 @@ render(){
   if(this.state.Department!="" && this.state.NotFound == false){
 
       return(
-
-
         <div>
         <div class="pusher">
           <div class="ui inverted vertical masthead center aligned segment">
@@ -223,26 +213,22 @@ render(){
 
               <DepartmentSearch chooseDep={this.chooseDep}/>
               <CourseSearch  selectCourse={this.chooseCourse}  chooseCourse={this.state.Department}/>
+
+             
             </div>
-
             
-
-
           </div>
 
-          <ReviewList list={this.state.Reviews} />
-              {this.renderFooter()}
+          
+
+          
+              
         </div>
+
+        <ReviewList list={this.state.Reviews} />
                 </div>
 
-
-
       );
-
-
-
-
-
   }
 
   else if( this.state.Department!="" && this.state.NotFound == true){
@@ -264,7 +250,7 @@ render(){
           <Form  resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
         </div>
             {this.renderFooter()}
-      </div>
+      </div>  
               </div>
     );
   }
