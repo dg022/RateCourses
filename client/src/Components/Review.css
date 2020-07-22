@@ -1,15 +1,22 @@
 #Review {
     margin: auto;
-    margin-top:5%;width: 80%;
-    border: 3px solid green;
+    margin-top:5%;width: 50%;
+    margin-bottom: 5% !important;
+    
     padding: 10px;
   
 }
 
+#ir{
+
+    background: rgb(249, 249, 249);
+    padding: 60px;
+}
+
 
 #A{
-    width: 120px; height:
-     120px; line-height: initial;
+    width: 130px; height:
+     130px; line-height: initial;
       text-align: center; color: rgb(255, 255, 255); 
       background: red;
 }
@@ -17,8 +24,8 @@
 
 
 #A1{
-    width: 120px; height:
-     120px; line-height: initial;
+    width: 130px; height:
+     130px; line-height: initial;
       text-align: center; color: rgb(255, 255, 255); 
       background: yellow;
 
@@ -27,8 +34,8 @@
 
 #A2{
 
-    width: 120px; height:
-     120px; line-height: initial;
+    width: 130px; height:
+     130px; line-height: initial;
       text-align: center; color: rgb(255, 255, 255); 
       background:green
 }
@@ -44,5 +51,12 @@
     vertical-align: middle;
      white-space: nowrap;
 
+
+}
+
+#it{
+
+
+    font-size: large;
 
 }

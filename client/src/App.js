@@ -219,13 +219,11 @@ render(){
             
           </div>
 
-          
+          <ReviewList Title={this.state.Course}list={this.state.Reviews} />
 
           
-              
+              {this.renderFooter()}
         </div>
-
-        <ReviewList list={this.state.Reviews} />
                 </div>
 
       );

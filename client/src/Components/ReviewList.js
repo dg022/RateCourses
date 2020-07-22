@@ -35,18 +35,31 @@ const ReviewList = (props) => {
   return (
     <div> 
       <div class="ui segment" >
+
+      
+        <center>
+
+        <h1> {props.Title}</h1>
+
+
+
+        <div> 
               <div class="ui statistic">
           <div class="value">
-            {(average/count).toFixed(1) }
+           {(average/count).toFixed(1) }/5.0
           </div>
           <div class="label">
             Average diffiuctly Score from {count} reviews
           </div>
         </div>
 
+
+   
+
+
         <div class="ui statistic">
           <div class="value">
-            {(countYes/count)*100}% 
+          <i class="check circle outline icon "></i>  {(countYes/count)*100}% 
           </div>
           <div class="label">
             Would take the course again
@@ -56,13 +69,14 @@ const ReviewList = (props) => {
 
         <div class="ui statistic">
           <div class="value">
-            {(countYesText/count)*100}% 
+          <i class="book icon small"></i>  {(countYesText/count)*100}% 
           </div>
           <div class="label">
             Said a TextBook is required
           </div>
         </div>
-
+        </div>
+        </center>
         
 
 
