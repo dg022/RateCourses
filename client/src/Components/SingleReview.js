@@ -23,7 +23,7 @@ const ItemExampleItems = (props) => (
 
 <div class=" sb-avatar sb-avatar--icon" id="A">
   <div id="B" class=" sb-avatar__text">
-  <span id="C"><span>3.5</span></span></div></div>
+  <span id="C"><span>{toNumberString(props.list.difficulty)}</span></span></div></div>
 </div>
 <div class="content">
 
