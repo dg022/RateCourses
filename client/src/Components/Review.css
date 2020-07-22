@@ -8,13 +8,29 @@
 
 
 #A{
+    width: 120px; height:
+     120px; line-height: initial;
+      text-align: center; color: rgb(255, 255, 255); 
+      background: red;
+}
 
 
-    width: 120px; height: 120px; line-height: initial; text-align: center; color: rgb(255, 255, 255); background: red;
+
+#A1{
+    width: 120px; height:
+     120px; line-height: initial;
+      text-align: center; color: rgb(255, 255, 255); 
+      background: yellow;
+
+}
 
 
+#A2{
 
-
+    width: 120px; height:
+     120px; line-height: initial;
+      text-align: center; color: rgb(255, 255, 255); 
+      background:green
 }
 
 #B{
@@ -24,7 +40,9 @@
 
 #C{
 
-    display: table-cell; vertical-align: middle; white-space: nowrap;
+    display: table-cell; 
+    vertical-align: middle;
+     white-space: nowrap;
 
 
 }
