@@ -9,7 +9,7 @@ const ReviewList = (props) => {
     return <SingleReview list={msg} />;
   });
 
-  return <div id="Review"className="ui items white segment "> {images}</div>;
+  return <div id="Review"className="ui items "> {images}</div>;
 };
 
 

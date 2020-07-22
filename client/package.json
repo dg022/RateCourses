@@ -11,13 +11,12 @@
     "axios": "^0.19.2",
     "faker": "^4.1.0",
     "jquery": "^3.5.1",
-
-    "prop-types": "^15.7.2",
     "material-ui": "^0.20.2",
     "material-ui-rating": "^4.2.0",
     "mongoose": "^5.9.24",
-
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
+    "react-avatar": "^3.9.7",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "semantic-ui-react": "^0.88.2",
