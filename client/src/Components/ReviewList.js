@@ -6,16 +6,24 @@ import "./Review.css";
 var  average = 0;
 var count  = 0; 
 var countYes = 0; 
+var countYesText = 0;
 
 const ReviewList = (props) => {
   average = 0;
   count  = 0;
-  countYes = 0; 
+  countYes = 0;
+  countYesText = 0;
   
   const images = props.list.map(msg => {
+    console.log(msg)
 
+  
     if(msg.takeAgain == "Yes"){
       countYes++;
+    }
+
+    if(msg.isTextBook == "Yes"){
+      countYesText++;
     }
 
     average+=msg.difficulty;
@@ -44,6 +52,18 @@ const ReviewList = (props) => {
             Would take the course again
           </div>
         </div>
+
+
+        <div class="ui statistic">
+          <div class="value">
+            {(countYesText/count)*100}% 
+          </div>
+          <div class="label">
+            Said a TextBook is required
+          </div>
+        </div>
+
+        
 
 
       
