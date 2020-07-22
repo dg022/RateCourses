@@ -16,39 +16,68 @@ function toNumberString(num) {
      
                
 
-const ItemExampleItems = (props) => (
+const ItemExampleItems = (props) => {
 
-  <div class="item">
-<div class="image">
+  var reviewID = "";
 
-<div class=" sb-avatar sb-avatar--icon" id="A">
-  <div id="B" class=" sb-avatar__text">
-  <span id="C"><span>3.5</span></span></div></div>
-</div>
-<div class="content">
+  if(props.list.difficulty>=1 &&  props.list.difficulty<= 2.5 ){
 
-  <div class="meta">
-    <span>DifficultyS:{toNumberString(props.list.difficulty)}</span>
-  </div>
-  <div class="meta">
-    <span>Would Take Again:{props.list.takeAgain}</span>
-  </div>
-  <div class="description">
-    <p>
-    {props.list.body} 
+    reviewID ="A"
 
-    </p>
-  </div>
-  <div class="extra">
-    Additional Details
-  </div>
-</div>
-</div>
+
+  }
+
+  if(props.list.difficulty>=2.5 &&  props.list.difficulty<= 3.5 ){
+
+    reviewID ="A1"
+
+
+  }
+
+
+  if(props.list.difficulty>=4.0 ){
+
+    reviewID ="A2"
+
+
+  }
 
 
 
+  return(
 
-)
+      <div class="item">
+    <div class="image">
+
+    <div class=" sb-avatar sb-avatar--icon" id={reviewID}>
+      <div id="B" class=" sb-avatar__text">
+      <span id="C"><span>{toNumberString(props.list.difficulty)}</span></span></div></div>
+    </div>
+    <div class="content">
+
+      <div class="meta">
+        <span>DifficultyS:{toNumberString(props.list.difficulty)}</span>
+      </div>
+      <div class="meta">
+        <span>Would Take Again:{props.list.takeAgain}</span>
+      </div>
+      <div class="description">
+        <p>
+        {props.list.body} 
+
+        </p>
+      </div>
+      <div class="extra">
+        Additional Details
+      </div>
+    </div>
+    </div>
+
+  );
+
+
+
+}
 
 
 
