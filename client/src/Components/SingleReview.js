@@ -6,6 +6,7 @@ import './Review.css';
  
 
 function toNumberString(num) { 
+  console.log(num)
   if (Number.isInteger(num)) { 
     return num + ".0"
   } else {
@@ -43,7 +44,8 @@ const ItemExampleItems = (props) => {
   }
 
 
-
+if(props.list.difficulty!=null){
+  console.log(props.list)
   return(
 
       <div id="ir" class="item">
@@ -75,7 +77,15 @@ const ItemExampleItems = (props) => {
     </div>
 
   );
+}
+if(props.list.difficulty==null){
 
+  console.log(props.list)
+
+}
+
+
+return(<div></div>)
 
 
 }
