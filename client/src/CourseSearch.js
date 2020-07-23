@@ -34,4 +34,16 @@ const DropdownExampleSearchSelectionTwo = () => (
   <Dropdown placeholder='Deparment' search selection options={stateOptions} />
 )
 
+<<<<<<< Updated upstream:client/src/CourseSearch.js
 export default DropdownExampleSearchSelectionTwo
+=======
+
+  return(
+  <Dropdown  onChange={exposedCampaignOnChange} placeholder='Department' search selection options={stateOptions} />
+  ); 
+
+
+};
+
+export default DropdownExampleSearchSelectionTwo;
+>>>>>>> Stashed changes:client/src/Components/DepartmentSearch.js

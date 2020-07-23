@@ -2,6 +2,13 @@
       display: none;
     }
 
+    .masthead {
+      background-image: url(western.JPG) !important;
+      background-repeat: no-repeat;
+      background-position: center;
+      background: #250246;
+    }
+
     .masthead.segment {
       min-height: 700px;
       padding: 1em 0em;
@@ -13,7 +20,7 @@
       margin-left: 0.5em;
     }
     .masthead h1.ui.header {
-      margin-top: 3em;
+      margin-top: 4.5em;
       margin-bottom: 0em;
       font-size: 4em;
       font-weight: normal;
@@ -51,10 +58,6 @@
       padding-bottom: 5em;
     }
 
-    .footer.segment {
-      padding: 5em 0em;
-    }
-
     .secondary.pointing.menu .toc.item {
       display: none;
     }
@@ -83,14 +86,29 @@
       }
     }
 
-    
-
     .warning{
       padding-bottom: 20px;
     }
 
-    .ui.large.secondary.inverted.pointing.menu{
-      float: right;
-      padding-right: 40px;
+    .ui.text.container{
+      min-height: 550px;
     }
+
+    .ui.vertical.footer.segment.center.aligned{
+      background-color: #250246;
+      padding: 10px;
+    }
+
+    .ui.container {
+      color: white;
+    }
+
+    .ui.menu.inverted{
+      background: #250246;
+    }
+
+
+
+    
+
 

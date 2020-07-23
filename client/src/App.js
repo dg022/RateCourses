@@ -26,6 +26,7 @@ render(){
 
         <div>
 
+<<<<<<< Updated upstream
 
 <div class="pusher">
   <div class="ui inverted vertical masthead center aligned segment">
@@ -57,33 +58,79 @@ render(){
   </div>
 
   <Comment/>
-
-
-
-
-  <div class="ui inverted vertical footer segment">
-    <div class="ui container">
-      <div class="ui stackable inverted divided equal height stackable grid">
-        <div class="three wide column">
-     
+=======
+return(
+      <div class="ui menu inverted">
+        <div class="header item">
+        RateMyCourse UWO
         </div>
-        <div class="three wide column">
-          <h4 class="ui inverted header">Services</h4>
-          <div class="ui inverted link list">
-            <a href="#" class="item">Banana Pre-Order</a>
-            <a href="#" class="item">DNA FAQ</a>
-            <a href="#" class="item">How To Access</a>
-            <a href="#" class="item">Favorite X-Men</a>
-          </div>
-        </div>
-        <div class="seven wide column">
-          <h4 class="ui inverted header">Footer Header</h4>
-          <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
-        </div>
+        <a class="item">
+          About
+        </a>
+        <a class="item">
+          Feedback
+        </a>
       </div>
+  );
+}
+>>>>>>> Stashed changes
+
+
+
+
+<<<<<<< Updated upstream
+  <div class="ui inverted vertical footer segment">
+=======
+return(
+  <div class="ui vertical footer segment center aligned">
+>>>>>>> Stashed changes
+    <div class="ui container">
+    © 2020. Brought to you by David George, Nathan Pogue and Huda Mukhtar 
     </div>
   </div>
+<<<<<<< Updated upstream
 </div>
+=======
+);
+
+
+}
+
+
+
+ 
+  
+
+render(){
+
+
+
+  if(this.state.Department!="" && this.state.NotFound == false){
+
+      return(
+        <div>
+        <div class="pusher">
+          <div class="ui inverted vertical masthead center aligned segment">
+    
+              {this.renderHeader()}
+            <div class="ui text container">
+              <h1 class="ui inverted header">
+                RateMyCourse UWO
+              </h1>
+              <h3>This platform is designed to provide wholistic reviews of courses offered at Western University</h3>
+              <h4 class = "warning">*Not affiliated with Western University or any of its satellite campuses</h4>
+
+              <div class="ui huge primary button">Find A Course<i class="right arrow icon"></i></div>
+              <div  onClick={this.searchDataBase}class="ui huge primary button">Rate A Course<i class="right arrow icon"></i></div>   
+
+              <DepartmentSearch chooseDep={this.chooseDep}/>
+              <CourseSearch  selectCourse={this.chooseCourse}  chooseCourse={this.state.Department}/>
+
+             
+            </div>
+            
+          </div>
+>>>>>>> Stashed changes
 
 
 
@@ -93,7 +140,39 @@ render(){
 
 
         </div>
+<<<<<<< Updated upstream
         
+=======
+            {this.renderFooter()}
+      </div>  
+              </div>
+    );
+  }
+    return(
+            <div>
+    <div class="pusher">
+      <div class="ui inverted vertical masthead center aligned segment">
+
+          {this.renderHeader()}
+
+        <div class="ui text container">
+          <h1 class="ui inverted header">
+            RateMyCourse UWO
+          </h1>
+          <h3>This platform is designed to provide wholistic reviews of courses offered at Western University</h3>
+          <h4 class = "warning">*Not affiliated with Western University or any of its satellite campuses</h4>
+
+          <DepartmentSearch chooseDep={this.chooseDep}/>
+
+          
+
+        </div>
+      </div>
+      {this.renderFooter()}
+    </div>
+            </div>
+            
+>>>>>>> Stashed changes
        
 
 
