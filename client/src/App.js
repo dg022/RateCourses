@@ -10,7 +10,7 @@ import axios from "axios"
 import Form from "./Components/ReviewAdd"
 import Scale from "./Components/Scale"
 import ReviewList from "./Components/ReviewList"
-
+import {Link } from "react-router-dom";
 
 
 var mongoose = require("mongoose");
@@ -151,7 +151,7 @@ renderHeader = () => {
         </a>
         
         <a class="item">About</a>
-        <a class="item">Feedback</a>
+        <Link to = "/page2"><a class="item">Feedback</a></Link>
       </div>
     </div>
 
@@ -212,7 +212,7 @@ if(this.state.Department == ""){
             Welcome to Rate Courses UWO
           </h1>
           <h3>This platform is designed to provide wholistic reviews of courses offered at Western University</h3>
-          <h4 class = "warning">*Not affiliated with Western University or any of its satellite campuses</h4>
+          <h4 class = "warning">*Not affiliated with Western University or satellite colleges*</h4>
 
           <DepartmentSearch chooseDep={this.chooseDep}/>
 
