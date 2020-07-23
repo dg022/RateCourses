@@ -113,6 +113,10 @@ AddToDataBase = async () =>{
     "isTextBook":this.state.TextBook,
   };
 
+  this.setState({ 
+    Reviews: this.state.Reviews.concat([list])
+  })
+
 
   let res = await axios.get('/dbrAdd', {
     params: {
@@ -123,7 +127,10 @@ AddToDataBase = async () =>{
   });
 
 
-  console.log(res.data.review)
+  
+
+ 
+
   
 
 
@@ -191,10 +198,99 @@ return(
 
 render(){
 
+if(this.state.Department == ""){
+
+  return(
+    <div>
+        <div class="pusher">
+        <div class="ui inverted vertical masthead center aligned segment">
+
+          {this.renderHeader()}
+
+        <div class="ui text container">
+          <h1 class="ui inverted header">
+            Welcome to Rate Courses UWO
+          </h1>
+          <h3>This platform is designed to provide wholistic reviews of courses offered at Western University</h3>
+          <h4 class = "warning">*Not affiliated with Western University or any of its satellite campuses</h4>
+
+          <DepartmentSearch chooseDep={this.chooseDep}/>
+
+          
+
+        </div>
+        </div>
+        {this.renderFooter()}
+        </div>
+    </div>
+);
+}
 
 
-  if(this.state.Department!="" && this.state.NotFound == false){
+if( this.state.Reviews.length!=0 || this.state.NotFound == true){
 
+  if(this.state.Reviews.length==0){
+      return(
+  
+        <div>
+       
+          
+    
+              {this.renderHeader()}
+    
+            <div class="ui text container">
+              <h1 class="ui inverted header">
+                No reviews for {this.state.Course} are on record! Be the first!
+              </h1>
+            </div>
+          
+  
+  
+  
+            <Form  resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
+          
+              {this.renderFooter()}
+        
+                </div>
+  
+  
+      );
+  
+  }
+  
+  return(
+  
+    <div>
+ 
+    
+      
+        <div class="ui text container">
+          <h1 class="ui inverted header">
+            No reviews for {this.state.Course} are on record! Be the first!
+          </h1>
+        </div>
+    
+        <ReviewList Title={this.state.Course}list={this.state.Reviews} />
+        <Form  resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
+      
+          {this.renderFooter()}
+   
+            </div>
+  
+  
+  );
+  
+  
+  
+  
+  
+    }
+
+
+
+
+
+  if(this.state.NotFound == false){
       return(
         <div>
         <div class="pusher">
@@ -213,13 +309,9 @@ render(){
 
               <DepartmentSearch chooseDep={this.chooseDep}/>
               <CourseSearch  selectCourse={this.chooseCourse}  chooseCourse={this.state.Department}/>
-
-             
             </div>
-            
           </div>
-
-          <ReviewList Title={this.state.Course}list={this.state.Reviews} />
+         
 
           
               {this.renderFooter()}
@@ -229,58 +321,8 @@ render(){
       );
   }
 
-  else if( this.state.Department!="" && this.state.NotFound == true){
 
-    return(
-
-      <div>
-      <div class="pusher">
-        <div class="ui inverted vertical masthead center aligned segment">
-  
-            {this.renderHeader()}
-  
-          <div class="ui text container">
-            <h1 class="ui inverted header">
-              No reviews for {this.state.Course} are on record! Be the first!
-            </h1>
-          </div>
-
-          <Form  resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
-        </div>
-            {this.renderFooter()}
-      </div>  
-              </div>
-    );
-  }
-    return(
-            <div>
-    <div class="pusher">
-      <div class="ui inverted vertical masthead center aligned segment">
-
-          {this.renderHeader()}
-
-        <div class="ui text container">
-          <h1 class="ui inverted header">
-            Welcome to Rate Courses UWO
-          </h1>
-          <h3>This platform is designed to provide wholistic reviews of courses offered at Western University</h3>
-          <h4 class = "warning">*Not affiliated with Western University or any of its satellite campuses</h4>
-
-          <DepartmentSearch chooseDep={this.chooseDep}/>
-
-          
-
-        </div>
-      </div>
-      {this.renderFooter()}
-    </div>
-            </div>
-            
-       
-
-
-    );
-
+ 
 
 
 
