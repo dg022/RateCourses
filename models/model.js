@@ -20,7 +20,7 @@ var Users = new Schema({ // example from docs
             "takeAgain": {
               "type": "String"
             },
-            "isTextbook": {
+            "isTextBook": {
               "type": "String"
             }
           }
@@ -28,27 +28,6 @@ var Users = new Schema({ // example from docs
     
     
     ],
-  overall     :   {
-    type        :   Number,
-    require     :   true
-},
-
-wouldTakeAgain     :   {
-    type        :   Number,
-    require     :   true
-},
-TextBook     :   {
-    type        :   Number,
-    require     :   true
-},
-
-Total   :   {
-    type        :   Number,
-    require     :   true
-},
-
-
-
 });
 
 exports.model = Users; 
