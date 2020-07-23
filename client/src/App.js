@@ -111,7 +111,11 @@ AddToDataBase = async () =>{
     "difficulty":this.state.Difficulty,
     "takeAgain":this.state.TakeAgain,
     "isTextBook":this.state.TextBook,
+    "thumbsUp":0,
+    "thumbsDown":0,
+
   };
+
 
   this.setState({ 
     Reviews: this.state.Reviews.concat([list])

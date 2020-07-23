@@ -5,11 +5,27 @@ class Thumbsup extends React.Component  {
 
 
 state = {
-        Up:0,
-        Down:0,
+        Up:this.props.ThumbsUp,
+        Down:this.props.ThumbsDown,
         voteUp:false,
         voteDown:false
     };
+
+
+
+incrementDB = () =>{
+    
+    this.props.incrementDB()
+
+
+}
+
+decrementDB = () =>{
+
+    this.props.decrementDB()
+
+}
+
 
 
  incrementUp = () => {
@@ -34,6 +50,9 @@ state = {
             this.setState({voteUp:true})
         }
 
+
+        this.incrementDB(); 
+
     }
 
     // Here you need to update the database, so this must also be connected to App.js
@@ -45,9 +64,7 @@ state = {
 
     if(!this.state.voteDown){
 
-        // You are trying to change your vote from down to up
-        // The logic here, is to now, remove your vote from down, and add it on to up, then
-        // set voteUp to now be true, and now downVote to false
+        // this is the mirror from going for above
         if(this.state.Up){
             this.setState({Up: this.state.Up-1})
             this.setState({Down: this.state.Down+1})
@@ -59,6 +76,9 @@ state = {
             this.setState({Down: this.state.Down+1})
             this.setState({voteDown:true})
         }
+
+
+        this.decrementDB();
 
     }
     
