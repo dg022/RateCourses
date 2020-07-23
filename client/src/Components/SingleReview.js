@@ -6,6 +6,8 @@ import './Review.css';
 import ThumbsUp from './ThumbsUp.js';
  
 
+
+
 function toNumberString(num) { 
   console.log(num)
   if (Number.isInteger(num)) { 
@@ -71,24 +73,7 @@ if(props.list.difficulty!=null){
 
                 </p>
               </div>
-              <div  id="in" class="extra">
-                <div class="ui labeled button" tabindex="0">
-              <div class="ui green button">
-                <i class="thumbs up outline icon"></i> Like
-              </div>
-              <a class="ui basic  green label">
-                1,048
-              </a>
-            </div>
-            <div class="ui labeled button" tabindex="0">
-              <div class="ui  red button">
-                <i class="thumbs down outline icon"></i> Dislike
-              </div>
-              <a class="ui basic  red label">
-                1,048
-              </a>
-          </div>
-              </div>
+              <ThumbsUp/>
             </div>
     
     </div>
