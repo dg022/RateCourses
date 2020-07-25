@@ -73,8 +73,7 @@ if(props.list.difficulty!=null){
 
                 </p>
               </div>
-              
-              <ThumbsUp  id = {props.list._id}  decrementDB={props.decrementDB} incrementDB={props.incrementDB} ThumbsUp={props.list.thumbsUp}  ThumbsUp={props.list.thumbsDown}  />
+              <ThumbsUp  id = {props.list._id}  decrementDB={props.decrementDB} incrementDB={props.incrementDB}  ThumbsUp={props.list.thumbsUp}  ThumbsDown={props.list.thumbsDown}   />
             </div>
 
 

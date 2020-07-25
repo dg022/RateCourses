@@ -29,7 +29,7 @@ const ReviewList = (props) => {
     average+=msg.difficulty;
     count++; 
     
-    return <SingleReview list={msg} />;
+    return <SingleReview  decrementDB={props.decrementDB} incrementDB={props.incrementDB} list={msg} />;
   });
 
   return (
