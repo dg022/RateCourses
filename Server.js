@@ -63,7 +63,7 @@ app.get('/updateLikes', async (req, res) => {
   const doc = await Codes.findOne({"courseTitle":req.query.title});
 
   var list  = doc.review; 
-  console.log(list)
+  
 
 
 
@@ -88,7 +88,7 @@ app.get('/updateLikes', async (req, res) => {
 
   }
   
-console.log("for whatever reason this still being hit")
+
 
 
 
@@ -108,11 +108,19 @@ app.get('/dbrAdd', async (req, res) => {
 
 
     var obj = JSON.parse(req.query.review)
-    console.log(obj)
+ 
     
    
     countYes = 0; 
   
+
+    query = async () =>{
+
+      const loc = await Codes.findOne({"courseTitle":req.query.courseTitle})
+      console.log(loc)
+     res.send(loc);
+
+    }
     
 
 
@@ -125,15 +133,15 @@ app.get('/dbrAdd', async (req, res) => {
            console.log(err)
         }else{
 
-           console.log("saved sucessfuly")
+    
+         this.query();
           
        }
 
 
     }); 
- const loc = await Codes.findOne({"courseTitle":req.query.courseTitle})
-           res.send(loc); const doc = await Codes.findOne({"courseTitle":req.query.courseTitle})
-           res.send(loc);
+
+
   }else{
 
     const doc = await Codes.findOne({"courseTitle":req.query.courseTitle});
