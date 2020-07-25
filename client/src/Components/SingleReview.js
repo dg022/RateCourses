@@ -5,6 +5,7 @@ import Avatar from 'react-avatar';
 import './Review.css';
 import ThumbsUp from './ThumbsUp.js';
 import Edit from './Edit';
+import Flag from './Flag'; 
 
 
 
@@ -26,7 +27,8 @@ class ItemExampleItems extends React.Component{
 
   state = {
 
-    ron:false
+    ron:false,
+    ronFlag:false
 
   }
 
@@ -35,8 +37,15 @@ class ItemExampleItems extends React.Component{
     this.setState({ron:true})
   }
 
+  const handleHoverFlag = () => {
+    this.setState({ronFlag:true})
+  }
+
   const handleLeave = () => {
     this.setState({ron:false})
+  }
+  const handleLeaveFlag = () => {
+    this.setState({ronFlag:false})
   }
 
   var reviewID = "";
@@ -93,6 +102,16 @@ if(this.props.list.difficulty!=null){
               <ThumbsUp  id = {this.props.list._id}  decrementDB={this.props.decrementDB} incrementDB={this.props.incrementDB}  ThumbsUp={this.props.list.thumbsUp}  ThumbsDown={this.props.list.thumbsDown}   />
             </div>
 
+            
+
+
+
+        <div onMouseLeave={handleLeaveFlag} onMouseEnter={handleHoverFlag}>
+        
+        <Flag   on={this.state.ronFlag} />
+
+
+        </div>
 
             <div onMouseLeave={handleLeave} onMouseEnter={handleHover}>
         
@@ -100,6 +119,11 @@ if(this.props.list.difficulty!=null){
 
 
             </div>
+
+          
+
+
+
     </div>
 
 
