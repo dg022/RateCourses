@@ -13,8 +13,12 @@ const ReviewList = (props) => {
   count  = 0;
   countYes = 0;
   countYesText = 0;
-  
-  const images = props.list.map(msg => {
+
+ const list  = props.list;
+
+
+  list.sort((a, b) => parseFloat(b.thumbsUp - b.thumbsDown) - parseFloat(a.thumbsUp-a.thumbsDown));
+  const images = list.map(msg => {
     console.log(msg)
 
   
