@@ -8,6 +8,14 @@
 }
 
 
+
+.flags{
+
+        position: absolute; 
+        bottom: 0px;
+        right: 0px; 
+    
+}
 #in{
     margin-top:5%;
 
