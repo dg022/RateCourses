@@ -10,6 +10,7 @@ import axios from "axios"
 import Form from "./Components/ReviewAdd"
 import Scale from "./Components/Scale"
 import ReviewList from "./Components/ReviewList"
+import Email from "./Components/Email"
 import {Link } from "react-router-dom";
 
 
@@ -263,7 +264,7 @@ if(this.state.Department == ""){
 
           <DepartmentSearch chooseDep={this.chooseDep}/>
 
-          
+          <Email/>
 
         </div>
         </div>
