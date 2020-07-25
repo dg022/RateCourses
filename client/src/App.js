@@ -155,9 +155,7 @@ AddToDataBase = async () =>{
   };
 
 
-  this.setState({ 
-    Reviews: this.state.Reviews.concat([list])
-  })
+  
 
 
   let res = await axios.get('/dbrAdd', {
@@ -167,6 +165,13 @@ AddToDataBase = async () =>{
       NotFound:this.state.NotFound
     }
   });
+   
+  console.log(res.data.review[0])
+
+
+  this.setState({ 
+    Reviews: this.state.Reviews.concat([res.data.review[0]])
+  })
 
 
   

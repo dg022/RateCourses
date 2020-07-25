@@ -21,7 +21,7 @@ state = {
 
     console.log(nextProps)
     this.setState({Up:nextProps.ThumbsUp})
-    this.setState({Down:nextProps.Thumbs})
+    this.setState({Down:nextProps.ThumbsDown})
  }
 
 
