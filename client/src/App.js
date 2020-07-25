@@ -56,6 +56,44 @@ SubmitForm = () =>{
 
 }
 
+
+
+
+decrementDB =  async (id, UpDelta, DownDelta) => {
+
+  // when we are here, we have been notified that a change has occured, with the id  passed,
+  // now we need to query the database with the the given id, 
+
+  let res = await axios.get('/updateDislikes', {
+    params: {
+      UpDelta: UpDelta,
+      DownDelta:DownDelta,
+      id:id,
+      title:this.state.Course
+    }
+  });
+
+
+}
+
+incrementDB =  async (id, UpDelta, DownDelta) => {
+
+  
+
+  let res = await axios.get('/updateLikes', {
+    params: {
+      UpDelta: UpDelta,
+      DownDelta:DownDelta,
+      id:id,
+      title:this.state.Course
+    }
+  });
+
+  
+
+
+}
+
 resetClose = () =>{
 
   this.setState({willClose:0})
@@ -87,7 +125,7 @@ searchDataBase = async () =>{
       department: this.state.Course
     }
   });
-  console.log(res.data)
+
 
   if(res.data == false){
     this.setState({NotFound:true})
@@ -111,7 +149,11 @@ AddToDataBase = async () =>{
     "difficulty":this.state.Difficulty,
     "takeAgain":this.state.TakeAgain,
     "isTextBook":this.state.TextBook,
+    "thumbsUp":0,
+    "thumbsDown":0,
+
   };
+
 
   this.setState({ 
     Reviews: this.state.Reviews.concat([list])
@@ -270,7 +312,7 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
           </h1>
         </div>
     
-        <ReviewList Title={this.state.Course}list={this.state.Reviews} />
+        <ReviewList  decrementDB={this.decrementDB} incrementDB={this.incrementDB} Title={this.state.Course}list={this.state.Reviews} />
         <Form  resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
       
           {this.renderFooter()}

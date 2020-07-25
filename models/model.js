@@ -22,7 +22,15 @@ var Users = new Schema({ // example from docs
             },
             "isTextBook": {
               "type": "String"
-            }
+            }, 
+
+            "thumbsUp":{
+              "type":"Number"
+            
+            }, 
+            "thumbsDown":{
+              "type":"Number"
+            }, 
           }
     
     

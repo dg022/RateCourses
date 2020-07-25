@@ -22,6 +22,79 @@ app.get('/', function (req, res) {
 
 
 
+app.get('/updateDislikes', async (req, res) => {
+
+
+  // now we just update the database
+  const UpDelta= Number(req.query.UpDelta);
+  const DownDelta = Number(req.query.DownDelta);
+
+  const id =  req.query.id
+  const title =  req.query.title
+  const doc = await Codes.findOne({"courseTitle":req.query.title});
+  const list  = doc.review; 
+
+  for(var i = 0; i < list.length; i++){
+
+    if(list[i]._id.equals(id)){ 
+      const Up = Number(list[i].thumbsUp); 
+      const Down = Number(list[i].thumbsDown); 
+      list[i].thumbsUp = Number(Up + UpDelta)
+      list[i].thumbsDown = Number(Down + DownDelta)
+
+      doc.review = list; 
+      await doc.save(); 
+      return; 
+    }
+
+  }
+  
+});
+
+
+app.get('/updateLikes', async (req, res) => {
+
+  
+  const UpDelta= Number(req.query.UpDelta);
+  const DownDelta = Number(req.query.DownDelta);
+  const id =  req.query.id
+  const title =  req.query.title
+
+  const doc = await Codes.findOne({"courseTitle":req.query.title});
+
+  var list  = doc.review; 
+  console.log(list)
+
+
+
+  for(var i = 0; i < list.length; i++){
+
+    if(list[i]._id.equals(id)){ 
+
+      const Up = Number(list[i].thumbsUp); 
+      const Down = Number(list[i].thumbsDown); 
+
+      list[i].thumbsUp = Number(Up + UpDelta)
+      list[i].thumbsDown = Number(Down + DownDelta)
+
+      doc.review = list; 
+      await doc.save(); 
+     
+      return; 
+     
+    }
+
+
+
+  }
+  
+console.log("for whatever reason this still being hit")
+
+
+
+
+});
+
 
 app.get('/dbrAdd', async (req, res) => {
 
