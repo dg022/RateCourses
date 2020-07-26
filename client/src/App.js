@@ -264,7 +264,7 @@ if(this.state.Department == ""){
 
           <DepartmentSearch chooseDep={this.chooseDep}/>
 
-          
+      
 
         </div>
         </div>
