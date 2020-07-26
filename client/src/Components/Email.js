@@ -3,7 +3,7 @@ import React from 'react';
 export default class extends React.Component {
   constructor(props) {
 	super(props);
-	this.state = { feedback: '', name: 'David', email: 'david.george.2480@gmail.com' };
+	this.state = { feedback: '', name: 'David', email: 'gdmannukaden@gmail.com' };
 	this.handleChange = this.handleChange.bind(this);
 	this.handleSubmit = this.handleSubmit.bind(this);
   }
