@@ -12,7 +12,7 @@ class ModalExampleCloseConfig extends Component {
       message:false,
       code:"",
       tbval:null,
-      dval:null,
+      dval:1,
       taval:null, 
       aval:null,
 
@@ -58,7 +58,14 @@ About= (term) =>{
   Submitclose = async () => {
   
  
+  if(this.state.code == this.props.id){
   this.setState({ message:true })
+  }else{
+
+    console.log("not the correct code for the post")
+
+
+  }
 
   
  
@@ -98,7 +105,6 @@ About= (term) =>{
 
   searchCourse = async () => {
 
-    
     let res = await axios.get('/searchCourse', {
         params: {
           Title: this.props.Title,
@@ -108,17 +114,20 @@ About= (term) =>{
 
     if(res.data!=""){
         
-        console.log(res); 
+        var num  = Number(res.data.difficulty)
+        console.log(num)
+        this.setState({dval:num})
         this.setState({aval:res.data.body})
-        this.setState({dval:res.data.difficulty})
         this.setState({taval:res.data.takeAgain})
         this.setState({tbval:res.data.isTextBook})
+        console.log(this.state.dval)
 
     }else{
 
-
-        console.log("it does not exist within the database")
+      console.log("it does not exist within the database")
     }
+
+    
 
 
     this.setState({queried:true})
@@ -133,8 +142,8 @@ About= (term) =>{
         this.searchCourse()
         }
 
-        // here is where you have to do the reqeust
-        // You need the courses title 
+
+   
 
 
         return(
