@@ -31,6 +31,43 @@ class ModalExampleCloseConfig extends Component {
   
     const { open, closeOnEscape, closeOnDimmerClick } = this.state
 
+
+    const renderForm = ()=>{
+
+      if(this.props.dest==1){
+
+      return(
+        <Form 
+          tbval={this.props.tbval} 
+          dval={this.props.dval} 
+          taval={this.props.taval} 
+          aval={this.props.aval} 
+          Error={this.props.Error}  
+          TextBook={this.props.TextBook}
+          Difficulty={this.props.Difficulty} 
+          TakeAgain={this.props.TakeAgain}
+          About={this.props.About}
+          />
+      );
+
+      }else{
+
+          return(
+
+<Form Error={this.props.Error}  
+TextBook={this.props.TextBook} 
+Difficulty={this.props.Difficulty} 
+TakeAgain={this.props.TakeAgain}   
+About={this.props.About}/>
+
+          );
+
+
+      }
+
+
+    }
+
     return (
       <div>
       
@@ -42,11 +79,16 @@ class ModalExampleCloseConfig extends Component {
           open={open}
           closeOnEscape={closeOnEscape}
           closeOnDimmerClick={closeOnDimmerClick}
-          onClose={this.close}
+          onClose={this.close} 
         >
           <Modal.Header>Delete Your Account</Modal.Header>
           <Modal.Content>
-          <Form Error={this.props.Error}  TextBook={this.props.TextBook} Difficulty={this.props.Difficulty} TakeAgain={this.props.TakeAgain}   About={this.props.About}/>
+          <Form Error={this.props.Error}  
+TextBook={this.props.TextBook} 
+Difficulty={this.props.Difficulty} 
+TakeAgain={this.props.TakeAgain}   
+About={this.props.About}/>
+
           </Modal.Content>
           <Modal.Actions>
             <Button
