@@ -16,9 +16,39 @@ export default class RadioExampleRadioGroup extends Component {
         this.props.TextBook(value)
     }
 }
-  
+
+componentWillReceiveProps(props, Props){
+
+  if(props.taval=="Yes"){
+
+    this.setState({value:"Yes"})
+
+  }
+
+  if(props.taval=="No"){
+    this.setState({value:"No"})
+    
+  }
+
+
+  if(props.tbval=="Yes"){
+    this.setState({value:"Yes"})
+
+  }
+
+  if(props.tbval=="No"){
+    this.setState({value:"No"})
+    
+  }
+
+}
+
+
 
   render() {
+
+    
+
     return (
       <Form>
         <Form.Field>

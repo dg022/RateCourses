@@ -3,13 +3,44 @@ import { Button, Modal, TextArea, Form } from 'semantic-ui-react'
 import Input from "./Input"
 import "./Edit.css";
 import axios from "axios"
+import Forms from "./Form"
 
 class ModalExampleCloseConfig extends Component {
   state = { 
+      queried:false, 
       open: false,
       message:false,
-      code:""
+      code:"",
+      tbval:null,
+      dval:null,
+      taval:null, 
+      aval:null,
 
+
+}
+
+
+
+
+TextBook = (term) =>{
+
+    this.setState({tbval:term})
+}
+
+
+Difficulty= (term) =>{
+
+    this.setState({dval:term})
+}
+
+TakeAgain= (term) =>{
+
+    this.setState({taval:term})
+}
+
+About= (term) =>{
+
+    this.setState({aval:term})
 }
 
 
@@ -76,9 +107,13 @@ class ModalExampleCloseConfig extends Component {
       });
 
     if(res.data!=""){
-        console.log("the code the user has provided us exists within the database")
-        console.log(res); 
         
+        console.log(res); 
+        this.setState({aval:res.data.body})
+        this.setState({dval:res.data.difficulty})
+        this.setState({taval:res.data.takeAgain})
+        this.setState({tbval:res.data.isTextBook})
+
     }else{
 
 
@@ -86,6 +121,7 @@ class ModalExampleCloseConfig extends Component {
     }
 
 
+    this.setState({queried:true})
 
   }
 
@@ -93,8 +129,9 @@ class ModalExampleCloseConfig extends Component {
 
     if(this.state.message){
 
-
+        if(!this.state.queried){
         this.searchCourse()
+        }
 
         // here is where you have to do the reqeust
         // You need the courses title 
@@ -105,7 +142,16 @@ class ModalExampleCloseConfig extends Component {
 
             <Modal.Content>
     
-                Thank you for letting us know, we will take a look. 
+                <Forms 
+                tbval={this.state.tbval} 
+                dval={this.state.dval} 
+                taval={this.state.taval} 
+                aval={this.state.aval} 
+                TextBook={this.TextBook}
+                Difficulty={this.Difficulty} 
+                TakeAgain={this.TakeAgain}
+                About={this.About}
+                />
     
             </Modal.Content>
     

@@ -58,7 +58,7 @@ const DiscreteSlider = (props) => {
   return (
     <div className={classes.root}>
       <Slider
-        defaultValue={1}
+        defaultValue={()=> props.dval!=null?props.dval:console.log(props.dval) }
         getAriaValueText={valuetext}
         aria-labelledby="discrete-slider-custom"
         step={0.5}
