@@ -15,6 +15,22 @@ const DiscreteSlider = (props) => {
           height: theme.spacing(2)
         }
       }));
+
+      var diff = 1; 
+
+
+     
+      
+
+      function toNumberString(num) { 
+        console.log(num)
+        if (Number.isInteger(num)) { 
+          return num + ".0"
+        } else {
+          return num.toString(); 
+        }
+      }
+      
       
       
       
@@ -58,7 +74,7 @@ const DiscreteSlider = (props) => {
   return (
     <div className={classes.root}>
       <Slider
-        defaultValue={()=> props.dval!=null?props.dval:console.log(props.dval) }
+        defaultValue={()=> props.dval!=null? props.dval: 1   }
         getAriaValueText={valuetext}
         aria-labelledby="discrete-slider-custom"
         step={0.5}

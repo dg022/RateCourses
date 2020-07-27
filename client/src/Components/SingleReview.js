@@ -11,7 +11,7 @@ import Flag from './Flag';
 
 
 function toNumberString(num) { 
-  console.log(num)
+
   if (Number.isInteger(num)) { 
     return num + ".0"
   } else {
@@ -28,7 +28,8 @@ class ItemExampleItems extends React.Component{
   state = {
 
     ron:false,
-    ronFlag:false
+    ronFlag:false,
+    id:this.props.list._id
 
   }
 
@@ -74,10 +75,10 @@ class ItemExampleItems extends React.Component{
 
 
 if(this.props.list.difficulty!=null){
-  console.log(this.props.list)
+ 
   return(
 
-      <div id="ir" class="item">
+      <div   id="ir" class="item">
       
             <div class="image">
 
@@ -115,7 +116,7 @@ if(this.props.list.difficulty!=null){
 
             <div onMouseLeave={handleLeave} onMouseEnter={handleHover}>
         
-            <Edit  Title={this.props.Title} on={this.state.ron}  courseTitle={this.props.list} />
+            <Edit  id={this.props.list._id}Title={this.props.Title} on={this.state.ron}  courseTitle={this.props.list} />
 
 
             </div>
@@ -131,7 +132,7 @@ if(this.props.list.difficulty!=null){
 }
 if(this.props.list.difficulty==null){
 
-  console.log(this.props.list)
+
 
 }
 
