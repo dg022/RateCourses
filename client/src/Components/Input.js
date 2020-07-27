@@ -1,6 +1,18 @@
 import React from 'react'
 import { Input } from 'semantic-ui-react'
 
-const InputExampleIcon = () => <Input icon='code' placeholder='Search...' />
+const InputExampleIcon = (props) => {
 
-export default InputExampleIcon
+    const change = (event) =>{
+        props.codeChange(event.target.value)
+      }
+
+return(
+
+<Input icon='code' onChange={change} placeholder='Enter Code...' />
+
+); 
+
+}
+
+export default InputExampleIcon 

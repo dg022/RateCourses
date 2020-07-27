@@ -115,7 +115,7 @@ if(this.props.list.difficulty!=null){
 
             <div onMouseLeave={handleLeave} onMouseEnter={handleHover}>
         
-            <Edit   on={this.state.ron} />
+            <Edit  Title={this.props.Title} on={this.state.ron}  courseTitle={this.props.list} />
 
 
             </div>

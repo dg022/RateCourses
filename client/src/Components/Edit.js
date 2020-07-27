@@ -2,25 +2,34 @@ import React, { Component } from 'react'
 import { Button, Modal, TextArea, Form } from 'semantic-ui-react'
 import Input from "./Input"
 import "./Edit.css";
+import axios from "axios"
 
 class ModalExampleCloseConfig extends Component {
   state = { 
       open: false,
-      message:false
+      message:false,
+      code:""
 
 }
 
 
+  codeChange  = (codeType) =>{
+
+    this.setState({code:codeType})
+
+  } 
 
   closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
     this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
   }
 
   close = () => this.setState({ open: false, message:false})
-  Submitclose = () => {
+  Submitclose = async () => {
   
  
   this.setState({ message:true })
+
+  
  
   }
 
@@ -55,9 +64,41 @@ class ModalExampleCloseConfig extends Component {
 
   }
 
-  renderModal = () =>{
+
+  searchCourse = async () => {
+
+    
+    let res = await axios.get('/searchCourse', {
+        params: {
+          Title: this.props.Title,
+          id:this.state.code
+        }
+      });
+
+    if(res.data!=""){
+        console.log("the code the user has provided us exists within the database")
+        console.log(res); 
+        
+    }else{
+
+
+        console.log("it does not exist within the database")
+    }
+
+
+
+  }
+
+  renderModal =  () =>{
 
     if(this.state.message){
+
+
+        this.searchCourse()
+
+        // here is where you have to do the reqeust
+        // You need the courses title 
+
 
         return(
 
@@ -83,7 +124,7 @@ class ModalExampleCloseConfig extends Component {
         <Form>
 
         <center>
-        <Input/>
+        <Input  codeChange={this.codeChange}/>
         </center>
        
 
@@ -120,7 +161,7 @@ class ModalExampleCloseConfig extends Component {
                     closeOnDimmerClick={closeOnDimmerClick}
                     onClose={this.close}
                     >
-                    <Modal.Header>Report this post</Modal.Header>
+                    <Modal.Header>  <center> Edit Post: Provide Edit Code! </center> </Modal.Header>
                    {this.renderModal()}
                 
                    {this.renderButton()}
