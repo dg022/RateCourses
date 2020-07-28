@@ -22,6 +22,42 @@ app.get('/', function (req, res) {
 
 
 
+
+
+    //courseTitle: this.state.Course,
+    //review:list, 
+
+app.get('/edit', async (req, res) => {
+
+  console.log("I got here")
+
+  //courseTitle: this.state.Course,
+  //review:list, 
+  //id:this.state.id
+
+  const id =  req.query.id
+  const title =  req.query.courseTitle
+  console.log(title)
+  const doc = await Codes.findOne({"courseTitle":title});
+  console.log(doc)
+  const list  = doc.review; 
+
+
+
+  for(var i = 0; i < list.length; i++){
+
+    if(list[i]._id.equals(id)){ 
+      console.log("this happened")
+      var obj = JSON.parse(req.query.review)
+      doc.review[i] = obj; 
+      await doc.save(); 
+      return; 
+    }
+
+  }
+
+
+});
 app.get('/updateDislikes', async (req, res) => {
 
 

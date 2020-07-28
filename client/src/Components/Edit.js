@@ -11,10 +11,13 @@ class ModalExampleCloseConfig extends Component {
       open: false,
       message:false,
       code:"",
-      tbval:this.props.isTextBook,
+      tbval:this.props.data.isTextBook,
       dval:this.props.data.difficulty,
       taval:this.props.takeAgain, 
       aval:this.props.data.body,
+      up:this.props.data.thumbsUp,
+      down:this.props.data.thumbsDown,
+      id:this.props.id
 
 
 }
@@ -57,6 +60,37 @@ About= (term) =>{
     this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
   }
 
+
+  send = async () =>{
+
+    const list = {
+      "body": this.state.aval,
+      "difficulty":this.state.dval,
+      "takeAgain":this.state.taval,
+      "isTextBook":this.state.tbval,
+      "thumbsUp":this.state.up,
+      "thumbsDown":this.state.down
+    };
+  
+
+
+
+    let res = await axios.get('/edit', {
+      params: {
+        courseTitle: this.props.Title,
+        review:list, 
+        id:this.state.id
+      }
+    });
+     
+    console.log("this happened")
+
+
+
+
+
+  }
+
   close = () => this.setState({ open: false, message:false})
   Submitclose = async () => {
   
@@ -80,6 +114,15 @@ About= (term) =>{
 
         return(
             <Modal.Actions>
+
+      <Button
+        onClick={this.send}
+        positive
+        labelPosition='right'
+        icon='checkmark'
+        content='Submit'
+        />
+              
         </Modal.Actions>
             );
 
