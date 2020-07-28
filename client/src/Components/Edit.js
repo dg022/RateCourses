@@ -11,13 +11,16 @@ class ModalExampleCloseConfig extends Component {
       open: false,
       message:false,
       code:"",
-      tbval:null,
-      dval:1,
-      taval:null, 
-      aval:null,
+      tbval:this.props.isTextBook,
+      dval:this.props.data.difficulty,
+      taval:this.props.takeAgain, 
+      aval:this.props.data.body,
 
 
 }
+
+
+
 
 
 
@@ -103,59 +106,26 @@ About= (term) =>{
   }
 
 
-  searchCourse = async () => {
-
-    let res = await axios.get('/searchCourse', {
-        params: {
-          Title: this.props.Title,
-          id:this.state.code
-        }
-      });
-
-    if(res.data!=""){
-        
-        var num  = Number(res.data.difficulty)
-        console.log(num)
-        this.setState({dval:num})
-        this.setState({aval:res.data.body})
-        this.setState({taval:res.data.takeAgain})
-        this.setState({tbval:res.data.isTextBook})
-        console.log(this.state.dval)
-
-    }else{
-
-      console.log("it does not exist within the database")
-    }
-
-    
-
-
-    this.setState({queried:true})
-
-  }
 
   renderModal =  () =>{
 
     if(this.state.message){
 
-        if(!this.state.queried){
-        this.searchCourse()
-        }
+      console.log(this.props.data)
 
-
-   
-
-
-        return(
+      return(
 
 
             <Modal.Content>
+
+
+  
     
                 <Forms 
-                tbval={this.state.tbval} 
-                dval={this.state.dval} 
-                taval={this.state.taval} 
-                aval={this.state.aval} 
+                tbval={this.props.data.isTextBook} 
+                dval={this.props.data.difficulty} 
+                taval={this.props.data.takeAgain} 
+                aval={this.props.data.body} 
                 TextBook={this.TextBook}
                 Difficulty={this.Difficulty} 
                 TakeAgain={this.TakeAgain}

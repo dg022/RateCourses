@@ -17,29 +17,31 @@ export default class RadioExampleRadioGroup extends Component {
     }
 }
 
-componentWillReceiveProps(props, Props){
+componentDidMount(){
 
-  if(props.taval=="Yes"){
 
+  if(this.props.taval=="Yes"){
+    console.log("this is being hit, regalrdess of what you try")
     this.setState({value:"Yes"})
 
   }
 
-  if(props.taval=="No"){
+  if(this.props.taval=="No"){
     this.setState({value:"No"})
     
   }
 
 
-  if(props.tbval=="Yes"){
+  if(this.props.tbval=="Yes"){
     this.setState({value:"Yes"})
 
   }
 
-  if(props.tbval=="No"){
+  if(this.props.tbval=="No"){
     this.setState({value:"No"})
     
   }
+
 
 }
 

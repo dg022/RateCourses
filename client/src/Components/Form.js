@@ -6,17 +6,37 @@ import Scale from "./Scale"
 import Radio from "./Radio"
 
 
-const FormExampleForm = (props) => {
-
-  const change = (event) =>{
+class FormExampleForm extends React.Component {
 
 
-    props.About(event.target.value)
+
+  state={
+
+    taval:this.props.taval,
+    dval:this.props.dval,
+    tbval:this.props.tbval,
+    aval:this.props.aval,
+
+  }
+
+  render(){
+
+ const change = (event) =>{
+
+
+    this.props.About(event.target.value)
+    this.setState({aval:event.target.value})
 
 
   }
 
-if(props.tbval!=null){
+
+
+ 
+
+if(this.state.tbval!=null){
+
+
 
   return(
   <Form>
@@ -30,24 +50,24 @@ if(props.tbval!=null){
     <Form.Field
             label='Would you would take the course again?'    
           />
-  <Radio type={1} TakeAgain={props.TakeAgain}  taval={props.taval}    />
+  <Radio type={1} TakeAgain={this.props.TakeAgain}  taval={this.state.taval}    />
  
 
 </Form.Field>
 <Form.Field
             label='How difficult was the course?'    
           />
-      <Scale Difficulty={props.Difficulty} dval={props.dval}/>
+      <Scale Difficulty={this.props.Difficulty} dval={this.state.dval}/>
       <Form.Field
             label='Did you actually use the textbook?'    
           />
-      <Radio type={0} TextBook={props.TextBook} tbval={props.tbval} />
+      <Radio type={0} TextBook={this.props.TextBook} tbval={this.state.tbval} />
 
      <Form.Field
           onChange={change}
           control={TextArea}
           label='About'
-          value={props.aval}
+          value={this.state.aval}
         />
     <Form.Field>
 
@@ -67,7 +87,7 @@ if(props.tbval!=null){
 }
 
  
-if(props.Error == 1){
+if(this.props.Error == 1){
 
   return(
     <Form>
@@ -81,18 +101,18 @@ if(props.Error == 1){
       <Form.Field
               label='Would you would take the course again?'    
             />
-    <Radio type={1} TakeAgain={props.TakeAgain} />
+    <Radio type={1} TakeAgain={this.props.TakeAgain} />
    
   
   </Form.Field>
   <Form.Field
               label='How easy was the course?'    
             />
-        <Scale Difficulty={props.Difficulty}/>
+        <Scale Difficulty={this.props.Difficulty}/>
         <Form.Field
               label='Did you actually use the textbook?'    
             />
-        <Radio type={0} TextBook={props.TextBook}  />
+        <Radio type={0} TextBook={this.props.TextBook}  />
   
        <Form.Field
             onChange={change}
@@ -127,21 +147,21 @@ if(props.Error == 1){
     <Form.Field
             label='Would you would take the course again?'    
           />
-  <Radio type={1} TakeAgain={props.TakeAgain} />
+  <Radio type={1} TakeAgain={this.props.TakeAgain} />
  
 
 </Form.Field>
 <Form.Field
             label='How difficult was the course?'    
           />
-      <Scale Difficulty={props.Difficulty}/>
+      <Scale Difficulty={this.props.Difficulty}/>
       <Form.Field
             label='Did you actually use the textbook?'    
           />
-      <Radio type={0} TextBook={props.TextBook}  />
+      <Radio type={0} TextBook={this.props.TextBook}  />
 
      <Form.Field
-          onChange={change}
+          onChange={this.change}
           control={TextArea}
           label='About'
           placeholder='What do you think about this course?'
@@ -153,6 +173,7 @@ if(props.Error == 1){
     
   </Form>
   );
+}
 }
 
 export default FormExampleForm
