@@ -97,41 +97,7 @@ app.get('/updateLikes', async (req, res) => {
 
 
 
-app.get('/searchCourse', async (req, res)  =>{
 
-  if(await Codes.exists({ courseTitle: req.query.Title })){
-
-    doc = await Codes.findOne({"courseTitle":req.query.Title});
-    const id =  req.query.id
-    const list  = doc.review; 
-
-    for(var i = 0; i < list.length; i++){
-      
-      console.log(list[i]._id)
-      if(list[i]._id.equals(id)){ 
-
-        console.log("THIS HERE HAPPENED")
-        // Here this means we have found that the post that the user had sent us
-        res.send(list[i])
-        return; 
-
-      }
-  
-    }
-
-
-
-
-
-
-    res.send(null); 
-  
-  
-   }else{
-     res.send(null); 
-   }
-
-}); 
 
 
 app.get('/dbrAdd', async (req, res) => {
