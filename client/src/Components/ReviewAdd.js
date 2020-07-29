@@ -39,6 +39,7 @@ class ModalExampleCloseConfig extends Component {
       return(
         <Form 
           tbval={this.props.tbval} 
+          eval={this.props.eval}
           dval={this.props.dval} 
           taval={this.props.taval} 
           aval={this.props.aval} 
@@ -47,6 +48,7 @@ class ModalExampleCloseConfig extends Component {
           Difficulty={this.props.Difficulty} 
           TakeAgain={this.props.TakeAgain}
           About={this.props.About}
+          email={this.props.email}
           />
       );
 
@@ -58,7 +60,9 @@ class ModalExampleCloseConfig extends Component {
 TextBook={this.props.TextBook} 
 Difficulty={this.props.Difficulty} 
 TakeAgain={this.props.TakeAgain}   
-About={this.props.About}/>
+About={this.props.About}
+email={this.props.email}
+/>
 
           );
 
@@ -87,7 +91,9 @@ About={this.props.About}/>
 TextBook={this.props.TextBook} 
 Difficulty={this.props.Difficulty} 
 TakeAgain={this.props.TakeAgain}   
-About={this.props.About}/>
+About={this.props.About}
+email={this.props.email}
+/>
 
           </Modal.Content>
           <Modal.Actions>

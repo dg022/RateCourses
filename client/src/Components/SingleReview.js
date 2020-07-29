@@ -33,6 +33,8 @@ class ItemExampleItems extends React.Component{
     diff:this.props.list.difficulty,
     takeAgain:this.props.list.takeAgain,
     body:this.props.list.body,
+    email:this.props.list.email,
+    TextBook:this.props.list.isTextBook
 
 
 
@@ -46,7 +48,7 @@ class ItemExampleItems extends React.Component{
     this.setState({diff:obj.difficulty})
     this.setState({body:obj.body})
     this.setState({takeAgain:obj.takeAgain})
-    console.log("this was hit")
+    this.setState({email:obj.email})
 
   }
 
@@ -105,10 +107,13 @@ if(this.state.diff!=null){
             <div class="content">
 
               <div class="meta">
-                <span>DifficultyS:{toNumberString(this.state.diff)}</span>
+                <span>Difficulty: {toNumberString(this.state.diff)}</span>
               </div>
               <div class="meta"> 
-                <span>Would Take Again:{this.state.takeAgain}</span>
+                <span>Would Take Again: {this.state.takeAgain}</span>
+              </div>
+                  <div class="meta"> 
+                <span>TextBook: {this.state.TextBook}</span>
               </div>
               <div id ="it" class="description">
                 <p>

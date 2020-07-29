@@ -31,6 +31,10 @@ var Users = new Schema({ // example from docs
             "thumbsDown":{
               "type":"Number"
             }, 
+            "email":{
+              "type":"String"
+
+            }
           }
     
     
