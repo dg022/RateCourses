@@ -12,6 +12,11 @@ import Scale from "./Components/Scale"
 import ReviewList from "./Components/ReviewList"
 import Email from "./Components/Email"
 import {Link } from "react-router-dom";
+var validator = require("email-validator");
+ 
+
+
+
 
 
 var mongoose = require("mongoose");
@@ -39,19 +44,39 @@ chooseDep = (Dep) =>{
 this.setState({Department:Dep})
 }
 
-SubmitForm = () =>{
 
-  if(this.state.TakeAgain!="" && this.state.Difficulty!=null && this.state.TextBook!=""){
+sendFeedback =  (templateId, variables) => {
+  window.emailjs.send(
+    'gmail', templateId,
+    variables
+    ).then(res => {
+      console.log('Email successfully sent!')
+    })
+    // Handle errors here however you like, or use a React error boundary
+    .catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err))
+  }
 
-    console.log("Query the data base!")
+SubmitForm = async () =>{
+
+
+
+  var check = validator.validate(this.state.email); // true
+ 
+  
+  if(this.state.TakeAgain!="" && this.state.Difficulty!=null && this.state.TextBook!="" && check){
     this.setState({error:0})
     this.setState({willClose:1})
     this.AddToDataBase();
-
+    // if it passes all these tests, that means we are good to send the edit code to the email right away. 
+    const templateId = 'template_swHMraBb';
+    this.sendFeedback(templateId, {message_html: this.state.About, from_name: "David", reply_to: this.state.email})
+    
+    
   }else{
 
     // If this is the case, we want place an error messages saying the mandatory fields have not been filled out  yet
     console.log("Fields are missing, cannot submit form")
+
     this.setState({error:1}); 
     
   }

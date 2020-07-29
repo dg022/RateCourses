@@ -136,6 +136,13 @@ if(this.props.Error == 1){
               label='Did you actually use the textbook?'    
             />
         <Radio type={0} TextBook={this.props.TextBook}  />
+
+        <Form.Field
+          onChange={Echange}
+          control={TextArea}
+          label='Email'
+        />
+
   
        <Form.Field
             onChange={change}
@@ -182,9 +189,17 @@ if(this.props.Error == 1){
             label='Did you actually use the textbook?'    
           />
       <Radio type={0} TextBook={this.props.TextBook}  />
+    
+      <Form.Field
+          onChange={Echange}
+          control={TextArea}
+          label='Email'
+        />
+
+
 
      <Form.Field
-          onChange={this.change}
+          onChange={change}
           control={TextArea}
           label='About'
           placeholder='What do you think about this course?'
