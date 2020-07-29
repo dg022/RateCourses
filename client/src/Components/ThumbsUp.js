@@ -19,9 +19,11 @@ state = {
 
  componentWillReceiveProps =(nextProps)=>{
 
-    console.log(nextProps)
+    
     this.setState({Up:nextProps.ThumbsUp})
     this.setState({Down:nextProps.ThumbsDown})
+
+    
  }
 
 
@@ -29,7 +31,7 @@ state = {
 
 incrementDB = (UpDelta, DownDelta) =>{
     
-    console.log("console.log this was hit")
+
     
     this.props.incrementDB(this.props.id, UpDelta, DownDelta)
 
@@ -59,7 +61,7 @@ decrementDB = (UpDelta, DownDelta) =>{
         // set voteUp to now be true, and now downVote to false
         if(this.state.voteDown == true){
 
-            console.log("ThymbsUp was hit")
+        
             this.setState({Down: this.state.Down-1})
             this.setState({Up: this.state.Up+1})
             this.setState({voteUp:true})
@@ -87,7 +89,7 @@ decrementDB = (UpDelta, DownDelta) =>{
 
         // this is the mirror from going for above
         if(this.state.voteUp){
-            console.log("ThymbsUp was hit")
+       
             this.setState({Up: this.state.Up-1})
             this.setState({Down: this.state.Down+1})
             this.setState({voteUp:false})

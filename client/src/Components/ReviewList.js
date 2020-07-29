@@ -19,7 +19,7 @@ const ReviewList = (props) => {
 
   list.sort((a, b) => parseFloat(b.thumbsUp - b.thumbsDown) - parseFloat(a.thumbsUp-a.thumbsDown));
   const images = list.map(msg => {
-    console.log(msg)
+   
 
   
     if(msg.takeAgain == "Yes"){
