@@ -16,6 +16,8 @@ class FormExampleForm extends React.Component {
     dval:this.props.dval,
     tbval:this.props.tbval,
     aval:this.props.aval,
+    eval:this.props.eval,
+    
 
   }
 
@@ -28,7 +30,16 @@ class FormExampleForm extends React.Component {
     this.setState({aval:event.target.value})
 
 
-  }
+  }  
+
+  const Echange = (event) =>{
+
+
+    this.props.email(event.target.value)
+    this.setState({eval:event.target.value})
+
+
+  }  
 
 
 
@@ -62,6 +73,18 @@ if(this.state.tbval!=null){
             label='Did you actually use the textbook?'    
           />
       <Radio type={0} TextBook={this.props.TextBook} tbval={this.state.tbval} />
+
+
+     
+
+      <Form.Field
+          onChange={Echange}
+          control={TextArea}
+          label='Email'
+          value={this.state.eval}
+        />
+
+
 
      <Form.Field
           onChange={change}

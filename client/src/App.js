@@ -30,6 +30,7 @@ class App extends React.Component {
     About:"",
     error:0,
     willClose:0,
+    email:"",
     Reviews:[]
 
   };
@@ -100,6 +101,11 @@ resetClose = () =>{
   this.setState({willClose:0})
 }
 
+email = (em) => {
+
+  this.setState({email:em})
+}
+
 chooseCourse = (Co) =>{
   this.setState({Course:Co})
   }
@@ -150,6 +156,7 @@ AddToDataBase = async () =>{
     "difficulty":this.state.Difficulty,
     "takeAgain":this.state.TakeAgain,
     "isTextBook":this.state.TextBook,
+    "email":this.state.email,
     "thumbsUp":0,
     "thumbsDown":0,
 
@@ -167,7 +174,7 @@ AddToDataBase = async () =>{
     }
   });
    
-  console.log(res.data.review[0])
+ 
 
 
   this.setState({ 
@@ -295,7 +302,7 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
   
   
   
-            <Form  resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
+            <Form  resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error} email={this.email}  SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
           
               {this.renderFooter()}
         
@@ -319,7 +326,7 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
         </div>
     
         <ReviewList  decrementDB={this.decrementDB} incrementDB={this.incrementDB} Title={this.state.Course}list={this.state.Reviews} />
-        <Form  resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
+        <Form   email={this.email} resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
       
           {this.renderFooter()}
    

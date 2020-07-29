@@ -12,6 +12,7 @@ class ModalExampleCloseConfig extends Component {
       message:false,
       code:"",
       tbval:this.props.data.isTextBook,
+      eval:this.props.data.email,
       dval:this.props.data.difficulty,
       taval:this.props.takeAgain, 
       aval:this.props.data.body,
@@ -27,6 +28,11 @@ class ModalExampleCloseConfig extends Component {
 
 
 
+email = (e) =>{
+
+  this.setState({eval:e})
+
+}
 
 TextBook = (term) =>{
 
@@ -65,6 +71,7 @@ About= (term) =>{
 
     const list = {
       "body": this.state.aval,
+      "email":this.state.eval,
       "difficulty":this.state.dval,
       "takeAgain":this.state.taval,
       "isTextBook":this.state.tbval,
@@ -81,11 +88,17 @@ About= (term) =>{
         review:list, 
         id:this.state.id
       }
-    });
+
+  
+    }
+    
+    );
      
     console.log("this happened")
+    this.props.updateState(list)
+   
 
-    this.props.updateState(list);
+   this.close()
 
 
 
@@ -170,6 +183,7 @@ About= (term) =>{
                 dval={this.props.data.difficulty} 
                 taval={this.props.data.takeAgain} 
                 aval={this.props.data.body} 
+                email={this.email}
                 TextBook={this.TextBook}
                 Difficulty={this.Difficulty} 
                 TakeAgain={this.TakeAgain}
