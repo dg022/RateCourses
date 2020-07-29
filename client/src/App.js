@@ -62,14 +62,13 @@ SubmitForm = async () =>{
 
   var check = validator.validate(this.state.email); // true
  
-  
   if(this.state.TakeAgain!="" && this.state.Difficulty!=null && this.state.TextBook!="" && check){
     this.setState({error:0})
     this.setState({willClose:1})
     this.AddToDataBase();
     // if it passes all these tests, that means we are good to send the edit code to the email right away. 
-    const templateId = 'template_swHMraBb';
-    this.sendFeedback(templateId, {message_html: this.state.About, from_name: "David", reply_to: this.state.email})
+    //const templateId = 'template_swHMraBb';
+    //this.sendFeedback(templateId, {message_html: this.state.About, from_name: "David", reply_to: this.state.email})
     
     
   }else{
@@ -199,12 +198,18 @@ AddToDataBase = async () =>{
     }
   });
    
- 
+
 
 
   this.setState({ 
-    Reviews: this.state.Reviews.concat([res.data.review[0]])
+    Reviews: []
   })
+
+  this.setState({ 
+    Reviews: res.data.review
+  })
+
+
 
 
   
