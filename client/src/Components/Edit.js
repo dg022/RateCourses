@@ -85,6 +85,7 @@ About= (term) =>{
      
     console.log("this happened")
 
+    this.props.updateState(list);
 
 
 

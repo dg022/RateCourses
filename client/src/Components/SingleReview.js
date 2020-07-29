@@ -29,11 +29,27 @@ class ItemExampleItems extends React.Component{
 
     ron:false,
     ronFlag:false,
-    id:this.props.list._id
+    id:this.props.list._id, 
+    diff:this.props.list.difficulty,
+    takeAgain:this.props.list.takeAgain,
+    body:this.props.list.body,
+
+
 
   }
 
   render(){
+
+
+  const updateState = (obj)=>{
+
+    this.setState({diff:obj.difficulty})
+    this.setState({body:obj.body})
+    this.setState({takeAgain:obj.takeAgain})
+    console.log("this was hit")
+
+  }
+
    const handleHover = () => {
     this.setState({ron:true})
   }
@@ -51,14 +67,14 @@ class ItemExampleItems extends React.Component{
 
   var reviewID = "";
 
-  if(this.props.list.difficulty>=1 &&  this.props.list.difficulty<= 2.5 ){
+  if(this.state.diff>=1 &&  this.state.diff<= 2.5 ){
 
     this.reviewID ="A"
 
 
   }
 
-  if(this.props.list.difficulty>=2.5 &&  this.props.list.difficulty<= 3.5 ){
+  if(this.state.diff>=2.5 &&  this.state.diff<= 3.5 ){
 
     this.reviewID ="A1"
 
@@ -66,7 +82,7 @@ class ItemExampleItems extends React.Component{
   }
 
 
-  if(this.props.list.difficulty>=4.0 ){
+  if(this.state.diff>=4.0 ){
 
     this.reviewID ="A2"
 
@@ -74,7 +90,7 @@ class ItemExampleItems extends React.Component{
   }
 
 
-if(this.props.list.difficulty!=null){
+if(this.state.diff!=null){
  
   return(
 
@@ -84,19 +100,19 @@ if(this.props.list.difficulty!=null){
 
             <div class=" sb-avatar sb-avatar--icon" id={this.reviewID}>
               <div id="B" class=" sb-avatar__text">
-              <span id="C"><span>{toNumberString(this.props.list.difficulty)}</span></span></div></div>
+              <span id="C"><span>{toNumberString(this.state.diff)}</span></span></div></div>
             </div>
             <div class="content">
 
               <div class="meta">
-                <span>DifficultyS:{toNumberString(this.props.list.difficulty)}</span>
+                <span>DifficultyS:{toNumberString(this.state.diff)}</span>
               </div>
               <div class="meta"> 
-                <span>Would Take Again:{this.props.list.takeAgain}</span>
+                <span>Would Take Again:{this.state.takeAgain}</span>
               </div>
               <div id ="it" class="description">
                 <p>
-                {this.props.list.body} 
+                {this.state.body} 
                 </p>
               </div>
              
@@ -116,7 +132,7 @@ if(this.props.list.difficulty!=null){
 
             <div onMouseLeave={handleLeave} onMouseEnter={handleHover}>
         
-            <Edit  data={this.props.list}    id={this.props.list._id}Title={this.props.Title} on={this.state.ron}  courseTitle={this.props.list} />
+            <Edit   updateState={updateState} data={this.props.list}    id={this.props.list._id}Title={this.props.Title} on={this.state.ron}  courseTitle={this.props.list} />
 
 
             </div>

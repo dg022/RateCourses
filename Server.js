@@ -51,10 +51,13 @@ app.get('/edit', async (req, res) => {
       var obj = JSON.parse(req.query.review)
       doc.review[i] = obj; 
       await doc.save(); 
+      res.send(doc)
       return; 
     }
 
   }
+
+
 
 
 });
