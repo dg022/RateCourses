@@ -33,7 +33,9 @@ var Users = new Schema({ // example from docs
             }, 
             "email":{
               "type":"String"
-
+            },
+            "id":{
+              "type":"String"
             }
           }
     

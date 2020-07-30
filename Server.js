@@ -46,7 +46,7 @@ app.get('/edit', async (req, res) => {
 
   for(var i = 0; i < list.length; i++){
 
-    if(list[i]._id.equals(id)){ 
+    if(list[i].id == id){ 
       console.log("this happened")
       var obj = JSON.parse(req.query.review)
       doc.review[i] = obj; 
@@ -75,7 +75,7 @@ app.get('/updateDislikes', async (req, res) => {
 
   for(var i = 0; i < list.length; i++){
 
-    if(list[i]._id.equals(id)){ 
+    if(list[i].id == id){ 
       const Up = Number(list[i].thumbsUp); 
       const Down = Number(list[i].thumbsDown); 
       list[i].thumbsUp = Number(Up + UpDelta)
@@ -108,7 +108,7 @@ app.get('/updateLikes', async (req, res) => {
 
   for(var i = 0; i < list.length; i++){
 
-    if(list[i]._id.equals(id)){ 
+    if(list[i].id == id){ 
 
       const Up = Number(list[i].thumbsUp); 
       const Down = Number(list[i].thumbsDown); 
