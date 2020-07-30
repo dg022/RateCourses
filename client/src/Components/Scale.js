@@ -16,7 +16,6 @@ const DiscreteSlider = (props) => {
         }
       }));
 
-      var diff = 1; 
 
 
      

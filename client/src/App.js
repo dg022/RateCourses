@@ -36,7 +36,8 @@ class App extends React.Component {
     error:0,
     willClose:0,
     email:"",
-    Reviews:[]
+    Reviews:[], 
+    id:""
 
   };
 
@@ -67,8 +68,7 @@ SubmitForm = async () =>{
     this.setState({willClose:1})
     this.AddToDataBase();
     // if it passes all these tests, that means we are good to send the edit code to the email right away. 
-    //const templateId = 'template_swHMraBb';
-    //this.sendFeedback(templateId, {message_html: this.state.About, from_name: "David", reply_to: this.state.email})
+   
     
     
   }else{
@@ -150,6 +150,19 @@ About = (Abt) =>{
      }
 
 
+
+     makeid = (length) => {
+      var result           = '';
+      var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      var charactersLength = characters.length;
+      for ( var i = 0; i < length; i++ ) {
+         result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+      return result;
+   }
+   
+   
+
 searchDataBase = async () =>{
   let res = await axios.get('/dbr', {
     params: {
@@ -175,6 +188,9 @@ searchDataBase = async () =>{
 
 
 AddToDataBase = async () =>{
+
+  var c = this.makeid(7)
+  this.setState({id:c})
    const list = {
     "body": this.state.About,
     "difficulty":this.state.Difficulty,
@@ -183,6 +199,7 @@ AddToDataBase = async () =>{
     "email":this.state.email,
     "thumbsUp":0,
     "thumbsDown":0,
+    "id":c
 
   };
 
@@ -208,6 +225,9 @@ AddToDataBase = async () =>{
   this.setState({ 
     Reviews: res.data.review
   })
+
+  const templateId = 'template_swHMraBb';
+  this.sendFeedback(templateId, {message_html: c, from_name: "David", reply_to: this.state.email})
 
 
 

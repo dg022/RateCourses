@@ -29,7 +29,7 @@ class ItemExampleItems extends React.Component{
 
     ron:false,
     ronFlag:false,
-    id:this.props.list._id, 
+    id:this.props.list.id, 
     diff:this.props.list.difficulty,
     takeAgain:this.props.list.takeAgain,
     body:this.props.list.body,
@@ -121,7 +121,7 @@ if(this.state.diff!=null){
                 </p>
               </div>
              
-              <ThumbsUp  id = {this.props.list._id}  decrementDB={this.props.decrementDB} incrementDB={this.props.incrementDB}  ThumbsUp={this.props.list.thumbsUp}  ThumbsDown={this.props.list.thumbsDown}   />
+              <ThumbsUp  id = {this.props.list.id}  decrementDB={this.props.decrementDB} incrementDB={this.props.incrementDB}  ThumbsUp={this.props.list.thumbsUp}  ThumbsDown={this.props.list.thumbsDown}   />
             </div>
 
             
@@ -137,7 +137,7 @@ if(this.state.diff!=null){
 
             <div onMouseLeave={handleLeave} onMouseEnter={handleHover}>
         
-            <Edit   updateState={updateState} data={this.props.list}    id={this.props.list._id}Title={this.props.Title} on={this.state.ron}  courseTitle={this.props.list} />
+            <Edit   updateState={updateState} data={this.props.list}    id={this.props.list.id}Title={this.props.Title} on={this.state.ron}  courseTitle={this.props.list} />
 
 
             </div>
