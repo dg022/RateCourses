@@ -18,7 +18,8 @@ class ModalExampleCloseConfig extends Component {
       aval:this.props.data.body,
       up:this.props.data.thumbsUp,
       down:this.props.data.thumbsDown,
-      id:this.props.id
+      id:this.props.id,
+      error:0
 
 
 }
@@ -105,7 +106,59 @@ About= (term) =>{
 
   }
 
-  close = () => this.setState({ open: false, message:false})
+
+  //SendEmail =  async () => {
+
+    // here you want to query the database, to send an email
+
+    //let res = await axios.get('/findid', {
+      //params: {
+      //  courseTitle: this.props.Title,
+    //    id:this.state.id
+      
+  
+  //  }
+
+  
+    
+  //}
+  
+
+  
+sendFeedback =  (templateId, variables) => {
+  window.emailjs.send(
+    'gmail', templateId,
+    variables
+    ).then(res => {
+      console.log('Email successfully sent!')
+    })
+    // Handle errors here however you like, or use a React error boundary
+    .catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err))
+  }
+
+  SendEmail = async () => {
+  
+ 
+  
+    let res = await axios.get('/findid', {
+      params: {
+        courseTitle: this.props.Title,
+        id:this.state.id
+    }});
+
+
+    const templateId = 'template_swHMraBb';
+    this.sendFeedback(templateId, {message_html: this.state.id, from_name: "David", reply_to: res.data})
+
+
+    // Here you need to send some kind of message, so that it says "email sent sucessfully"
+
+
+
+  }
+  
+
+  close = () => this.setState({ open: false, message:false, error:0})
   Submitclose = async () => {
   
  
@@ -113,7 +166,9 @@ About= (term) =>{
   this.setState({ message:true })
   }else{
 
-    console.log("not the correct code for the post")
+    // Here you need to add logic to make it display some kind of error
+    //
+    this.setState({error:1})
 
 
   }
@@ -145,7 +200,7 @@ About= (term) =>{
     if(!this.state.message){
         return(
         <Modal.Actions>
-                    
+              
         <Button
         onClick={this.Submitclose}
         positive
@@ -153,6 +208,18 @@ About= (term) =>{
         icon='checkmark'
         content='Submit'
         />
+    
+    <Button
+        onClick={this.SendEmail}
+        yellow
+        labelPosition='right'
+        icon='question circle outline'
+        content='Forgot Code?'
+        />
+
+  
+
+
     </Modal.Actions>
         );
     }
@@ -168,7 +235,7 @@ About= (term) =>{
 
     if(this.state.message){
 
-      console.log(this.props.data)
+     
 
       return(
 
@@ -207,7 +274,7 @@ About= (term) =>{
         <Form>
 
         <center>
-        <Input  codeChange={this.codeChange}/>
+        <Input  error={this.state.error }codeChange={this.codeChange}/>
         </center>
        
 
