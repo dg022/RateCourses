@@ -19,7 +19,8 @@ class ModalExampleCloseConfig extends Component {
       up:this.props.data.thumbsUp,
       down:this.props.data.thumbsDown,
       id:this.props.id,
-      error:0
+      error:0, 
+      sent:false
 
 
 }
@@ -146,11 +147,11 @@ sendFeedback =  (templateId, variables) => {
         id:this.state.id
     }});
 
+    console.log("email would have sent")
+    //const templateId = 'template_swHMraBb';
+    //this.sendFeedback(templateId, {message_html: this.state.id, from_name: "David", reply_to: res.data})
 
-    const templateId = 'template_swHMraBb';
-    this.sendFeedback(templateId, {message_html: this.state.id, from_name: "David", reply_to: res.data})
-
-
+    this.setState({sent:true})
     // Here you need to send some kind of message, so that it says "email sent sucessfully"
 
 
@@ -158,7 +159,7 @@ sendFeedback =  (templateId, variables) => {
   }
   
 
-  close = () => this.setState({ open: false, message:false, error:0})
+  close = () => this.setState({ open: false, message:false, error:0, sent:false})
   Submitclose = async () => {
   
  
@@ -178,6 +179,10 @@ sendFeedback =  (templateId, variables) => {
   }
 
   renderButton=()=>{
+    if(this.state.sent){
+      return;
+    }
+
 
     if(this.state.message){
 
@@ -233,6 +238,24 @@ sendFeedback =  (templateId, variables) => {
 
   renderModal =  () =>{
 
+    if(this.state.sent){
+
+      return(
+
+
+        <Modal.Content>
+
+        Your edit code has been sent to your email!
+
+        </Modal.Content>
+
+
+    );
+
+
+    }
+
+
     if(this.state.message){
 
      
@@ -274,7 +297,7 @@ sendFeedback =  (templateId, variables) => {
         <Form>
 
         <center>
-        <Input  error={this.state.error }codeChange={this.codeChange}/>
+        <Input  error={this.state.error } codeChange={this.codeChange}/>
         </center>
        
 

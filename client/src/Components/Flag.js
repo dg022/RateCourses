@@ -4,9 +4,32 @@ import { Button, Modal, TextArea, Form } from 'semantic-ui-react'
 class ModalExampleCloseConfig extends Component {
   state = { 
       open: false,
-      message:false
+      message:false,
+      msg:""
 
 }
+
+    change = (event) => {
+
+        this.setState({msg:event.target.value + ":" + this.props.title + ":" + this.props.body})
+        
+
+    }
+
+
+
+
+  sendFeedback (templateId, variables) {
+	window.emailjs.send(
+  	'gmail', templateId,
+  	variables
+  	).then(res => {
+    	console.log('Email successfully sent!')
+  	})
+  	// Handle errors here however you like, or use a React error boundary
+  	.catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err))
+  }
+
 
 
 
@@ -19,8 +42,17 @@ class ModalExampleCloseConfig extends Component {
   
  
   this.setState({ message:true })
+  const templateId = 'template_swHMraBb';
+  this.sendFeedback(templateId, {message_html: this.state.msg, from_name: this.state.name, reply_to: "david.george.2480@gmail.com"})
+
+
 
   }
+
+
+
+
+
 
   renderButton=()=>{
 
@@ -83,6 +115,7 @@ class ModalExampleCloseConfig extends Component {
         <Form.Field
          
             control={TextArea}
+            onChange={this.change}
         
             placeholder='What was inappropriate about this post?'
         />
