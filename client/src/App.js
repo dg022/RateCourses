@@ -13,7 +13,7 @@ import ReviewList from "./Components/ReviewList"
 import Email from "./Components/Email"
 import {Link } from "react-router-dom";
 var validator = require("email-validator");
- 
+var swearjar = require('swearjar-extended');
 
 
 
@@ -37,7 +37,8 @@ class App extends React.Component {
     willClose:0,
     email:"",
     Reviews:[], 
-    id:""
+    id:"",
+    Profanity:false
 
   };
 
@@ -62,8 +63,10 @@ SubmitForm = async () =>{
 
 
   var check = validator.validate(this.state.email); // true
+ var profanity =  swearjar.profane(this.state.About); 
  
-  if(this.state.TakeAgain!="" && this.state.Difficulty!=null && this.state.TextBook!="" && check){
+ 
+  if(this.state.TakeAgain!="" && this.state.Difficulty!=null && this.state.TextBook!="" && check && !profanity){
     this.setState({error:0})
     this.setState({willClose:1})
     this.AddToDataBase();
@@ -76,8 +79,14 @@ SubmitForm = async () =>{
     // If this is the case, we want place an error messages saying the mandatory fields have not been filled out  yet
     console.log("Fields are missing, cannot submit form")
 
+    if(profanity){
+     
+      this.setState({Profanity:true})
+    }
+
+    if(this.state.TakeAgain=="" && this.state.Difficulty==null && this.state.TextBook=="" )
+
     this.setState({error:1}); 
-    
   }
 
 }
@@ -146,6 +155,9 @@ TextBook = (num) =>{
         this.setState({TextBook:num})
         }
 About = (Abt) =>{
+
+
+  
           this.setState({About:Abt})
      }
 
@@ -352,7 +364,7 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
   
   
   
-            <Form  resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error} email={this.email}  SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
+            <Form  resetClose={this.resetClose} willClose={this.state.willClose} Profanity={this.state.Profanity} Error={this.state.error} email={this.email}  SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
           
               {this.renderFooter()}
         
@@ -376,7 +388,7 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
         </div>
     
         <ReviewList  decrementDB={this.decrementDB} incrementDB={this.incrementDB} Title={this.state.Course}list={this.state.Reviews} />
-        <Form   email={this.email} resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
+        <Form  Profanity={this.state.Profanity} email={this.email} resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
       
           {this.renderFooter()}
    

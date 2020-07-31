@@ -3,7 +3,11 @@ import { Button, Modal } from 'semantic-ui-react'
 import Form from './Form'
 
 class ModalExampleCloseConfig extends Component {
-  state = { open: false }
+  state = { 
+    open: false,
+    Profanity:this.props.Profanity
+  
+  }
 
   closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
     this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
@@ -21,6 +25,11 @@ class ModalExampleCloseConfig extends Component {
     if(nextProps.willClose ==1){
       this.setState({ open: false })
       nextProps.resetClose()
+    }
+
+    if(nextProps.Profanity == true){
+      this.setState({Profanity:true })
+
     }
 
   }
@@ -43,7 +52,8 @@ class ModalExampleCloseConfig extends Component {
           dval={this.props.dval} 
           taval={this.props.taval} 
           aval={this.props.aval} 
-          Error={this.props.Error}  
+          Error={this.props.Error} 
+          Profanity={this.state.Profanity} 
           TextBook={this.props.TextBook}
           Difficulty={this.props.Difficulty} 
           TakeAgain={this.props.TakeAgain}
@@ -57,6 +67,7 @@ class ModalExampleCloseConfig extends Component {
           return(
 
 <Form Error={this.props.Error}  
+ Profanity={this.state.Profanity} 
 TextBook={this.props.TextBook} 
 Difficulty={this.props.Difficulty} 
 TakeAgain={this.props.TakeAgain}   
@@ -87,7 +98,8 @@ email={this.props.email}
         >
           <Modal.Header>Delete Your Account</Modal.Header>
           <Modal.Content>
-          <Form Error={this.props.Error}  
+          <Form Error={this.props.Error}
+            Profanity={this.state.Profanity}   
 TextBook={this.props.TextBook} 
 Difficulty={this.props.Difficulty} 
 TakeAgain={this.props.TakeAgain}   
