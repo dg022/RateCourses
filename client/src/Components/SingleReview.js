@@ -6,7 +6,7 @@ import './Review.css';
 import ThumbsUp from './ThumbsUp.js';
 import Edit from './Edit';
 import Flag from './Flag'; 
-
+import Delete from './Delete'; 
 
 
 
@@ -29,12 +29,14 @@ class ItemExampleItems extends React.Component{
 
     ron:false,
     ronFlag:false,
+    ronDelete:false,
     id:this.props.list.id, 
     diff:this.props.list.difficulty,
     takeAgain:this.props.list.takeAgain,
     body:this.props.list.body,
     email:this.props.list.email,
-    TextBook:this.props.list.isTextBook
+    TextBook:this.props.list.isTextBook,
+  
 
 
 
@@ -60,11 +62,19 @@ class ItemExampleItems extends React.Component{
     this.setState({ronFlag:true})
   }
 
+  const handleHoverDelete = () => {
+    this.setState({ronDelete:true})
+  }
+
   const handleLeave = () => {
     this.setState({ron:false})
   }
   const handleLeaveFlag = () => {
     this.setState({ronFlag:false})
+  }
+
+  const handleLeaveDelete = () => {
+    this.setState({ronDelete:false})
   }
 
   var reviewID = "";
@@ -141,6 +151,13 @@ if(this.state.diff!=null){
 
 
             </div>
+
+       <div onMouseLeave={handleLeaveDelete} onMouseEnter={handleHoverDelete}>
+        
+        <Delete  data={this.props.list}    id={this.props.list.id}Title={this.props.Title} on={this.state.ronDelete}   />
+
+
+        </div>
 
           
 
