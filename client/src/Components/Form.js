@@ -47,6 +47,13 @@ class FormExampleForm extends React.Component {
 
   const rendersMsg = () =>{
 
+    console.log(this.props.Profanity)
+
+    if(this.props.Error!=1 && !this.props.Profanity){
+      return;
+    }
+
+
     if(this.props.Error == 1 && this.props.Profanity){
 
       return(
@@ -81,6 +88,8 @@ class FormExampleForm extends React.Component {
 
       console.log("we got here")
 
+
+
       return(
         <Message negative>
         <Message.Header>Invalid Submission</Message.Header>
@@ -101,9 +110,6 @@ class FormExampleForm extends React.Component {
  
 
 if(this.state.tbval!=null){
-
-
-
   return(
   <Form>
 
@@ -153,70 +159,12 @@ if(this.state.tbval!=null){
 
       <Checkbox label='I am not a robot' />
     </Form.Field>
-    
+    {rendersMsg()}
   </Form>
   );
-
-
-
-
-
-
-
-
 }
 
  
-if(this.props.Error == 1 && this.props.Profanity){
-
-  return(
-    <Form>
-  
-      <Form.Field>
-     
-        </Form.Field>
-      <Form.Field>
-      </Form.Field>
-      <Form.Field>
-      <Form.Field
-              label='Would you would take the course again?'    
-            />
-    <Radio type={1} TakeAgain={this.props.TakeAgain} />
-   
-  
-  </Form.Field>
-  <Form.Field
-              label='How easy was the course?'    
-            />
-        <Scale Difficulty={this.props.Difficulty}/>
-        <Form.Field
-              label='Did you actually use the textbook?'    
-            />
-        <Radio type={0} TextBook={this.props.TextBook}  />
-
-        <Form.Field
-          onChange={Echange}
-          control={TextArea}
-          label='Email'
-        />
-
-  
-       <Form.Field
-            onChange={change}
-            control={TextArea}
-            label='About'
-            placeholder='What do you think about this course?'
-          />
-      <Form.Field>
-  
-        <Checkbox label='I am not a robot' />
-      </Form.Field>
-  
-      {rendersMsg()}
-    </Form>
-    );
-
-}
 
 
   return(
@@ -262,7 +210,7 @@ if(this.props.Error == 1 && this.props.Profanity){
 
       <Checkbox label='I am not a robot' />
     </Form.Field>
-    
+    {rendersMsg()}
   </Form>
   );
 }

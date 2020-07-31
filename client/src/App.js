@@ -130,15 +130,11 @@ incrementDB =  async (id, UpDelta, DownDelta) => {
 }
 
 resetClose = () =>{
-
   this.setState({willClose:0})
 }
-
 email = (em) => {
-
   this.setState({email:em})
 }
-
 chooseCourse = (Co) =>{
   this.setState({Course:Co})
   }
@@ -147,17 +143,12 @@ chooseCourse = (Co) =>{
     this.setState({TakeAgain:Choice})
     }
 Difficulty = (num) =>{
-  
       this.setState({Difficulty:num})
       }
 TextBook = (num) =>{
- 
         this.setState({TextBook:num})
         }
 About = (Abt) =>{
-
-
-  
           this.setState({About:Abt})
      }
 

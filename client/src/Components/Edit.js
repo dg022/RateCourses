@@ -4,6 +4,8 @@ import Input from "./Input"
 import "./Edit.css";
 import axios from "axios"
 import Forms from "./Form"
+var validator = require("email-validator");
+var swearjar = require('swearjar-extended');
 
 class ModalExampleCloseConfig extends Component {
   state = { 
@@ -20,7 +22,8 @@ class ModalExampleCloseConfig extends Component {
       down:this.props.data.thumbsDown,
       id:this.props.id,
       error:0, 
-      sent:false
+      sent:false,
+      Profanity:false
 
 
 }
@@ -68,20 +71,59 @@ About= (term) =>{
     this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
   }
 
+  ResetProfanity = () =>{
+
+    this.setState({Profanity:false})
+
+  }
+
 
   send = async () =>{
 
-    const list = {
-      "body": this.state.aval,
-      "email":this.state.eval,
-      "difficulty":this.state.dval,
-      "takeAgain":this.state.taval,
-      "isTextBook":this.state.tbval,
-      "thumbsUp":this.state.up,
-      "thumbsDown":this.state.down
-    };
-  
 
+    
+    var profanity =  swearjar.profane(this.state.aval); 
+    this.setState({Profanity:profanity})
+    console.log(this.state.Profanity)
+    console.log(profanity)
+
+    this.setState({
+      Profanity:profanity
+  }, () => {
+    if(!this.state.Profanity){
+      const list = {
+        "body": this.state.aval,
+        "email":this.state.eval,
+        "difficulty":this.state.dval,
+        "takeAgain":this.state.taval,
+        "isTextBook":this.state.tbval,
+        "thumbsUp":this.state.up,
+        "thumbsDown":this.state.down,
+        "id":this.state.id
+      };
+    
+
+
+      this.sendEdit(list)
+      console.log("this happened")
+      this.props.updateState(list)
+     
+  
+     this.close()
+    }
+
+
+  });
+
+
+
+
+
+
+  }
+
+
+  sendEdit =  async (list) => {
 
 
     let res = await axios.get('/edit', {
@@ -89,19 +131,11 @@ About= (term) =>{
         courseTitle: this.props.Title,
         review:list, 
         id:this.state.id
+    
       }
 
   
-    }
-    
-    );
-     
-    console.log("this happened")
-    this.props.updateState(list)
-   
-
-   this.close()
-
+    });
 
 
 
@@ -278,6 +312,8 @@ sendFeedback =  (templateId, variables) => {
                 Difficulty={this.Difficulty} 
                 TakeAgain={this.TakeAgain}
                 About={this.About}
+                Profanity={this.state.Profanity}
+                ResetProfanity={this.ResetProfanity}
                 />
     
             </Modal.Content>
