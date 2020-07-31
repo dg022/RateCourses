@@ -130,7 +130,7 @@ if(this.state.diff!=null){
 
         <div onMouseLeave={handleLeaveFlag} onMouseEnter={handleHoverFlag}>
         
-        <Flag   on={this.state.ronFlag} />
+        <Flag  body={this.state.body}  title={this.props.Title} on={this.state.ronFlag} />
 
 
         </div>

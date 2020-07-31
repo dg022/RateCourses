@@ -135,6 +135,31 @@ app.get('/updateLikes', async (req, res) => {
 });
 
 
+app.get('/findid', async (req, res) => { 
+
+  const doc = await Codes.findOne({"courseTitle":req.query.courseTitle})
+
+  const id =  req.query.id
+  const list  = doc.review; 
+
+
+  for(var i = 0; i < list.length; i++){
+
+    if(list[i].id == id){ 
+
+      res.send(doc.review[i].email)
+      return; 
+    }
+
+  }
+
+
+
+
+
+
+
+});
 
 
 
@@ -178,6 +203,8 @@ app.get('/dbrAdd', async (req, res) => {
 
     
          this.query();
+
+         
           
        }
 
