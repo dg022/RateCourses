@@ -4,6 +4,8 @@ import Example from "./search";
 import SearchCourse from "./DepartmentSearch"; 
 import Scale from "./Scale"
 import Radio from "./Radio"
+var swearjar = require('swearjar-extended');
+
 
 
 class FormExampleForm extends React.Component {
@@ -26,6 +28,7 @@ class FormExampleForm extends React.Component {
  const change = (event) =>{
 
 
+
     this.props.About(event.target.value)
     this.setState({aval:event.target.value})
 
@@ -41,6 +44,58 @@ class FormExampleForm extends React.Component {
 
   }  
 
+
+  const rendersMsg = () =>{
+
+    if(this.props.Error == 1 && this.props.Profanity){
+
+      return(
+        <Message negative>
+        <Message.Header>Invalid Submission</Message.Header>
+        <p>Relax, no swearing be nice!</p>
+        <p>Make sure you fill out all the mandatory fields!</p>
+    
+      </Message>
+
+
+      );
+    }
+
+    if(this.props.Error){
+
+      return(
+        <Message negative>
+        <Message.Header>Invalid Submission</Message.Header>
+        <p>Make sure you fill out all the mandatory fields!</p>
+    
+      </Message>
+
+
+      );
+
+
+    }
+
+
+    if(this.props.Profanity){
+
+      console.log("we got here")
+
+      return(
+        <Message negative>
+        <Message.Header>Invalid Submission</Message.Header>
+        <p>Relax, no swearing be nice!</p>
+    
+      </Message>
+
+
+      );
+
+
+    }
+
+
+  }
 
 
  
@@ -84,6 +139,8 @@ if(this.state.tbval!=null){
           value={this.state.eval}
         />
 
+        
+
 
 
      <Form.Field
@@ -110,7 +167,7 @@ if(this.state.tbval!=null){
 }
 
  
-if(this.props.Error == 1){
+if(this.props.Error == 1 && this.props.Profanity){
 
   return(
     <Form>
@@ -155,10 +212,7 @@ if(this.props.Error == 1){
         <Checkbox label='I am not a robot' />
       </Form.Field>
   
-      <Message negative>
-      <Message.Header>Invalid Submission</Message.Header>
-      <p>Make sure you fill out all the mandatory fields!</p>
-    </Message>
+      {rendersMsg()}
     </Form>
     );
 
