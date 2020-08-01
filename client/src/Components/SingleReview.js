@@ -36,6 +36,7 @@ class ItemExampleItems extends React.Component{
     body:this.props.list.body,
     email:this.props.list.email,
     TextBook:this.props.list.isTextBook,
+    deleted:false
   
 
 
@@ -52,6 +53,10 @@ class ItemExampleItems extends React.Component{
     this.setState({takeAgain:obj.takeAgain})
     this.setState({email:obj.email})
 
+  }
+
+  const deleted = ()=>{
+    this.setState({deleted:true})
   }
 
    const handleHover = () => {
@@ -100,6 +105,11 @@ class ItemExampleItems extends React.Component{
 
 
   }
+
+if(this.state.deleted){
+return(<div></div>);
+
+}
 
 
 if(this.state.diff!=null){
@@ -154,7 +164,7 @@ if(this.state.diff!=null){
 
        <div onMouseLeave={handleLeaveDelete} onMouseEnter={handleHoverDelete}>
         
-        <Delete  data={this.props.list}    id={this.props.list.id}Title={this.props.Title} on={this.state.ronDelete}   />
+      <Delete deleted= {deleted }    data={this.props.list}    id={this.props.list.id}Title={this.props.Title} on={this.state.ronDelete}   />
 
 
         </div>

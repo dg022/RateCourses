@@ -63,11 +63,24 @@ SendEmail = async () => {
   }
 
   close = () => this.setState({ open: false, message:false, error:0})
-  Submitclose =  () => {
+  Submitclose =  async () => {
   
  
         if(this.state.code == this.props.id){
         this.setState({ message:true })
+        // Here is where you want to send a respond
+        
+        let res = await axios.get('/delete', {
+            params: {
+              courseTitle: this.props.Title,
+              id:this.state.id
+          }});
+          console.log(res)
+          this.props.deleted();
+        
+         
+
+
         }else{
 
             // Here you need to add logic to make it display some kind of error
@@ -79,7 +92,9 @@ SendEmail = async () => {
 
     if(this.state.message){
         // This is when the person put thir code, and it works, we dont need a button here
-        return;
+        return(
+            <div></div>
+        );
       
 
     }

@@ -135,6 +135,58 @@ app.get('/updateLikes', async (req, res) => {
 });
 
 
+app.get('/delete', async (req, res) => { 
+ 
+  const doc = await Codes.findOne({"courseTitle":req.query.courseTitle})
+
+  const id =  req.query.id
+  const list  = doc.review;
+  const arr = []
+  for(var i = 0; i < list.length; i++){
+
+    if(list[i].id != id){ 
+
+      arr.push(list[i])
+      
+
+    }
+  
+  }
+
+  if(arr.length == 0){
+  doc.review = arr;
+  res.send(arr);
+   console.log(await Codes.deleteOne({ "_id":doc._id}));
+
+   //Model.remove({ _id: req.query._id }, function(err) {
+    //if (!err) {
+        //    message.type = 'notification!';
+   //}
+    ///else {
+      //      message.type = 'error';
+    //}
+
+   await doc.save(); 
+   return; 
+  }
+
+  res.send(arr);
+  doc.review = arr;
+  await doc.save(); 
+
+  return; 
+
+ 
+
+
+
+
+
+
+
+
+});
+
 app.get('/findid', async (req, res) => { 
 
   const doc = await Codes.findOne({"courseTitle":req.query.courseTitle})
