@@ -66,7 +66,7 @@ SubmitForm = async () =>{
  var profanity =  swearjar.profane(this.state.About); 
  
  
-  if(this.state.TakeAgain!="" && this.state.Difficulty!=null && this.state.TextBook!="" && check && !profanity){
+  if(this.state.TakeAgain!="" && this.state.Difficulty!=null && this.state.TextBook!="" && check && !profanity && this.state.About.length <=600){
     this.setState({error:0})
     this.setState({willClose:1})
     this.AddToDataBase();
@@ -84,7 +84,7 @@ SubmitForm = async () =>{
       this.setState({Profanity:true})
     }
 
-    if(this.state.TakeAgain=="" && this.state.Difficulty==null && this.state.TextBook=="" )
+    if(this.state.TakeAgain=="" || this.state.Difficulty==null || this.state.TextBook==""  || this.state.About.length > 600)
 
     this.setState({error:1}); 
   }
