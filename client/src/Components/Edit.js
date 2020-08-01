@@ -23,7 +23,8 @@ class ModalExampleCloseConfig extends Component {
       id:this.props.id,
       error:0, 
       sent:false,
-      Profanity:false
+      Profanity:false,
+      
 
 
 }
@@ -84,13 +85,25 @@ About= (term) =>{
     
     var profanity =  swearjar.profane(this.state.aval); 
     this.setState({Profanity:profanity})
+
+    if(this.state.aval.length > 600){
+      this.setState({error:1})
+    }
+
+    if(this.state.aval.length <=600 ){
+      this.setState({error:0})
+    }
+
+
     console.log(this.state.Profanity)
     console.log(profanity)
 
+
     this.setState({
-      Profanity:profanity
+      Profanity:profanity,
+      error: this.state.aval.length > 600?1:0
   }, () => {
-    if(!this.state.Profanity){
+    if(!this.state.Profanity && this.state.error==0){
       const list = {
         "body": this.state.aval,
         "email":this.state.eval,
@@ -313,6 +326,7 @@ sendFeedback =  (templateId, variables) => {
                 TakeAgain={this.TakeAgain}
                 About={this.About}
                 Profanity={this.state.Profanity}
+                Error={this.state.error}
                 ResetProfanity={this.ResetProfanity}
                 />
     

@@ -19,6 +19,7 @@ class FormExampleForm extends React.Component {
     tbval:this.props.tbval,
     aval:this.props.aval,
     eval:this.props.eval,
+    count:""
     
 
   }
@@ -31,6 +32,8 @@ class FormExampleForm extends React.Component {
 
     this.props.About(event.target.value)
     this.setState({aval:event.target.value})
+    this.setState({count: event.target.value.length + "/600" + " Characters" })
+
 
 
   }  
@@ -43,6 +46,7 @@ class FormExampleForm extends React.Component {
 
 
   }  
+
 
 
   const rendersMsg = () =>{
@@ -61,6 +65,7 @@ class FormExampleForm extends React.Component {
         <Message.Header>Invalid Submission</Message.Header>
         <p>Relax, no swearing be nice!</p>
         <p>Make sure you fill out all the mandatory fields!</p>
+        <p>Just in case, make sure your review is 600 characters or less</p>
     
       </Message>
 
@@ -68,12 +73,13 @@ class FormExampleForm extends React.Component {
       );
     }
 
-    if(this.props.Error){
+    if(this.props.Error==1){
 
       return(
         <Message negative>
         <Message.Header>Invalid Submission</Message.Header>
         <p>Make sure you fill out all the mandatory fields!</p>
+        <p>Just in case, make sure your review is 600 characters or less</p>
     
       </Message>
 
@@ -86,7 +92,7 @@ class FormExampleForm extends React.Component {
 
     if(this.props.Profanity){
 
-      console.log("we got here")
+
 
 
 
@@ -148,7 +154,9 @@ if(this.state.tbval!=null){
         
 
 
-
+<Form.Field
+            label={this.state.count}    
+          />
      <Form.Field
           onChange={change}
           control={TextArea}
@@ -199,6 +207,9 @@ if(this.state.tbval!=null){
         />
 
 
+<Form.Field
+            label={this.state.count}    
+          />
 
      <Form.Field
           onChange={change}
