@@ -1,9 +1,10 @@
 import React from 'react'
-import { Button, Checkbox, Form,  TextArea, Input, Message  } from 'semantic-ui-react'
+import { Button, Checkbox, Form,  TextArea, Message, Input, Icon  } from 'semantic-ui-react'
 import Example from "./search";
 import SearchCourse from "./DepartmentSearch"; 
 import Scale from "./Scale"
 import Radio from "./Radio"
+import Email from "./EInput"
 var swearjar = require('swearjar-extended');
 
 
@@ -142,14 +143,12 @@ if(this.state.tbval!=null){
       <Radio type={0} TextBook={this.props.TextBook} tbval={this.state.tbval} />
 
 
-     
+      <Input iconPosition='left' placeholder='Email'>
+      <Icon name='at' />
+      <input  onChange={Echange}  value={this.state.eval} />
+    </Input>
 
-      <Form.Field
-          onChange={Echange}
-          control={TextArea}
-          label='Email'
-          value={this.state.eval}
-        />
+
 
         
 
@@ -200,11 +199,11 @@ if(this.state.tbval!=null){
           />
       <Radio type={0} TextBook={this.props.TextBook}  />
     
-      <Form.Field
-          onChange={Echange}
-          control={TextArea}
-          label='Email'
-        />
+      <Input iconPosition='left' placeholder='Email'>
+      <Icon name='at' />
+      <input  onChange={Echange}  value={this.state.eval} />
+    </Input>
+ 
 
 
 <Form.Field
