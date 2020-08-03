@@ -40,48 +40,7 @@ class ModalExampleCloseConfig extends Component {
   
     const { open, closeOnEscape, closeOnDimmerClick } = this.state
 
-
-    const renderForm = ()=>{
-
-      if(this.props.dest==1){
-
-      return(
-        <Form 
-          tbval={this.props.tbval} 
-          eval={this.props.eval}
-          dval={this.props.dval} 
-          taval={this.props.taval} 
-          aval={this.props.aval} 
-          Error={this.props.Error} 
-          Profanity={this.state.Profanity} 
-          TextBook={this.props.TextBook}
-          Difficulty={this.props.Difficulty} 
-          TakeAgain={this.props.TakeAgain}
-          About={this.props.About}
-          email={this.props.email}
-          />
-      );
-
-      }else{
-
-          return(
-
-<Form Error={this.props.Error}  
- Profanity={this.state.Profanity} 
-TextBook={this.props.TextBook} 
-Difficulty={this.props.Difficulty} 
-TakeAgain={this.props.TakeAgain}   
-About={this.props.About}
-email={this.props.email}
-/>
-
-          );
-
-
-      }
-
-
-    }
+    console.log(this.props)
 
     return (
       <div>
@@ -100,11 +59,12 @@ email={this.props.email}
           <Modal.Content>
           <Form Error={this.props.Error}
             Profanity={this.state.Profanity}   
-TextBook={this.props.TextBook} 
-Difficulty={this.props.Difficulty} 
-TakeAgain={this.props.TakeAgain}   
-About={this.props.About}
-email={this.props.email}
+            TextBook={this.props.TextBook} 
+            Difficulty={this.props.Difficulty} 
+            TakeAgain={this.props.TakeAgain}   
+            About={this.props.About}
+            email={this.props.email}
+            useful={this.props.useful}
 />
 
           </Modal.Content>

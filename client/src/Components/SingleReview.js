@@ -36,6 +36,7 @@ class ItemExampleItems extends React.Component{
     body:this.props.list.body,
     email:this.props.list.email,
     TextBook:this.props.list.isTextBook,
+    useful:this.props.list.useful,
     deleted:false
   
 
@@ -52,6 +53,7 @@ class ItemExampleItems extends React.Component{
     this.setState({body:obj.body})
     this.setState({takeAgain:obj.takeAgain})
     this.setState({email:obj.email})
+    this.setState({useful:obj.useful})
 
   }
 
@@ -131,6 +133,9 @@ if(this.state.diff!=null){
               </div>
               <div class="meta"> 
                 <span>Would Take Again: {this.state.takeAgain}</span>
+              </div>
+              <div class="meta"> 
+                <span>Useful: {this.state.useful}</span>
               </div>
                   <div class="meta"> 
                 <span>TextBook: {this.state.TextBook}</span>

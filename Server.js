@@ -228,6 +228,7 @@ app.get('/dbrAdd', async (req, res) => {
 
 
     var obj = JSON.parse(req.query.review)
+    console.log(obj)
  
     
    

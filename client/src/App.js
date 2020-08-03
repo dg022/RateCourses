@@ -38,6 +38,7 @@ class App extends React.Component {
     email:"",
     Reviews:[], 
     id:"",
+    useful:"",
     Profanity:false
 
   };
@@ -66,7 +67,7 @@ SubmitForm = async () =>{
  var profanity =  swearjar.profane(this.state.About); 
  
  
-  if(this.state.TakeAgain!="" && this.state.Difficulty!=null && this.state.TextBook!="" && check && !profanity && this.state.About.length <=600){
+  if(this.state.TakeAgain!="" && this.state.Difficulty!=null && this.state.TextBook!="" && check && !profanity&& this.state.useful!="" && this.state.About.length <=600){
     this.setState({error:0})
     this.setState({willClose:1})
     this.AddToDataBase();
@@ -84,7 +85,7 @@ SubmitForm = async () =>{
       this.setState({Profanity:true})
     }
 
-    if(this.state.TakeAgain=="" || this.state.Difficulty==null || this.state.TextBook==""  || this.state.About.length > 600)
+    if(this.state.TakeAgain=="" || this.state.Difficulty==null || this.state.TextBook==""  || this.state.About.length > 600|| this.state.useful!="")
 
     this.setState({error:1}); 
   }
@@ -127,6 +128,11 @@ incrementDB =  async (id, UpDelta, DownDelta) => {
   
 
 
+}
+
+useful = (ans) => {
+  
+  this.setState({useful:ans})
 }
 
 resetClose = () =>{
@@ -194,6 +200,7 @@ AddToDataBase = async () =>{
 
   var c = this.makeid(7)
   this.setState({id:c})
+  console.log(this.state.useful)
    const list = {
     "body": this.state.About,
     "difficulty":this.state.Difficulty,
@@ -202,7 +209,8 @@ AddToDataBase = async () =>{
     "email":this.state.email,
     "thumbsUp":0,
     "thumbsDown":0,
-    "id":c
+    "id":c,
+    "useful":this.state.useful
 
   };
 
@@ -355,7 +363,7 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
   
   
   
-            <Form  resetClose={this.resetClose} willClose={this.state.willClose} Profanity={this.state.Profanity} Error={this.state.error} email={this.email}  SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
+            <Form   resetClose={this.resetClose} willClose={this.state.willClose} Profanity={this.state.Profanity} Error={this.state.error} email={this.email} useful={this.useful} SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook}  />
           
               {this.renderFooter()}
         
@@ -379,7 +387,7 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
         </div>
     
         <ReviewList  decrementDB={this.decrementDB} incrementDB={this.incrementDB} Title={this.state.Course}list={this.state.Reviews} />
-        <Form  Profanity={this.state.Profanity} email={this.email} resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
+        <Form  useful={this.useful} Profanity={this.state.Profanity} email={this.email} resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
       
           {this.renderFooter()}
    
