@@ -18,6 +18,7 @@ class ModalExampleCloseConfig extends Component {
       dval:this.props.data.difficulty,
       taval:this.props.takeAgain, 
       aval:this.props.data.body,
+      uval:this.props.data.useful,
       up:this.props.data.thumbsUp,
       down:this.props.data.thumbsDown,
       id:this.props.id,
@@ -45,6 +46,11 @@ TextBook = (term) =>{
     this.setState({tbval:term})
 }
 
+
+useful = (term) =>{
+
+  this.setState({uval:term})
+}
 
 Difficulty= (term) =>{
 
@@ -112,7 +118,8 @@ About= (term) =>{
         "isTextBook":this.state.tbval,
         "thumbsUp":this.state.up,
         "thumbsDown":this.state.down,
-        "id":this.state.id
+        "id":this.state.id,
+        "useful":this.state.uval
       };
     
 
@@ -320,7 +327,9 @@ sendFeedback =  (templateId, variables) => {
                 dval={this.props.data.difficulty} 
                 taval={this.props.data.takeAgain} 
                 aval={this.props.data.body} 
+                uval={this.props.data.useful}
                 email={this.email}
+                useful={this.useful}
                 TextBook={this.TextBook}
                 Difficulty={this.Difficulty} 
                 TakeAgain={this.TakeAgain}

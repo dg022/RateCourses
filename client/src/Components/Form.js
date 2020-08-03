@@ -20,6 +20,7 @@ class FormExampleForm extends React.Component {
     tbval:this.props.tbval,
     aval:this.props.aval,
     eval:this.props.eval,
+    uval:this.props.uval,
     count:""
     
 
@@ -130,6 +131,11 @@ if(this.state.tbval!=null){
             label='Would you would take the course again?'    
           />
   <Radio type={1} TakeAgain={this.props.TakeAgain}  taval={this.state.taval}    />
+
+  <Form.Field
+            label='Was the course useful?'    
+          />
+  <Radio type={2} useful={this.props.useful}  uval={this.state.uval}/>
  
 
 </Form.Field>
@@ -143,10 +149,7 @@ if(this.state.tbval!=null){
       <Radio type={0} TextBook={this.props.TextBook} tbval={this.state.tbval} />
 
 
-      <Input iconPosition='left' placeholder='Email'>
-      <Icon name='at' />
-      <input  onChange={Echange}  value={this.state.eval} />
-    </Input>
+      
 
 
 
@@ -173,8 +176,10 @@ if(this.state.tbval!=null){
 
  
 
-
+console.log(this.props)
   return(
+
+  
   <Form>
 
     <Form.Field>
@@ -187,6 +192,11 @@ if(this.state.tbval!=null){
             label='Would you would take the course again?'    
           />
   <Radio type={1} TakeAgain={this.props.TakeAgain} />
+
+  <Form.Field
+            label='Was the course useful?'    
+          />
+  <Radio type={2} useful={this.props.useful} />
  
 
 </Form.Field>

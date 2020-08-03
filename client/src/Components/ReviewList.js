@@ -7,12 +7,14 @@ var  average = 0;
 var count  = 0; 
 var countYes = 0; 
 var countYesText = 0;
+var useful = 0;
 
 const ReviewList = (props) => {
   average = 0;
   count  = 0;
   countYes = 0;
   countYesText = 0;
+  useful = 0; 
 
  const list  = props.list;
 
@@ -25,6 +27,11 @@ const ReviewList = (props) => {
     if(msg.takeAgain == "Yes"){
       countYes++;
     }
+
+    if(msg.useful == "Yes"){
+      useful++;
+    }
+
 
     if(msg.isTextBook == "Yes"){
       countYesText++;
@@ -67,6 +74,17 @@ const ReviewList = (props) => {
           </div>
           <div class="label">
             Would take the course again
+          </div>
+        </div>
+
+
+        
+        <div class="ui statistic">
+          <div class="value">
+          <i class="check circle outline icon "></i>  {(useful/count)*100}% 
+          </div>
+          <div class="label">
+            Found the courxe useful
           </div>
         </div>
 

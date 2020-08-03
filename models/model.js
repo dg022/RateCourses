@@ -20,6 +20,9 @@ var Users = new Schema({ // example from docs
             "takeAgain": {
               "type": "String"
             },
+            "useful":{
+              "type": "String"
+            },
             "isTextBook": {
               "type": "String"
             }, 

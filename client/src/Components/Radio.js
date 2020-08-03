@@ -6,10 +6,16 @@ export default class RadioExampleRadioGroup extends Component {
   handleChange = (e, { value }) => {
       
     this.setState({ value })
+    console.log(this.props)
 
     if (this.props.type ==1){
       
         this.props.TakeAgain(value)
+    }
+
+    if(this.props.type ==2){
+      console.log(this.props)
+      this.props.useful(value)
     }
 
     if (this.props.type ==0){
@@ -38,6 +44,17 @@ componentDidMount(){
   }
 
   if(this.props.tbval=="No"){
+    this.setState({value:"No"})
+    
+  }
+
+
+  if(this.props.uval=="Yes"){
+    this.setState({value:"Yes"})
+
+  }
+
+  if(this.props.uval=="No"){
     this.setState({value:"No"})
     
   }
