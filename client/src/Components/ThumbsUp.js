@@ -1,5 +1,6 @@
 import React from 'react';
 import { Dropdown } from 'semantic-ui-react';
+import "./Thumbs.css";
 
 
 class ThumbsUp extends React.Component  {
@@ -129,7 +130,11 @@ decrementDB = (UpDelta, DownDelta) =>{
 
         <div  id="in" class="extra">
 
-         
+<div class="ui grid">
+  
+ 
+
+  <div  id= "mobileOne" class="six wide column">
              <div onClick={this.incrementUp} class="ui labeled button" tabindex="0">
                 <div  class="ui green button">
                     <i class="thumbs up outline icon"></i> Like
@@ -138,6 +143,10 @@ decrementDB = (UpDelta, DownDelta) =>{
                     {this.state.Up}
                 </a>
                 </div>
+                </div>
+
+                <div id= "mobileTwo" class="six wide column">
+                
                 <div onClick={this.incrementDown}class="ui labeled button" tabindex="0">
                 <div class="ui  red button">
                     <i class="thumbs down outline icon"></i> Dislike
@@ -146,6 +155,13 @@ decrementDB = (UpDelta, DownDelta) =>{
                     {this.state.Down}
                 </a>
             </div>
+            </div>
+
+
+
+            </div>
+
+
       </div>
         );
 
