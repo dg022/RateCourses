@@ -1,0 +1,40 @@
+
+
+
+
+
+@media (max-width:800px){
+
+
+    #mobileOne {
+        margin-right: 15%;
+        padding-left: 0px;
+        padding-right: 0px;
+      
+    }
+
+
+    #mobileTwo {
+    padding-left: 0px;
+      
+    }
+}
+
+
+
+@media (max-width:320px){
+
+
+    #mobileOne {
+        margin-right: 12%;
+        padding-left: 0px;
+        padding-right: 0px;
+      
+    }
+
+
+    #mobileTwo {
+    padding-left: 0px;
+      
+    }
+}

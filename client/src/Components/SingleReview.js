@@ -152,13 +152,16 @@ if(this.state.diff!=null){
             
 
 
+        <div  id="grid" class="ui grid">
+        <div  class="four wide column">
+            <div onMouseLeave={handleLeaveFlag} onMouseEnter={handleHoverFlag}>
+            
+            <Flag  body={this.state.body}  title={this.props.Title} on={this.state.ronFlag} />
 
-        <div onMouseLeave={handleLeaveFlag} onMouseEnter={handleHoverFlag}>
-        
-        <Flag  body={this.state.body}  title={this.props.Title} on={this.state.ronFlag} />
 
-
+            </div>
         </div>
+        <div  class="four wide column">
 
             <div onMouseLeave={handleLeave} onMouseEnter={handleHover}>
         
@@ -166,11 +169,16 @@ if(this.state.diff!=null){
 
 
             </div>
+        </div>
+        <div  class="four wide column">
 
-       <div onMouseLeave={handleLeaveDelete} onMouseEnter={handleHoverDelete}>
-        
-      <Delete deleted= {deleted }    data={this.props.list}    id={this.props.list.id}Title={this.props.Title} on={this.state.ronDelete}   />
+            <div onMouseLeave={handleLeaveDelete} onMouseEnter={handleHoverDelete}>
+              
+            <Delete deleted= {deleted }    data={this.props.list}    id={this.props.list.id}Title={this.props.Title} on={this.state.ronDelete}   />
 
+
+              </div>
+        </div>
 
         </div>
 

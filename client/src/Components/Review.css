@@ -8,6 +8,8 @@
 }
 
 
+
+
 .ui.input.yolo {
 
     color:  red !important;
@@ -78,3 +80,68 @@
     font-size: large;
 
 }
+
+@media (max-width:1024px){
+
+
+    #Review {
+        margin: auto;
+        margin-top:5%;width: 80%;
+        margin-bottom: 5% !important;
+        
+        padding: 10px;
+      
+    }
+
+   
+    
+}
+
+
+@media (max-width:500px){
+
+
+    #grid {
+
+        margin-top: 10% !important;
+        margin-bottom: -1rem;
+        margin-left: 10% !important ;
+        margin-right: -1rem;
+        
+      
+    }
+
+   
+    
+}
+
+@media (max-width:800px){
+
+
+    #Review {
+        margin: auto;
+        margin-top:5%;width: 80%;
+        margin-bottom: 5% !important;
+        
+        padding: 10px;
+      
+    }
+
+    #ir{
+
+        background: rgb(249, 249, 249);
+        padding: 10%;
+    }
+}
+
+
+@media (max-width:320px){
+
+    #ir{
+
+        background: rgb(249, 249, 249);
+        padding: 2%;
+    }
+ 
+}
+
