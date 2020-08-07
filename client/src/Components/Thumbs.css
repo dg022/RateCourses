@@ -3,7 +3,7 @@
 
 
 
-@media (max-width:800px){
+@media (max-width:1400px){
 
 
     #mobileOne {
@@ -38,3 +38,25 @@
       
     }
 }
+
+@media only screen and (max-width: 732px) and (min-width:600px){
+
+
+    .ui.column.grid>[class*="six wide"].column, .ui.grid>.column.row>[class*="six wide"].column, .ui.grid>.row>[class*="six wide"].column, .ui.grid>[class*="six wide"].column{
+
+        width: 20.5%!important;
+
+    }
+
+    #mobileOne {
+        margin-right: 40%;
+        padding-left: 10%;
+        padding-right: 0px;
+    }
+
+    
+}
+
+
+
+

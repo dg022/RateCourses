@@ -98,7 +98,7 @@
 }
 
 
-@media (max-width:500px){
+@media (max-width:550px){
 
 
     #grid {
@@ -114,6 +114,21 @@
    
     
 }
+
+@media only screen and (max-width: 732px) and (min-width:600px){
+
+
+    #grid {
+        margin-top: 1rem;
+        margin-bottom: -1rem;
+        margin-left: 5rem;
+        margin-right: -9rem;
+    }
+   
+    
+}
+
+
 
 @media (max-width:800px){
 
