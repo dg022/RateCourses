@@ -130,7 +130,7 @@ decrementDB = (UpDelta, DownDelta) =>{
 
         <div  id="in" class="extra">
 
-<div class="ui grid">
+<div id="options" class="ui grid">
   
  
 
