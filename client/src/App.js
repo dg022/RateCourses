@@ -174,11 +174,15 @@ About = (Abt) =>{
    
 
 searchDataBase = async () =>{
+
+
   let res = await axios.get('/dbr', {
     params: {
       department: this.state.Course
     }
   });
+
+
 
 
   if(res.data == false){
@@ -379,7 +383,7 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
   return(
   
     <div>
-       <div class="ui red inverted vertical header segment form-page">
+       <div  id="h" class="ui inverted vertical header segment form-page">
         
         <img src="https://img.icons8.com/clouds/100/000000/youtube-play.png"/>
         YouTubeParty!
@@ -396,7 +400,7 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
         <ReviewList  decrementDB={this.decrementDB} incrementDB={this.incrementDB} Title={this.state.Course}list={this.state.Reviews} />
         <Form  useful={this.useful} Profanity={this.state.Profanity} email={this.email} resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
       
-        <div class="ui red inverted vertical footer segment form-page">
+        <div id="f" class="ui  inverted vertical footer segment form-page">
       <div class="ui container">
        
         <left> By: David George    </left> 
