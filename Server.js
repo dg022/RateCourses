@@ -145,10 +145,7 @@ app.get('/delete', async (req, res) => {
   for(var i = 0; i < list.length; i++){
 
     if(list[i].id != id){ 
-
       arr.push(list[i])
-      
-
     }
   
   }
@@ -296,6 +293,8 @@ app.get('/dbr', async (req, res) => {
  if(await Codes.exists({ courseTitle: req.query.department })){
 
   doc = await Codes.findOne({"courseTitle":req.query.department});
+  console.log(doc)
+
   res.send(doc);
 
 

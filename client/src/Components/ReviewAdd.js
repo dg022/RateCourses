@@ -45,7 +45,7 @@ class ModalExampleCloseConfig extends Component {
     return (
       <div>
       
-        <Button onClick={this.closeConfigShow(true, false)}>
+        <Button size='massive' onClick={this.closeConfigShow(true, false)}>
           Add a review!
         </Button>
 
