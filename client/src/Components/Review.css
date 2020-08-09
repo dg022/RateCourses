@@ -130,7 +130,7 @@
 
 
 
-@media (max-width:800px){
+@media only screen and (max-width: 1300px) and (min-width:820px){
 
 
     #Review {
@@ -150,7 +150,7 @@
 }
 
 
-@media (max-width:320px){
+@media (max-width:450px){
 
     #ir{
 
