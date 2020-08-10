@@ -2,6 +2,7 @@
 import React from 'react'; 
 import SingleReview from './SingleReview';
 import "./Review.css";
+import Star from './Stars'; 
 
 var  average = 0;
 var count  = 0; 
@@ -53,17 +54,22 @@ const ReviewList = (props) => {
         <center>
 
         <h1> {props.Title}</h1>
-
+    
+   
 
 
         <div> 
-              <div class="ui statistic">
+        <div class="ui statistic">
           <div class="value">
+          
+         
            {(average/count).toFixed(1) }/5.0
           </div>
+          <Star value={ ((average/count)).toFixed(1)} />
           <div class="label">
             Average diffiuctly Score from {count} reviews
           </div>
+         
         </div>
 
 
@@ -72,7 +78,7 @@ const ReviewList = (props) => {
 
         <div class="ui statistic">
           <div class="value">
-          <i class="check circle outline icon "></i>  {(countYes/count)*100}% 
+          <i class="check circle outline icon "></i>  {((countYes/count)*100).toFixed(0)}% 
           </div>
           <div class="label">
             Would take the course again
@@ -83,17 +89,17 @@ const ReviewList = (props) => {
         
         <div class="ui statistic">
           <div class="value">
-          <i class="check circle outline icon "></i>  {(useful/count)*100}% 
+          <i class="thumbs up outline icon"></i> {((useful/count)*100).toFixed(0)}% 
           </div>
           <div class="label">
-            Found the courxe useful
+            Found the course useful
           </div>
         </div>
 
 
         <div class="ui statistic">
           <div class="value">
-          <i class="book icon small"></i>  {(countYesText/count)*100}% 
+          <i class="book icon small"></i>  {((countYesText/count)*100).toFixed(0)}% 
           </div>
           <div class="label">
             Said a TextBook is required

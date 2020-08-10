@@ -391,11 +391,6 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
       </div>
     
       
-        <div class="ui text container">
-          <h1 class="ui inverted header">
-            No reviews for {this.state.Course} are on record! Be the first!
-          </h1>
-        </div>
         
         <ReviewList  decrementDB={this.decrementDB} incrementDB={this.incrementDB} Title={this.state.Course}list={this.state.Reviews} />
         <Form  useful={this.useful} Profanity={this.state.Profanity} email={this.email} resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
