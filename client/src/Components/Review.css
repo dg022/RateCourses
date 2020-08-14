@@ -1,6 +1,6 @@
 #Review {
     margin: auto;
-    margin-top:5%;width: 50%;
+    margin-top:2%;width: 50%;
     margin-bottom: 5% !important;
     
     padding: 10px;
@@ -8,6 +8,14 @@
 }
 
 
+#but{
+
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+
+}
 
 
 .ui.input.yolo {
@@ -86,7 +94,7 @@
 
     #Review {
         margin: auto;
-        margin-top:5%;width: 80%;
+        margin-top:2%;width: 80%;
         margin-bottom: 5% !important;
         
         padding: 10px;
@@ -135,7 +143,7 @@
 
     #Review {
         margin: auto;
-        margin-top:5%;width: 80%;
+        margin-top:2%;width: 80%;
         margin-bottom: 5% !important;
         
         padding: 10px;
@@ -155,7 +163,7 @@
     #ir{
 
         background: rgb(249, 249, 249);
-        padding: 2%;
+        padding: 4%;
     }
  
 }

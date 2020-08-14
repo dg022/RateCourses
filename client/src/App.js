@@ -11,6 +11,7 @@ import Form from "./Components/ReviewAdd"
 import Scale from "./Components/Scale"
 import ReviewList from "./Components/ReviewList"
 import Email from "./Components/Email"
+import { Button } from 'semantic-ui-react'
 
 import {Link } from "react-router-dom";
 var validator = require("email-validator");
@@ -392,7 +393,12 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
     
       
         
-        <ReviewList  decrementDB={this.decrementDB} incrementDB={this.incrementDB} Title={this.state.Course}list={this.state.Reviews} />
+        <ReviewList
+
+        
+      
+        decrementDB={this.decrementDB} incrementDB={this.incrementDB} Title={this.state.Course}list={this.state.Reviews} />
+       
         <Form  useful={this.useful} Profanity={this.state.Profanity} email={this.email} resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
       
         <div id="f" class="ui  inverted vertical footer segment form-page">
