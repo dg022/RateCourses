@@ -3,6 +3,7 @@ import React from 'react';
 import SingleReview from './SingleReview';
 import "./Review.css";
 import Star from './Stars'; 
+import { Button } from 'semantic-ui-react'
 
 var  average = 0;
 var count  = 0; 
@@ -48,7 +49,7 @@ const ReviewList = (props) => {
 
   return (
     <div> 
-      <div class="ui segment" >
+      <div id="seg"class="ui segment" >
 
       
         <center>
@@ -60,12 +61,13 @@ const ReviewList = (props) => {
 
         <div> 
         <div class="ui statistic">
+        
           <div class="value">
           
-         
+          <Star value={ ((average/count)).toFixed(1)} />
            {(average/count).toFixed(1) }/5.0
           </div>
-          <Star value={ ((average/count)).toFixed(1)} />
+         
           <div class="label">
             Average diffiuctly Score from {count} reviews
           </div>
@@ -113,8 +115,11 @@ const ReviewList = (props) => {
       
         </div>
 
-
+        
         <div id="Review"className="ui items "> {images}</div>
+
+    
+
       </div>
 
 

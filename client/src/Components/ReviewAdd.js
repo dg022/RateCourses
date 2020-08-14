@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Modal } from 'semantic-ui-react'
 import Form from './Form'
+import './Review.css';
 
 class ModalExampleCloseConfig extends Component {
   state = { 
@@ -20,6 +21,11 @@ class ModalExampleCloseConfig extends Component {
   
   }
 
+   insertAfter = (el, referenceNode) => {
+    referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
+}
+
+
   componentWillReceiveProps =(nextProps)=>{
 
     if(nextProps.willClose ==1){
@@ -34,6 +40,15 @@ class ModalExampleCloseConfig extends Component {
 
   }
 
+  componentDidMount(){
+
+    var newEl = document.querySelector('#but');
+    var ref  = document.querySelector('#seg');
+    this.insertAfter(newEl, ref);
+
+
+  }
+
 
   render() {
 
@@ -45,7 +60,7 @@ class ModalExampleCloseConfig extends Component {
     return (
       <div>
       
-        <Button size='massive' onClick={this.closeConfigShow(true, false)}>
+        <Button id="but" size='massive' onClick={this.closeConfigShow(true, false)}>
           Add a review!
         </Button>
 
