@@ -22,7 +22,10 @@ class ModalExampleCloseConfig extends Component {
   }
 
    insertAfter = (el, referenceNode) => {
+
+    if(el!=null && referenceNode!=null){
     referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
+  }
 }
 
 

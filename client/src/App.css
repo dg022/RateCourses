@@ -83,6 +83,27 @@
       }
     }
 
+    #c {
+
+      height: 30%;
+      width: 50%;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  
+  }
+
+  
+  #d {
+
+    margin-top: 2%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
     .dgbu{
 
       color:white; 
@@ -121,6 +142,10 @@
   padding-bottom: 10‒;
   padding-bottom: 30px;
   padding-left: 10px;
+  position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 
 
 }
