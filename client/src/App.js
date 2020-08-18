@@ -12,10 +12,12 @@ import Scale from "./Components/Scale"
 import ReviewList from "./Components/ReviewList"
 import Email from "./Components/Email"
 import { Button } from 'semantic-ui-react'
+import ParticlesBg from "particles-bg";
 
 import {Link } from "react-router-dom";
 var validator = require("email-validator");
 var swearjar = require('swearjar-extended');
+
 
 
 
@@ -41,7 +43,8 @@ class App extends React.Component {
     Reviews:[], 
     id:"",
     useful:"",
-    Profanity:false
+    Profanity:false,
+    token:""
 
   };
 
@@ -93,6 +96,19 @@ SubmitForm = async () =>{
   }
 
 }
+
+
+
+
+
+
+  
+
+
+
+
+
+
 
 
 
@@ -324,26 +340,69 @@ if(this.state.Department == ""){
 
   return(
     <div>
-        <div class="pusher">
-        <div class="ui inverted vertical masthead center aligned segment">
+       <ParticlesBg color="#4f2683" type="circle" bg={true}/>
+        
 
-          {this.renderHeader()}
-
-        <div class="ui text container">
-          <h1 class="ui inverted header">
-            Welcome to Rate Courses UWO
+          <div id="c" class="ui segment">
+          <h1 >
+          <center>   Welcome to Rate Courses UWO!</center>
           </h1>
-          <h3>This platform is designed to provide wholistic reviews of courses offered at Western University</h3>
-          <h4 class = "warning">*Not affiliated with Western University or satellite colleges*</h4>
+        
+          <div id="d"class="ui list">
+  <a class="item">
+    <i class="sistrix icon"></i>
+    <div class="content">
+      <div class="header">Floated Icon</div>
+      <div class="description">This text will always have a left margin to make sure it sits alongside your icon</div>
+    </div>
+  </a>
+  <a class="item">
+    <i class=" outline thumbs up icon"></i>
+    <div class="content">
+      <div class="header">Floated Icon</div>
+      <div class="description">This text will always have a left margin to make sure it sits alongside your icon</div>
+    </div>
+  </a>
+  <a class="item">
+    <i class="eye icon"></i>
+    <div class="content">
+      <div class="header">Floated Icon</div>
+      <div class="description">This text will always have a left margin to make sure it sits alongside your icon</div>
+    </div>
+  </a>
+  <a class="item">
+  <i class="bullhorn icon"></i> 
+    <div class="content">
+      <div class="header">Floated Icon</div>
+      <div class="description">This text will always have a left margin to make sure it sits alongside your icon</div>
+    </div>
+  </a>
 
-          <DepartmentSearch chooseDep={this.chooseDep}/>
+
+
+ 
+  </div>
+
+          
+
+<DepartmentSearch chooseDep={this.chooseDep}/>
+        </div>
+
+       
+
+
+
+
+        
 
       
 
-        </div>
-        </div>
-        {this.renderFooter()}
-        </div>
+     
+        
+       
+      
+
+       
     </div>
 );
 }
@@ -359,7 +418,7 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
        
           
     
-              {this.renderHeader()}
+      
     
             <div class="ui text container">
               <h1 class="ui inverted header">
@@ -372,7 +431,7 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
   
             <Form   resetClose={this.resetClose} willClose={this.state.willClose} Profanity={this.state.Profanity} Error={this.state.error} email={this.email} useful={this.useful} SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook}  />
           
-              {this.renderFooter()}
+       
         
                 </div>
   
@@ -384,12 +443,7 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
   return(
   
     <div>
-       <div  id="h" class="ui inverted vertical header segment form-page">
-        
-        <img src="https://img.icons8.com/clouds/100/000000/youtube-play.png"/>
-        YouTubeParty!
       
-      </div>
     
       
         
@@ -400,19 +454,7 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
         decrementDB={this.decrementDB} incrementDB={this.incrementDB} Title={this.state.Course}list={this.state.Reviews} />
        
         <Form  useful={this.useful} Profanity={this.state.Profanity} email={this.email} resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
-      
-        <div id="f" class="ui  inverted vertical footer segment form-page">
-      <div class="ui container">
-       
-        <left> By: David George    </left> 
-       <a class="dgbu" href="https://www.linkedin.com/in/david-george-8a0934121/">  <i class=" ui linkedin white icon"> </i> </a>
-       <a class="dgbu" href="https://github.com/dg022/YouTube-Party">  <i class=" ui github white icon"> </i> </a>
-        <left> Support This Project</left> 
-        <a class="dgbu" href="https://www.paypal.me/davidgeorgeuwo">  <i class=" ui paypal white icon"> </i> </a>
-   
-      </div>
-   
-            </div>
+  
       </div>
   
   
@@ -431,16 +473,7 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
   if(this.state.NotFound == false){
       return(
         <div>
-        <div class="pusher">
-          <div class="ui inverted vertical masthead center aligned segment">
-    
-              {this.renderHeader()}
-            <div class="ui text container">
-              <h1 class="ui inverted header">
-                Welcome to Rate Courses UWO
-              </h1>
-              <h3>This platform is designed to provide wholistic reviews of courses offered at Western University</h3>
-              <h4 class = "warning">*Not affiliated with Western University or any of its satellite campuses</h4>
+ 
 
               <div class="ui huge primary button">Find A Course<i class="right arrow icon"></i></div>
               <div  onClick={this.searchDataBase}class="ui huge primary button">Rate A Course<i class="right arrow icon"></i></div>   
@@ -448,14 +481,6 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
               <DepartmentSearch chooseDep={this.chooseDep}/>
               <CourseSearch  selectCourse={this.chooseCourse}  chooseCourse={this.state.Department}/>
             </div>
-          </div>
-         
-
-          
-              {this.renderFooter()}
-        </div>
-                </div>
-
       );
   }
 
