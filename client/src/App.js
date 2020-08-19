@@ -491,7 +491,9 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
       <div>
          <ParticlesBg color="#4f2683" type="circle" bg={true}/>
           
+         <div class="ui grid container">
   
+
             <div id="c" class="ui segment">
             <h1 >
             <center>   Welcome to Rate Courses UWO!</center>
@@ -549,7 +551,7 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
           </div>
   
   
-              
+          </div>   
   
   
   
