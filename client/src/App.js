@@ -160,7 +160,13 @@ email = (em) => {
   this.setState({email:em})
 }
 chooseCourse = (Co) =>{
+  console.log("WOW")
+  if(Co!=""){
+    console.log("WOW")
   this.setState({Course:Co})
+  }else{
+    console.log("You need to select a course")
+  }
   }
   TakeAgain = (Choice) =>{
 
@@ -192,6 +198,7 @@ About = (Abt) =>{
 
 searchDataBase = async () =>{
 
+  if(this.state.Course.length!=0){
 
   let res = await axios.get('/dbr', {
     params: {
@@ -213,7 +220,7 @@ searchDataBase = async () =>{
 
   
 
-
+  }
 
 }
 
@@ -347,48 +354,57 @@ if(this.state.Department == ""){
           <h1 >
           <center>   Welcome to Rate Courses UWO!</center>
           </h1>
-        
-          <div id="d"class="ui list">
-  <a class="item">
-    <i class="sistrix icon"></i>
-    <div class="content">
-      <div class="header">Floated Icon</div>
-      <div class="description">This text will always have a left margin to make sure it sits alongside your icon</div>
-    </div>
-  </a>
-  <a class="item">
-    <i class=" outline thumbs up icon"></i>
-    <div class="content">
-      <div class="header">Floated Icon</div>
-      <div class="description">This text will always have a left margin to make sure it sits alongside your icon</div>
-    </div>
-  </a>
-  <a class="item">
-    <i class="eye icon"></i>
-    <div class="content">
-      <div class="header">Floated Icon</div>
-      <div class="description">This text will always have a left margin to make sure it sits alongside your icon</div>
-    </div>
-  </a>
-  <a class="item">
-  <i class="bullhorn icon"></i> 
-    <div class="content">
-      <div class="header">Floated Icon</div>
-      <div class="description">This text will always have a left margin to make sure it sits alongside your icon</div>
-    </div>
-  </a>
-
-
-
- 
+<div > 
+ <div class="ui mini horizontal statistic">
+  <div class="value">
+    1.
   </div>
+  <div class="label">
+    Pick Department
+  </div>
+</div>
+<br/>
+<div class="ui mini horizontal statistic">
+  <div class="value">
+  2.
+  </div>
+  <div class="label">
+  Pick Course
+  </div>
+</div>
+<br/>
+<div class="ui mini horizontal statistic">
+  <div class="value">
+ 3.
+  </div>
+  <div class="label">
+    Rate and view reviews
+  </div>
+</div>
+<br/>
+<div class="ui mini horizontal statistic">
+  <div class="value">
+ 4.
+  </div>
+  <div class="label">
+Write your own review
+  </div>
+</div>
+</div>
+
+
+    
+
+ <h2 id="dep"> Choose Department</h2>
+  <DepartmentSearch  chooseDep={this.chooseDep}/>  
+
 
           
-
-<DepartmentSearch chooseDep={this.chooseDep}/>
+  
         </div>
 
-       
+
+            
 
 
 
@@ -471,17 +487,91 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
 
 
   if(this.state.NotFound == false){
-      return(
-        <div>
- 
+    return(
+      <div>
+         <ParticlesBg color="#4f2683" type="circle" bg={true}/>
+          
+  
+            <div id="c" class="ui segment">
+            <h1 >
+            <center>   Welcome to Rate Courses UWO!</center>
+            </h1>
+  <div > 
+   <div class="ui mini horizontal statistic">
+    <div class="value">
+      1.
+    </div>
+    <div class="label">
+      Pick Department
+    </div>
+  </div>
+  <br/>
+  <div class="ui mini horizontal statistic">
+    <div class="value">
+    2.
+    </div>
+    <div class="label">
+    Pick Course
+    </div>
+  </div>
+  <br/>
+  <div class="ui mini horizontal statistic">
+    <div class="value">
+   3.
+    </div>
+    <div class="label">
+      Rate and view reviews
+    </div>
+  </div>
+  <br/>
+  <div class="ui mini horizontal statistic">
+    <div class="value">
+   4.
+    </div>
+    <div class="label">
+  Write your own review
+    </div>
+  </div>
+  </div>
+  
+  
+      
+  
+  
 
-              <div class="ui huge primary button">Find A Course<i class="right arrow icon"></i></div>
-              <div  onClick={this.searchDataBase}class="ui huge primary button">Rate A Course<i class="right arrow icon"></i></div>   
+    
+  
+    <h2 id="dep"> Choose Course</h2> 
+    <CourseSearch  selectCourse={this.chooseCourse}  chooseCourse={this.state.Department}/>
+    <div id="depbut" onClick={this.searchDataBase}class="ui huge violet basic button"> Go!<i class="right arrow icon"></i></div>
+            
+    
+          </div>
+  
+  
+              
+  
+  
+  
+  
+          
+  
+        
+  
+       
+          
+         
+        
+  
+         
+      </div>
+  );
 
-              <DepartmentSearch chooseDep={this.chooseDep}/>
-              <CourseSearch  selectCourse={this.chooseCourse}  chooseCourse={this.state.Department}/>
-            </div>
-      );
+
+
+
+
+   
   }
 
 

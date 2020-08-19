@@ -3,6 +3,7 @@ import _ from 'lodash'
 import React from 'react'
 import { Dropdown } from 'semantic-ui-react'
 import { merge } from 'jquery';
+import './Edit.css'
 const Courses = require("./Courses.js"); 
 
 
@@ -12,7 +13,9 @@ const DropdownExampleSearchSelectionTwo = (props) => {
   const exposedCampaignOnChange = (e, {value}) => {
     e.persist();
     
+    console.log("HUH")
     props.selectCourse(e.target.textContent);
+ 
     
   };
 
@@ -39,7 +42,7 @@ const DropdownExampleSearchSelectionTwo = (props) => {
 
 
   return(
-  <Dropdown onChange={exposedCampaignOnChange} placeholder='Search Courses' search selection options={stateOptions} />
+  <Dropdown id="department" onChange={exposedCampaignOnChange} placeholder='Search Courses' search selection options={stateOptions} />
   );
 }
 
