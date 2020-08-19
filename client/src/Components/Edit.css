@@ -4,8 +4,8 @@
 }
 
 #department{
-
-    position: fixed;
+width:20%;
+ margin-top: 10%;
   top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);

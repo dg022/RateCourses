@@ -348,13 +348,12 @@ if(this.state.Department == ""){
   return(
     <div>
        <ParticlesBg color="#4f2683" type="circle" bg={true}/>
-        
-
-          <div id="c" class="ui segment">
-          <h1 >
-          <center>   Welcome to Rate Courses UWO!</center>
-          </h1>
-<div > 
+       <div id="c" class="ui card">
+  <div class="content">
+    <div class="header">Welcome to RateCoursesUWO</div>
+    <div class="meta">By students for students</div>
+    <div class="description">
+    <div > 
  <div class="ui mini horizontal statistic">
   <div class="value">
     1.
@@ -392,33 +391,15 @@ Write your own review
 </div>
 </div>
 
-
-    
-
- <h2 id="dep"> Choose Department</h2>
-  <DepartmentSearch  chooseDep={this.chooseDep}/>  
-
-
-          
+    </div>
+    <h2 id="dep"> Choose Department</h2>
+  <DepartmentSearch  chooseDep={this.chooseDep}/>
+  </div>
   
-        </div>
-
-
-            
-
-
-
-
-        
-
-      
-
-     
-        
-       
-      
+   
 
        
+    </div>
     </div>
 );
 }
@@ -490,15 +471,12 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
     return(
       <div>
          <ParticlesBg color="#4f2683" type="circle" bg={true}/>
-          
-         <div class="ui grid container">
-  
-
-            <div id="c" class="ui segment">
-            <h1 >
-            <center>   Welcome to Rate Courses UWO!</center>
-            </h1>
-  <div > 
+         <div id="c" class="ui card">
+    <div class="content">
+      <div class="header">Welcome to RateCoursesUWO</div>
+      <div class="meta">By students for students</div>
+      <div class="description">
+      <div > 
    <div class="ui mini horizontal statistic">
     <div class="value">
       1.
@@ -536,39 +514,18 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
   </div>
   </div>
   
-  
-      
-  
-  
-
-    
-  
-    <h2 id="dep"> Choose Course</h2> 
+      </div>
+      <h2 id="dep"> Choose Course</h2> 
     <CourseSearch  selectCourse={this.chooseCourse}  chooseCourse={this.state.Department}/>
-    <div id="depbut" onClick={this.searchDataBase}class="ui huge violet basic button"> Go!<i class="right arrow icon"></i></div>
-            
+   <center> <div id="depbut" onClick={this.searchDataBase}class="ui huge violet basic button"> Go!<i class="right arrow icon"></i></div> </center>
+    </div>
     
-          </div>
-  
-  
-          </div>   
-  
-  
-  
-  
-          
-  
-        
-  
-       
-          
-         
-        
+     
   
          
       </div>
+      </div>
   );
-
 
 
 
