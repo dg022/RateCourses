@@ -2,7 +2,9 @@ import faker from 'faker'
 import _ from 'lodash'
 import React from 'react'
 import { Dropdown } from 'semantic-ui-react'
+import './Edit.css'
 const Courses = require("./Courses.js"); 
+
 
 
 
@@ -56,7 +58,7 @@ const stateOptions = _.map(keys, (state, index) => ({
 
 
   return(
-  <Dropdown  onChange={exposedCampaignOnChange} placeholder='Deparment' search selection options={stateOptions} />
+  <Dropdown  id="department" onChange={exposedCampaignOnChange} placeholder='Deparment' search selection options={stateOptions} />
   ); 
 
 

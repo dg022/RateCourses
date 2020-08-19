@@ -83,10 +83,22 @@
       }
     }
 
+   
+#dep{
+
+  text-align: center;
+}
+#depbut{
+  position: fixed;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
     #c {
 
-      height: 30%;
-      width: 50%;
+      height: 50%;
+      width: 25%;
       position: fixed;
       top: 50%;
       left: 50%;
@@ -97,7 +109,7 @@
   
   #d {
 
-    margin-top: 2%;
+  
     position: fixed;
     top: 50%;
     left: 50%;
