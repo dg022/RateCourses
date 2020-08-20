@@ -62,12 +62,10 @@ const ReviewList = (props) => {
    
 
 
-        <div> 
+        <div  > 
         <div class="ui statistic">
         
           <div class="value">
-          
-          <Star value={ ((average/count)).toFixed(1)} />
            {(average/count).toFixed(1) }/5.0
           </div>
          

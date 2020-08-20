@@ -14,7 +14,7 @@
   margin-left: auto;
   margin-right: auto;
   width: 40%;
-  margin-top: 5%;
+
 
 }
 
@@ -38,7 +38,7 @@
 }
 #ir{
 
-    background: rgb(233, 233, 233);
+    background: rgb(233, 233, 233); 
     padding: 5%;
 }
 
@@ -96,7 +96,7 @@
     #Review {
         margin: auto;
         margin-top:2%;width: 80%;
-        margin-bottom: 5% !important;
+        margin-bottom: 0% !important;
         
         padding: 10px;
       
@@ -131,7 +131,7 @@
         margin-top: 1rem;
         margin-bottom: -1rem;
         margin-left: 5rem;
-        margin-right: -9rem;
+        margin-right: -1rem;
     }
    
     
