@@ -47,18 +47,18 @@ class ModalExampleCloseConfig extends Component {
 
  
   componentDidMount(){
-    document.getElementsByTagName('canvas')[0].style.height = document.body.scrollHeight.toString()+"px"
+    
     var newEl = document.querySelector('#but');
     var ref  = document.querySelector('#seg');
     this.insertAfter(newEl, ref);
     window.onresize = (event) =>{
 
       document.getElementsByTagName('canvas')[0].style.height = document.body.scrollHeight.toString()+"px"
-
+      document.getElementsByTagName('canvas')[0].style.width = document.body.clientWidth.toString()+"px"
+      document.querySelector('#seg').style.width = document.body.clientWidth.toString()+"px"
     }
-
-
-
+    document.getElementsByTagName('canvas')[0].style.height = document.body.scrollHeight.toString()+"px"
+    document.getElementsByTagName('canvas')[0].style.width = document.body.scrollWidth.toString()+"px"
     
   }
 
@@ -74,9 +74,8 @@ class ModalExampleCloseConfig extends Component {
     return (
       <div>
       
-        <Button id="but" size='massive' onClick={this.closeConfigShow(true, false)}>
-          Add a review!
-        </Button>
+        
+        <div id="but" onClick={this.closeConfigShow(true, false)} class="ui huge  violet basic button">  Add a review! <i class="right arrow icon"></i></div> 
 
         <Modal
           open={open}
