@@ -63,7 +63,7 @@ const ReviewList = (props) => {
 
 
         <div  > 
-        <div class="ui statistic">
+        <div  id="stat" class="ui statistic">
         
           <div class="value">
            {(average/count).toFixed(1) }/5.0
@@ -79,7 +79,7 @@ const ReviewList = (props) => {
    
 
 
-        <div class="ui statistic">
+        <div id="stat" class="ui statistic">
           <div class="value">
           <i class="check circle outline icon "></i>  {((countYes/count)*100).toFixed(0)}% 
           </div>
@@ -90,7 +90,7 @@ const ReviewList = (props) => {
 
 
         
-        <div class="ui statistic">
+        <div id="stat" class="ui statistic">
           <div class="value">
           <i class="thumbs up outline icon"></i> {((useful/count)*100).toFixed(0)}% 
           </div>
@@ -100,7 +100,7 @@ const ReviewList = (props) => {
         </div>
 
 
-        <div class="ui statistic">
+        <div id="stat" class="ui statistic">
           <div class="value">
           <i class="book icon small"></i>  {((countYesText/count)*100).toFixed(0)}% 
           </div>
