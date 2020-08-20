@@ -43,29 +43,29 @@ class ModalExampleCloseConfig extends Component {
 
   }
 
-  componentDidMount(){
 
+
+ 
+  componentDidMount(){
+    document.getElementsByTagName('canvas')[0].style.height = document.body.scrollHeight.toString()+"px"
     var newEl = document.querySelector('#but');
     var ref  = document.querySelector('#seg');
     this.insertAfter(newEl, ref);
-
-
+    window.onresize = (event) =>{
 
       document.getElementsByTagName('canvas')[0].style.height = document.body.scrollHeight.toString()+"px"
 
-      window.onorientationchange = function(event) { 
-        console.log(document.body.scrollHeight)
-         document.getElementsByTagName('canvas')[0].style.height = document.body.scrollHeight.toString()+"px"
-      };
+    }
+
+
+
     
-
-
   }
 
   
   render() {
 
-    document.getElementsByTagName('canvas')[0].style.height = document.body.scrollHeight.toString()+"px"
+   
   
     const { open, closeOnEscape, closeOnDimmerClick } = this.state
 
