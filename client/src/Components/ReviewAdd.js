@@ -55,7 +55,7 @@ class ModalExampleCloseConfig extends Component {
 
       document.getElementsByTagName('canvas')[0].style.height = document.body.scrollHeight.toString()+"px"
       document.getElementsByTagName('canvas')[0].style.width = document.body.clientWidth.toString()+"px"
-      document.querySelector('#seg').style.width = document.body.clientWidth.toString()+"px"
+     
     }
     document.getElementsByTagName('canvas')[0].style.height = document.body.scrollHeight.toString()+"px"
     document.getElementsByTagName('canvas')[0].style.width = document.body.scrollWidth.toString()+"px"
