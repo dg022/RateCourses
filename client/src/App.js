@@ -102,6 +102,7 @@ SubmitForm = async () =>{
 
 
 
+
   
 
 
@@ -305,6 +306,11 @@ renderHeader = () => {
 }
 
 
+changeBackground = () => {
+
+  document.getElementsByTagName('canvas')[0].style.height = document.body.scrollHeight.toString()+"px"
+}
+
 
 renderFooter  = () => {
 
@@ -412,6 +418,7 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
   
         <div>
          
+         <ParticlesBg color="#4f2683" type="circle" bg={true}/>
        
           
     
@@ -425,7 +432,6 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
           
   
   
-  
             <Form   resetClose={this.resetClose} willClose={this.state.willClose} Profanity={this.state.Profanity} Error={this.state.error} email={this.email} useful={this.useful} SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook}  />
           
        
@@ -436,22 +442,26 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
       );
   
   }
+
+
   
   return(
   
     <div>
-      
-    
+     
+      <ParticlesBg color="#4f2683" type="circle" bg={true}/>
+     
       
         
         <ReviewList
-
+     
         
       
         decrementDB={this.decrementDB} incrementDB={this.incrementDB} Title={this.state.Course}list={this.state.Reviews} />
+         
        
         <Form  useful={this.useful} Profanity={this.state.Profanity} email={this.email} resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
-  
+        { this.changeBackground()}
       </div>
   
   
