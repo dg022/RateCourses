@@ -75,7 +75,7 @@ class ModalExampleCloseConfig extends Component {
       <div>
       
         
-        <div id="but" onClick={this.closeConfigShow(true, false)} class="ui huge  violet basic button">  Add a review! <i class="right arrow icon"></i></div> 
+        <div id="but" onClick={this.closeConfigShow(true, false)} class="ui huge  white button">  Add a review! <i class="right arrow icon"></i></div> 
 
         <Modal
           open={open}
