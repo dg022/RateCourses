@@ -50,11 +50,22 @@ class ModalExampleCloseConfig extends Component {
     this.insertAfter(newEl, ref);
 
 
+
+      document.getElementsByTagName('canvas')[0].style.height = document.body.scrollHeight.toString()+"px"
+
+      window.onorientationchange = function(event) { 
+        console.log(document.body.scrollHeight)
+         document.getElementsByTagName('canvas')[0].style.height = document.body.scrollHeight.toString()+"px"
+      };
+    
+
+
   }
 
-
+  
   render() {
 
+    document.getElementsByTagName('canvas')[0].style.height = document.body.scrollHeight.toString()+"px"
   
     const { open, closeOnEscape, closeOnDimmerClick } = this.state
 

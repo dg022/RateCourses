@@ -4,6 +4,7 @@ import SingleReview from './SingleReview';
 import "./Review.css";
 import Star from './Stars'; 
 import { Button } from 'semantic-ui-react'
+import ParticlesBg from "particles-bg";
 
 var  average = 0;
 var count  = 0; 
@@ -49,6 +50,8 @@ const ReviewList = (props) => {
 
   return (
     <div> 
+
+      
       <div id="seg"class="ui segment" >
 
       
@@ -116,7 +119,11 @@ const ReviewList = (props) => {
         </div>
 
         
-        <div id="Review"className="ui items "> {images}</div>
+        <div id="Review"className="ui items "> 
+    
+        {images}
+       
+        </div>
 
     
 

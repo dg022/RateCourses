@@ -86,19 +86,14 @@
    
 #dep{
 
+  margin-bottom: 10%;
   text-align: center;
 }
-#depbut{
-  position: fixed;
-  top: 85%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+
 
     #c {
 
-      height: 50%;
-      width: 25%;
+      
       position: fixed;
       top: 50%;
       left: 50%;
@@ -114,6 +109,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+}
+
+#part{
+
 
 }
     .dgbu{
@@ -164,21 +164,3 @@
 
 
 
-@media only screen and (max-width: 650px) and (min-width:300px){
-
-
-  
-  #c {
-
-    height: 80%;
-    width: 70%;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-}
-
-
-  
-}
