@@ -102,10 +102,11 @@ SendEmail = async () => {
     if(!this.state.message){
         return(
         <Modal.Actions>
-              
+        <center>
         <Button
         onClick={this.Submitclose}
         positive
+        id="SWAG"
         labelPosition='right'
         icon='checkmark'
         content='Submit'
@@ -114,11 +115,12 @@ SendEmail = async () => {
     <Button
         onClick={this.SendEmail}
         yellow
+        id="SWAG"
         labelPosition='right'
         icon='question circle outline'
         content='Forgot Code?'
         />
-
+ </center> 
   
 
 
