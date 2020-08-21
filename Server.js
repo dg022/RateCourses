@@ -29,7 +29,7 @@ app.get('/', function (req, res) {
 
 app.get('/edit', async (req, res) => {
 
-  console.log("I got here")
+  
 
   //courseTitle: this.state.Course,
   //review:list, 
@@ -37,9 +37,9 @@ app.get('/edit', async (req, res) => {
 
   const id =  req.query.id
   const title =  req.query.courseTitle
-  console.log(title)
+  
   const doc = await Codes.findOne({"courseTitle":title});
-  console.log(doc)
+
   const list  = doc.review; 
 
 
@@ -47,7 +47,7 @@ app.get('/edit', async (req, res) => {
   for(var i = 0; i < list.length; i++){
 
     if(list[i].id == id){ 
-      console.log("this happened")
+      
       var obj = JSON.parse(req.query.review)
       doc.review[i] = obj; 
       await doc.save(); 
@@ -153,7 +153,7 @@ app.get('/delete', async (req, res) => {
   if(arr.length == 0){
   doc.review = arr;
   res.send(arr);
-   console.log(await Codes.deleteOne({ "_id":doc._id}));
+  
 
    //Model.remove({ _id: req.query._id }, function(err) {
     //if (!err) {
@@ -210,22 +210,39 @@ app.get('/findid', async (req, res) => {
 
 });
 
+app.get('/checkEmail', async (req, res) => {
+
+
+  const doc = await Codes.findOne({"courseTitle":req.query.courseTitle});
+  var newList  = doc.review; 
+  
+  var obj = JSON.parse(req.query.review)
+  console.log(obj.email)
+  for(var i = 0; i < newList.length; i++){
+  
+    if(newList[i].email == obj.email){ 
+  
+      res.send(false)
+      console.log("this EMAIL error ")
+      return; 
+    }
+  
+  }
+  
+res.send(true); 
+
+
+  });
+
 
 
 
 app.get('/dbrAdd', async (req, res) => {
 
-  //1. If the database is empty for a specfic course, we want to add it, place the overall, % who needed textbook, %would take again, increment number of revierws
-  //2. If the database is NOT empty for a specfic course, 
-    // a) We want to add it to the list 
-    // b) Calculate the new overall rating 
-    // c) Calculate the % who needed the textbook
-    // d) Calcualte the % that would take it again
-    // e) Increment the number of reviewrs
 
 
     var obj = JSON.parse(req.query.review)
-    console.log(obj)
+  
  
     
    
@@ -235,7 +252,7 @@ app.get('/dbrAdd', async (req, res) => {
     query = async () =>{
 
       const loc = await Codes.findOne({"courseTitle":req.query.courseTitle})
-      console.log(loc)
+      
      res.send(loc);
 
     }
@@ -264,12 +281,16 @@ app.get('/dbrAdd', async (req, res) => {
 
   }else{
 
+
+
     const doc = await Codes.findOne({"courseTitle":req.query.courseTitle});
     var newList  = doc.review; 
+   
+
+ 
     newList.push(obj); 
     doc.review =  newList;
     await doc.save(); 
-
     res.send(doc);
 
   }
@@ -293,7 +314,7 @@ app.get('/dbr', async (req, res) => {
  if(await Codes.exists({ courseTitle: req.query.department })){
 
   doc = await Codes.findOne({"courseTitle":req.query.department});
-  console.log(doc)
+  
 
   res.send(doc);
 
