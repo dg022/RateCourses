@@ -51,6 +51,11 @@ class ModalExampleCloseConfig extends Component {
     var newEl = document.querySelector('#but');
     var ref  = document.querySelector('#seg');
     this.insertAfter(newEl, ref);
+
+    if(document.querySelector('#stat') == null){
+      document.querySelector("#but").style.width = "100%"
+
+    }
     window.onresize = (event) =>{
 
       document.getElementsByTagName('canvas')[0].style.height = document.body.scrollHeight.toString()+"px"

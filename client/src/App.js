@@ -312,6 +312,9 @@ changeBackground = () => {
   document.getElementsByTagName('canvas')[0].style.height = document.body.scrollHeight.toString()+"px"
 }
 
+changeWidth = ()=> {
+  document.querySelector("#but").style.width = "100%"
+}
 
 renderFooter  = () => {
 
@@ -415,28 +418,38 @@ Write your own review
 if( this.state.Reviews.length!=0 || this.state.NotFound == true){
 
   if(this.state.Reviews.length==0){
+
+
       return(
+
+        
   
         <div>
-         
-         <ParticlesBg color="#4f2683" type="circle" bg={true}/>
-       
-          
-    
-      
-    
-            <div class="ui text container">
-              <h1 class="ui inverted header">
-                No reviews for {this.state.Course} are on record! Be the first!
-              </h1>
-            </div>
-          
-  
-  
-            <Form   resetClose={this.resetClose} willClose={this.state.willClose} Profanity={this.state.Profanity} Error={this.state.error} email={this.email} useful={this.useful} SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook}  />
-          
-       
         
+         <ParticlesBg color="#4f2683" type="circle" bg={true}/>
+     
+         <div id="e" class="ui card">
+         <div class="content">
+    <div class="header"> <center> {this.state.Course}</center></div>
+    </div>
+
+        
+          </div>
+      
+         <div id="c" class="ui card">
+         <div class="content">
+    <div class="header"> <center> Be the first Review!</center></div>
+    </div>
+    <div class="description"> 
+    <Form   resetClose={this.resetClose} willClose={this.state.willClose} Profanity={this.state.Profanity} Error={this.state.error} email={this.email} useful={this.useful} SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook}  />
+    </div>
+        
+          </div>
+          
+  
+  
+           
+       
                 </div>
   
   
