@@ -1,6 +1,13 @@
 .ui.active.modal.edit  {
-    display: block;
-    width: 25% !important ;
+    display: block; 
+    
+    
+
+}
+
+
+#SWAG{
+    margin:1%;
 }
 
 #department{

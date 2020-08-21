@@ -259,22 +259,27 @@ sendFeedback =  (templateId, variables) => {
     if(!this.state.message){
         return(
         <Modal.Actions>
-              
+        <center>
         <Button
+        id="SWAG"
         onClick={this.Submitclose}
         positive
         labelPosition='right'
         icon='checkmark'
         content='Submit'
+        
         />
     
     <Button
         onClick={this.SendEmail}
+        id="SWAG"
         yellow
         labelPosition='right'
         icon='question circle outline'
         content='Forgot Code?'
         />
+
+    </center>
 
   
 
@@ -325,7 +330,8 @@ sendFeedback =  (templateId, variables) => {
                 <Forms 
                 tbval={this.props.data.isTextBook} 
                 dval={this.props.data.difficulty} 
-                taval={this.props.data.takeAgain} 
+                taval={this.props.data.takeAgain}
+                eval={this.props.data.email}
                 aval={this.props.data.body} 
                 uval={this.props.data.useful}
                 email={this.email}
