@@ -44,6 +44,7 @@ class App extends React.Component {
     id:"",
     useful:"",
     Profanity:false,
+    EmailCheck:false,
     token:""
 
   };
@@ -69,11 +70,16 @@ SubmitForm = async () =>{
 
 
   var check = validator.validate(this.state.email); // true
- var profanity =  swearjar.profane(this.state.About); 
+  var profanity =  swearjar.profane(this.state.About); 
+  var email = await this.checkEmail()
+  
  
  
-  if(this.state.TakeAgain!="" && this.state.Difficulty!=null && this.state.TextBook!="" && check && !profanity&& this.state.useful!="" && this.state.About.length <=600){
+  if(email&& this.state.TakeAgain!="" && this.state.Difficulty!=null && this.state.TextBook!="" && check && !profanity&& this.state.useful!="" && this.state.About.length <=600){
     this.setState({error:0})
+  
+    this.setState({EmailCheck:false})
+    this.setState({Profanity:false})
     this.setState({willClose:1})
     this.AddToDataBase();
     // if it passes all these tests, that means we are good to send the edit code to the email right away. 
@@ -90,10 +96,34 @@ SubmitForm = async () =>{
       this.setState({Profanity:true})
     }
 
-    if(this.state.TakeAgain=="" || this.state.Difficulty==null || this.state.TextBook==""  || this.state.About.length > 600|| this.state.useful!="")
+    if(!email){
+
+      this.setState({EmailCheck:true})
+    }
+
+    if(!profanity){
+     
+      this.setState({Profanity:false})
+    }
+
+    if(email){
+
+      this.setState({EmailCheck:false})
+    }
+
+    if( this.state.TakeAgain=="" || this.state.Difficulty==null || this.state.TextBook==""  || this.state.About.length > 600|| this.state.useful==""){
 
     this.setState({error:1}); 
+    }
+
+    if( this.state.TakeAgain!="" || this.state.Difficulty!=null || this.state.TextBook!=""  || this.state.About.length <= 600|| this.state.useful!=""){
+
+      this.setState({error:0}); 
+      }
+
   }
+
+ 
 
 }
 
@@ -196,6 +226,27 @@ About = (Abt) =>{
    
    
 
+checkEmail = async() => {
+
+  const list = {
+    "email":this.state.email,
+  };
+
+  let res = await axios.get('/checkEmail', {
+    params: {
+      courseTitle: this.state.Course,
+      review:list, 
+    }
+  });
+
+
+  return(res.data)
+
+
+}
+
+
+
 searchDataBase = async () =>{
 
   if(this.state.Course.length!=0){
@@ -255,9 +306,6 @@ AddToDataBase = async () =>{
     }
   });
    
-
-
-
   this.setState({ 
     Reviews: []
   })
@@ -267,7 +315,7 @@ AddToDataBase = async () =>{
   })
 
   const templateId = 'template_swHMraBb';
-  this.sendFeedback(templateId, {message_html: c, from_name: "David", reply_to: this.state.email})
+ this.sendFeedback(templateId, {message_html: c, from_name: "David", reply_to: this.state.email})
 
 
 
@@ -441,7 +489,7 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
     <div class="header"> <center> Be the first Review!</center></div>
     </div>
     <div class="description"> 
-    <Form   resetClose={this.resetClose} willClose={this.state.willClose} Profanity={this.state.Profanity} Error={this.state.error} email={this.email} useful={this.useful} SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook}  />
+    <Form   resetClose={this.resetClose} willClose={this.state.willClose} EmailCheck={this.state.EmailCheck} Profanity={this.state.Profanity} Error={this.state.error} email={this.email} useful={this.useful} SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook}  />
     </div>
         
           </div>
@@ -474,7 +522,7 @@ if( this.state.Reviews.length!=0 || this.state.NotFound == true){
         decrementDB={this.decrementDB} incrementDB={this.incrementDB} Title={this.state.Course}list={this.state.Reviews} />
          
        
-        <Form  useful={this.useful} Profanity={this.state.Profanity} email={this.email} resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
+        <Form  useful={this.useful} Profanity={this.state.Profanity} EmailCheck={this.state.EmailCheck} email={this.email} resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
         { this.changeBackground()}
       </div>
   

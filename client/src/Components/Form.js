@@ -53,14 +53,30 @@ class FormExampleForm extends React.Component {
 
   const rendersMsg = () =>{
 
-    console.log(this.props.Profanity)
+    
 
-    if(this.props.Error!=1 && !this.props.Profanity){
+    if(this.props.Error!=1 && !this.props.Profanity && !this.props.EmailCheck){
       return;
     }
 
 
-    if(this.props.Error == 1 && this.props.Profanity){
+    if(this.props.Error == 1 && this.props.Profanity && this.props.EmailCheck){
+
+      return(
+        <Message negative>
+        <Message.Header>Invalid Submission</Message.Header>
+        <p>Email already in use</p>
+        <p>Relax, no swearing be nice!</p>
+        <p>Make sure you fill out all the mandatory fields!</p>
+        <p>Just in case, make sure your review is 600 characters or less</p>
+    
+      </Message>
+
+
+      );
+    }
+
+    if(this.props.Error == 1 && this.props.Profanity ){
 
       return(
         <Message negative>
@@ -75,6 +91,43 @@ class FormExampleForm extends React.Component {
       );
     }
 
+    
+    if(this.props.EmailCheck && this.props.Profanity ){
+
+      return(
+        <Message negative>
+        <Message.Header>Invalid Submission</Message.Header>
+        <p>Email already in use</p>
+        <p>Relax, no swearing be nice!</p>
+     
+      </Message>
+
+
+      );
+    }
+
+    if(this.props.EmailCheck  && this.props.Error==1 ){
+
+      return(
+        <Message negative>
+        <Message.Header>Invalid Submission</Message.Header>
+        <p>Email already in use</p>
+        <p>Make sure you fill out all the mandatory fields!</p>
+        <p>Just in case, make sure your review is 600 characters or less</p>
+     
+      </Message>
+
+
+      );
+    }
+
+
+
+
+
+
+
+
     if(this.props.Error==1){
 
       return(
@@ -82,6 +135,25 @@ class FormExampleForm extends React.Component {
         <Message.Header>Invalid Submission</Message.Header>
         <p>Make sure you fill out all the mandatory fields!</p>
         <p>Just in case, make sure your review is 600 characters or less</p>
+    
+      </Message>
+
+
+      );
+
+
+    }
+
+    if(this.props.EmailCheck){
+
+
+
+
+
+      return(
+        <Message negative>
+        <Message.Header>Invalid Submission</Message.Header>
+        <p>Email already in use</p>
     
       </Message>
 
@@ -140,7 +212,7 @@ if(this.state.tbval!=null){
 
 </Form.Field>
 <Form.Field
-            label='How difficult was the course?'    
+            label='How Easy was the course?'    
           />
       <Scale Difficulty={this.props.Difficulty} dval={this.state.dval}/>
       <Form.Field
@@ -201,7 +273,7 @@ console.log(this.props)
 
 </Form.Field>
 <Form.Field
-            label='How difficult was the course?'    
+            label='How Easy was the course?'    
           />
       <Scale Difficulty={this.props.Difficulty}/>
       <Form.Field

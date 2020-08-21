@@ -11,6 +11,7 @@ import Delete from './Delete';
 
 
 
+
 function toNumberString(num) { 
 
   if (Number.isInteger(num)) { 
@@ -130,7 +131,7 @@ if(this.state.diff!=null){
             <div class="content">
 
               <div class="meta">
-                <span>Difficulty: {toNumberString(this.state.diff)}</span>
+                <span>Easiness : {toNumberString(this.state.diff)}</span>
               </div>
               <div class="meta"> 
                 <span>Would Take Again: {this.state.takeAgain}</span>

@@ -6,7 +6,8 @@ import './Review.css';
 class ModalExampleCloseConfig extends Component {
   state = { 
     open: false,
-    Profanity:this.props.Profanity
+    Profanity:this.props.Profanity,
+    EmailCheck:this.props.EmailCheck
   
   }
 
@@ -38,6 +39,11 @@ class ModalExampleCloseConfig extends Component {
 
     if(nextProps.Profanity == true){
       this.setState({Profanity:true })
+
+    }
+
+    if(nextProps.EmailCheck == true){
+      this.setState({EmailCheck:true })
 
     }
 
@@ -88,10 +94,11 @@ class ModalExampleCloseConfig extends Component {
           closeOnDimmerClick={closeOnDimmerClick}
           onClose={this.close} 
         >
-          <Modal.Header>Delete Your Account</Modal.Header>
+          <Modal.Header> Create Reivew</Modal.Header>
           <Modal.Content>
           <Form Error={this.props.Error}
             Profanity={this.state.Profanity}   
+            EmailCheck={this.state.EmailCheck}
             TextBook={this.props.TextBook} 
             Difficulty={this.props.Difficulty} 
             TakeAgain={this.props.TakeAgain}   

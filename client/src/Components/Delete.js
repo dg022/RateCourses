@@ -31,8 +31,8 @@ SendEmail = async () => {
     }});
 
     console.log("email would have sent")
-    //const templateId = 'template_swHMraBb';
-    //this.sendFeedback(templateId, {message_html: this.state.id, from_name: "David", reply_to: res.data})
+    const templateId = 'template_swHMraBb';
+    this.sendFeedback(templateId, {message_html: this.state.id, from_name: "David", reply_to: res.data})
 
     this.setState({sent:true})
     // Here you need to send some kind of message, so that it says "email sent sucessfully"
