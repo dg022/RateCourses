@@ -16,6 +16,8 @@ var Codes = mongoose.model('Codes', Posts.model);
 
 app.use(express.static(path.join(__dirname, "client", "build")))
 
+app.set(process.env.PORT)
+
 
 
 
