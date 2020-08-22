@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
+    "build":"cd client && npm run build",
+    "install-client":"cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
     "server": "node server.js",
     "client": "npm run start --prefix client",
-    "start": "NODE_ENV=production node server.js"
+    "start": "node server.js"
   },
   "engines": {
     "npm": "6.9.0",
