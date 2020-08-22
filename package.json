@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
+    "start": "node server.js",
     "server": "node server.js",
     "client": "npm run start --prefix client",
-    "start": "concurrently  \"npm run client \" \"npm run server\"   "
+    "star": "concurrently  \"npm run client \" \"npm run server\"   "
   },
   "engines": {
     "npm": "6.9.0",

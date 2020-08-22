@@ -14,7 +14,7 @@ mongoose.connect(cons, { useNewUrlParser: true });
 var Codes = mongoose.model('Codes', Posts.model);
 
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, "client", "build")))
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
@@ -330,5 +330,8 @@ app.get('/dbr', async (req, res) => {
 });
 
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 app.listen(process.env.PORT || 8080);
