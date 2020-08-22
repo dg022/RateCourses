@@ -16,7 +16,7 @@ var Codes = mongoose.model('Codes', Posts.model);
 
 app.use(express.static(path.join(__dirname, "client", "build")))
 
-app.set(process.env.PORT)
+
 
 
 
@@ -325,4 +325,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
-app.listen(process.env.PORT);
+const PORT = process.env.PORT || 1337;
+app.listen(PORT, () => {
+  console.log(`Mixing it up on port ${PORT}`);
+});
