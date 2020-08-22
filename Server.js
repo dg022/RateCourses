@@ -15,10 +15,6 @@ var Codes = mongoose.model('Codes', Posts.model);
 
 
 app.use(express.static(path.join(__dirname, "client", "build")))
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
 
 
 
@@ -155,13 +151,6 @@ app.get('/delete', async (req, res) => {
   res.send(arr);
   
 
-   //Model.remove({ _id: req.query._id }, function(err) {
-    //if (!err) {
-        //    message.type = 'notification!';
-   //}
-    ///else {
-      //      message.type = 'error';
-    //}
 
    await doc.save(); 
    return; 
