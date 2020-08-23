@@ -8,8 +8,8 @@ const app = express();
 var cons= ""; 
 const  Posts = require("./models/model.js")
 var mongoose = require("mongoose");
-if(process.env.MONGODB_URI!=null){
- cons = process.env.MONGODB_URI
+if(process.env.MONGO!=null){
+ cons = process.env.MONGO
 }else{
   const config = require("./config/config.js");
   cons = config.KEY
