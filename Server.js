@@ -8,11 +8,13 @@ const app = express();
 var cons= ""; 
 const  Posts = require("./models/model.js")
 var mongoose = require("mongoose");
+const config = require("./config/config.js");
+var cons= process.env.MONGO||config.KEY;
 if(process.env.MONGO!=null){
  cons = process.env.MONGO
-}else{
-  const config = require("./config/config.js");
-  cons = config.KEY
+ app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 }
 
 
@@ -210,9 +212,14 @@ app.get('/findid', async (req, res) => {
 
 app.get('/checkEmail', async (req, res) => {
 
+  
 
   const doc = await Codes.findOne({"courseTitle":req.query.courseTitle});
+  if(doc==null){
+    res.send(true);
+  }
   var newList  = doc.review; 
+ 
   
   var obj = JSON.parse(req.query.review)
   console.log(obj.email)
@@ -260,14 +267,15 @@ app.get('/dbrAdd', async (req, res) => {
   if(!(await Codes.exists({"courseTitle":req.query.courseTitle })))  {
    
 
-    var newUser = new Codes({"courseTitle":req.query.courseTitle, "review":[obj]}); // you also need here to define _id since, since you set it as required.
+    var newUser = new Codes({"courseTitle":req.query.courseTitle, "review":[obj]});
+    console.log(obj) // you also need here to define _id since, since you set it as required.
     newUser.save(function(err, result){
         if(err){
            console.log(err)
         }else{
 
     
-         this.query();
+          this.query();
 
          
           
@@ -328,11 +336,9 @@ app.get('/dbr', async (req, res) => {
 });
 
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
 
-const PORT = process.env.PORT || 1337;
+
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Mixing it up on port ${PORT}`);
 });

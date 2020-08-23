@@ -17,7 +17,7 @@ class ModalExampleCloseConfig extends Component {
 
   close = () => {
     
-   
+   console.log("attempting to submit the form")
     this.props.SubmitForm()
   
   }
