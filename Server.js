@@ -7,6 +7,8 @@ const path = require('path');
 const app = express();
 var cons= ""; 
 const  Posts = require("./models/model.js")
+var mongoose = require("mongoose");
+
 //const config = require("./config/config.js");
 var cons= process.env.MONGO//||config.KEY;
 if(process.env.MONGO!=null){
