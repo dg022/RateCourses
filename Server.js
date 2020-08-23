@@ -10,9 +10,9 @@ const  Posts = require("./models/model.js")
 var mongoose = require("mongoose");
 
 //const config = require("./config/config.js");
-var cons= process.env.MONGO//||config.KEY;
-if(process.env.MONGO!=null){
- cons = process.env.MONGO
+var cons= process.env.MOGNO//||config.KEY;
+if(process.env.MOGNO!=null){
+ cons = process.env.MOGNO
  app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
