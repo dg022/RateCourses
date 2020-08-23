@@ -5,8 +5,9 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const path = require('path');
 const app = express();
-const config = require("./config/config.js"); 
-const cons =  process.env.MONGO || config.KEY;
+//const config = require("./config/config.js"); 
+const cons =  process.env.MONGO 
+//|| config.KEY;
 const  Posts = require("./models/model.js")
 var mongoose = require("mongoose");
 mongoose.connect(cons, { useNewUrlParser: true });

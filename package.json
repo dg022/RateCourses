@@ -7,9 +7,9 @@
     "build":"cd client && npm run build",
     "install-client":"cd client && npm install",
     "heroku-postbuild": "npm run install-client && npm run build",
-    "server": "node server.js",
+    "server": "node Server.js",
     "client": "npm run start --prefix client",
-    "start": "node server.js"
+    "start": "node Server.js"
   },
   "engines": {
     "npm": "6.9.0",
