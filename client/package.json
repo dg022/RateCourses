@@ -35,7 +35,6 @@
     "npm": "6.9.0",
     "node": "10.16.3"
   },
-  "proxy": "http://localhost:8080",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
