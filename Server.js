@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 const path = require('path');
 const app = express();
 //const config = require("./config/config.js"); 
-const cons =  process.env.MONGO 
+const cons =  "mongodb+srv://davidg022:hxW7DMKbaUt5NW4T@cluster0.i1xkc.mongodb.net/Reviews?retryWrites=true&w=majority" 
 //|| config.KEY;
 const  Posts = require("./models/model.js")
 var mongoose = require("mongoose");
