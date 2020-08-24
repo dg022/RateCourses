@@ -16,7 +16,19 @@
   width: 40%;
 
 
+
 }
+
+#beforebut{
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    margin-top: 0.2%;
+  
+  
+  }
 
 
 .ui.input.yolo {

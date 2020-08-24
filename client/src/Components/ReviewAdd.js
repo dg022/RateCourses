@@ -51,15 +51,25 @@ class ModalExampleCloseConfig extends Component {
 
 
 
- 
+ back = ()=>{
+
+  this.props.back();
+
+ }
   componentDidMount(){
     
     var newEl = document.querySelector('#but');
     var ref  = document.querySelector('#seg');
     this.insertAfter(newEl, ref);
 
+    var newEl = document.querySelector('#beforebut');
+    var ref  = document.querySelector('#but');
+    this.insertAfter(newEl, ref);
+
+
     if(document.querySelector('#stat') == null){
       document.querySelector("#but").style.width = "100%"
+      document.querySelector("#beforebut").style.width = "100%"
 
     }
     window.onresize = (event) =>{
@@ -84,9 +94,9 @@ class ModalExampleCloseConfig extends Component {
 
     return (
       <div>
-      
+      <div id="beforebut" onClick={this.closeConfigShow(true, false)} class="ui huge  white button">  Add  Review! <i class="right arrow icon"></i></div> 
+      <div id="but"  onClick={this.back}  class="ui huge red button"> Back   <i class="left arrow icon"></i></div>
         
-        <div id="but" onClick={this.closeConfigShow(true, false)} class="ui huge  white button">  Add a review! <i class="right arrow icon"></i></div> 
 
         <Modal
           open={open}

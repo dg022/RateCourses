@@ -53,6 +53,10 @@ chooseDep = (Dep) =>{
 this.setState({Department:Dep})
 }
 
+back=()=>{
+  window.location.reload()
+ 
+}
 
 sendFeedback =  (templateId, variables) => {
   window.emailjs.send(
@@ -276,6 +280,10 @@ searchDataBase = async () =>{
 }
 
 
+
+goBack = ()=>{
+  this.setState({Department:""})
+}
 AddToDataBase = async () =>{
 
   var c = this.makeid(7)
@@ -403,8 +411,11 @@ render(){
 
 if(this.state.Department == ""){
 
+ 
+
   return(
     <div>
+     
        <ParticlesBg color="#4f2683" type="circle" bg={true}/>
        <div id="c" class="ui card">
   <div class="content">
@@ -489,7 +500,7 @@ if(this.state.Reviews.length!=0 || this.state.NotFound == true){
     <div class="header"> <center> Be the first Review!</center></div>
     </div>
     <div class="description"> 
-    <Form   resetClose={this.resetClose} willClose={this.state.willClose} EmailCheck={this.state.EmailCheck} Profanity={this.state.Profanity} Error={this.state.error} email={this.email} useful={this.useful} SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook}  />
+    <Form   back ={this.back}resetClose={this.resetClose} willClose={this.state.willClose} EmailCheck={this.state.EmailCheck} Profanity={this.state.Profanity} Error={this.state.error} email={this.email} useful={this.useful} SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook}  />
     </div>
         
           </div>
@@ -522,7 +533,7 @@ if(this.state.Reviews.length!=0 || this.state.NotFound == true){
         decrementDB={this.decrementDB} incrementDB={this.incrementDB} Title={this.state.Course}list={this.state.Reviews} />
          
        
-        <Form  useful={this.useful} Profanity={this.state.Profanity} EmailCheck={this.state.EmailCheck} email={this.email} resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
+        <Form  back={this.back} useful={this.useful} Profanity={this.state.Profanity} EmailCheck={this.state.EmailCheck} email={this.email} resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
         { this.changeBackground()}
       </div>
   
@@ -589,7 +600,10 @@ if(this.state.Reviews.length!=0 || this.state.NotFound == true){
       </div>
       <h2 id="dep"> Choose Course</h2> 
     <CourseSearch  selectCourse={this.chooseCourse}  chooseCourse={this.state.Department}/>
-   <center> <div id="depbut" onClick={this.searchDataBase}class="ui huge violet basic button"> Go!<i class="right arrow icon"></i></div> </center>
+    <center> 
+    <left> <div id="depbut" onClick={this.goBack}class="ui  red basic button"> <i class="left arrow icon"></i></div> </left>
+   <right> <div id="depbut" onClick={this.searchDataBase}class="ui  green basic button"><i class="right arrow icon"></i></div> </right>
+   </center>
     </div>
     
      
