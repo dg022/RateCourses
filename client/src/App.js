@@ -463,7 +463,7 @@ Write your own review
 }
 
 
-if(this.state.Reviews.length!=0 || this.state.NotFound == true)){
+if(this.state.Reviews.length!=0 || this.state.NotFound == true){
 
   if(this.state.Reviews.length==0){
 
