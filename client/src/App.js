@@ -263,7 +263,7 @@ searchDataBase = async () =>{
   if(res.data == false){
     this.setState({NotFound:true})
   }else{
-    console.log(res)
+    console.log(res.data)
     this.setState({Reviews:res.data.review})
 
 
