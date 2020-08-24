@@ -70,7 +70,9 @@ const ReviewList = (props) => {
           </div>
          
           <div class="label">
-            Average Easiness  Score from {count} reviews (1 = Super hard, 5=Total bird)
+            Average Easiness  Score from {count} reviews 
+             <br/>
+             (1 = Super hard, 5=Total bird)
           </div>
          
         </div>

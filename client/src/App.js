@@ -5,14 +5,15 @@ import Example from "./Components/search";
 import Model from "./Components/ReviewAdd"
 import DepartmentSearch from "./Components/DepartmentSearch"
 import CourseSearch from "./Components/search"
-import Feedback from './Feedback'
+
 import axios from "axios"
 import Form from "./Components/ReviewAdd"
 import Scale from "./Components/Scale"
 import ReviewList from "./Components/ReviewList"
+import Models from "./Components/Model"
 import Email from "./Components/Email"
-import { Button } from 'semantic-ui-react'
 import ParticlesBg from "particles-bg";
+
 
 import {Link } from "react-router-dom";
 var validator = require("email-validator");
@@ -24,6 +25,7 @@ var swearjar = require('swearjar-extended');
 
 
 var mongoose = require("mongoose");
+
 
 
 
@@ -130,8 +132,6 @@ SubmitForm = async () =>{
  
 
 }
-
-
 
 
 
@@ -342,25 +342,6 @@ AddToDataBase = async () =>{
 
 
 
-renderHeader = () => {
-
-
-  return(
-
-    <div class="ui container">
-      <div class="ui large secondary inverted pointing menu">
-        <a class="toc item">
-          <i class="sidebar icon"></i>
-        </a>
-        
-        <a class="item">About</a>
-        <Link to = "/page2"><a class="item">Feedback</a></Link>
-      </div>
-    </div>
-
-
-  );
-}
 
 
 changeBackground = () => {
@@ -463,9 +444,10 @@ Write your own review
     </div>
     <h2 id="dep"> Choose Department</h2>
   <DepartmentSearch  chooseDep={this.chooseDep}/>
+  <center>  <Models/> </center>
   </div>
   
-   
+
 
        
     </div>
