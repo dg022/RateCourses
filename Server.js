@@ -15,7 +15,7 @@ if(process.env.MOGNO!=null){
  cons = process.env.MOGNO
  const root = require('path').join(__dirname, 'client', 'build')
  app.use(express.static(root));
- app.get("*", (req, res) => {
+ app.get("/", (req, res) => {
      res.sendFile('index.html', { root });
  })
 }
