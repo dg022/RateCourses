@@ -9,8 +9,8 @@ var cons= "";
 const  Posts = require("./models/model.js")
 var mongoose = require("mongoose");
 
-const config = require("./config/config.js");
-var cons= process.env.MOGNO||config.KEY;
+// const config = require("./config/config.js");
+var cons= process.env.MOGNO // ||config.KEY;
 if(process.env.MOGNO!=null){
  cons = process.env.MOGNO
  app.get("*", (req, res) => {
