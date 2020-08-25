@@ -127,34 +127,8 @@ if(this.state.diff!=null){
             <div class=" sb-avatar sb-avatar--icon" id={this.reviewID}>
               <div id="B" class=" sb-avatar__text">
               <span id="C"><span>{toNumberString(this.state.diff)}</span></span></div></div>
-            </div>
-            <div class="content">
-
-              <div class="meta">
-                <span>Easiness : {toNumberString(this.state.diff)}</span>
-              </div>
-              <div class="meta"> 
-                <span>Would Take Again: {this.state.takeAgain}</span>
-              </div>
-              <div class="meta"> 
-                <span>Useful: {this.state.useful}</span>
-              </div>
-                  <div class="meta"> 
-                <span>TextBook: {this.state.TextBook}</span>
-              </div>
-              <div id ="it" class="description">
-                <p>
-                {this.state.body} 
-                </p>
-              </div>
-             
-              <ThumbsUp  id = {this.props.list.id}  decrementDB={this.props.decrementDB} incrementDB={this.props.incrementDB}  ThumbsUp={this.props.list.thumbsUp}  ThumbsDown={this.props.list.thumbsDown}   />
-            </div>
-
-            
-
-
-        <div  id="grid" class="ui grid">
+              <center> 
+              <div  id="newgrid" class="ui grid">
         <div  class="four wide column">
             <div onMouseLeave={handleLeaveFlag} onMouseEnter={handleHoverFlag}>
             
@@ -183,7 +157,35 @@ if(this.state.diff!=null){
         </div>
 
         </div>
+        </center>
+            </div>
+            <div class="content">
 
+              <div class="meta">
+                <span>Easiness : {toNumberString(this.state.diff)}</span>
+              </div>
+              <div class="meta"> 
+                <span>Would Take Again: {this.state.takeAgain}</span>
+              </div>
+              <div class="meta"> 
+                <span>Useful: {this.state.useful}</span>
+              </div>
+                  <div class="meta"> 
+                <span>TextBook: {this.state.TextBook}</span>
+              </div>
+              <div id ="it" class="description">
+                <p>
+                {this.state.body} 
+                </p>
+              </div>
+             
+              <ThumbsUp  id = {this.props.list.id}  decrementDB={this.props.decrementDB} incrementDB={this.props.incrementDB}  ThumbsUp={this.props.list.thumbsUp}  ThumbsDown={this.props.list.thumbsDown}   />
+            </div>
+
+            
+
+
+      
           
 
 
