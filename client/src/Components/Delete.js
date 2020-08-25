@@ -203,6 +203,7 @@ SendEmail = async () => {
                     <i onClick={this.closeConfigShow(false, true)}   class="  large trash alternate outline icon large"></i>
                 
                     <Modal className="edit"
+                     size={"tiny"}
                     open={open}
                     closeOnEscape={closeOnEscape}
                     closeOnDimmerClick={closeOnDimmerClick}

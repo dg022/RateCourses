@@ -13,6 +13,8 @@ class FormExampleForm extends React.Component {
 
 
 
+  
+
   state={
 
     taval:this.props.taval,
@@ -23,6 +25,15 @@ class FormExampleForm extends React.Component {
     uval:this.props.uval,
     count:""
     
+
+  }
+
+  componentDidMount(){
+
+    document.querySelector('#em').style.marginTop = "2%";
+    
+    
+
 
   }
 
@@ -281,7 +292,7 @@ console.log(this.props)
           />
       <Radio type={0} TextBook={this.props.TextBook}  />
     
-      <Input iconPosition='left' placeholder='Email'>
+      <Input id="em" iconPosition='left' placeholder='Email'>
       <Icon name='at' />
       <input  onChange={Echange}  value={this.state.eval} />
     </Input>

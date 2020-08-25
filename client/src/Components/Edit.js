@@ -394,6 +394,7 @@ sendFeedback =  (templateId, variables) => {
                     <i onClick={this.closeConfigShow(false, true)}   class="pencil alternate icon large"></i>
                 
                     <Modal className="edit"
+                    size={"tiny"}
                     open={open}
                     closeOnEscape={closeOnEscape}
                     closeOnDimmerClick={closeOnDimmerClick}

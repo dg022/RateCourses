@@ -10,9 +10,21 @@ class Feedback extends Component{
 		};
 
 	
-	
+		sendFeedback =  (templateId, variables) => {
+			window.emailjs.send(
+			  'gmail', templateId,
+			  variables
+			  ).then(res => {
+				console.log('Email successfully sent!')
+			  })
+			  // Handle errors here however you like, or use a React error boundary
+			  .catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err))
+			}
 
-	
+		SendEmail = (message)=> {
+			const templateId = 'template_swHMraBb';
+			this.sendFeedback(templateId, {message_html: message, from_name: "David", reply_to: this.state.email})
+		}
 
 	render(){
 		return(
