@@ -104,11 +104,11 @@ class ModalExampleCloseConfig extends Component {
           closeOnDimmerClick={closeOnDimmerClick}
           onClose={this.close} 
         >
-          <Modal.Header> Create Reivew</Modal.Header>
+          <Modal.Header> Create Review</Modal.Header>
           <Modal.Content>
           <Form Error={this.props.Error}
-            Profanity={this.state.Profanity}   
-            EmailCheck={this.state.EmailCheck}
+            Profanity={this.props.Profanity}   
+            EmailCheck={this.props.EmailCheck}
             TextBook={this.props.TextBook} 
             Difficulty={this.props.Difficulty} 
             TakeAgain={this.props.TakeAgain}   

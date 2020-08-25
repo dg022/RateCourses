@@ -82,7 +82,7 @@ SubmitForm = async () =>{
 
   var check = validator.validate(this.state.email); // true
   var profanity =  swearjar.profane(this.state.About); 
-  console.log(profanity)
+
  
   var email = await this.checkEmail()
   
@@ -91,8 +91,8 @@ SubmitForm = async () =>{
  
   if(email&& this.state.TakeAgain!="" && this.state.Difficulty!=null && this.state.TextBook!="" && check && !profanity&& this.state.useful!="" && this.state.About.length <=600){
     this.setState({error:0})
-  
     this.setState({EmailCheck:false})
+    this.setState({properemail:false})
     this.setState({Profanity:false})
     this.setState({willClose:1})
     this.AddToDataBase();
@@ -137,7 +137,7 @@ SubmitForm = async () =>{
       this.setState({properemail:false})
     }
 
-    if(this.state.email.length==0||this.state.TakeAgain=="" || this.state.Difficulty==null || this.state.TextBook==""  || this.state.About.length > 600|| this.state.useful==""){
+    if(this.state.TakeAgain=="" || this.state.Difficulty==null || this.state.TextBook==""  || this.state.About.length > 600|| this.state.useful==""){
 
     this.setState({error:1}); 
     }
