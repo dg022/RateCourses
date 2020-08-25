@@ -347,7 +347,7 @@ const addressDefinitions = faker.definitions.address
 const stateOptions = _.map(keys, (state, index) => ({
   key: addressDefinitions.state_abbr[index],
   text: state,
-  value: addressDefinitions.state_abbr[index],
+  
 
 
 
