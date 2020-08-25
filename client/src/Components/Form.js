@@ -36,6 +36,79 @@ class FormExampleForm extends React.Component {
 
 
   }
+  
+   renderError = ()=>{
+
+    if(this.props.Error!=1){
+      return  <div></div>; 
+    }else{
+
+
+      return(
+        <div> 
+        <p>Make sure you fill out all the mandatory fields!</p>
+        <p>Just in case, make sure your review is 600 characters or less</p>
+        </div>
+
+      )
+    }
+
+
+  }
+
+  renderExistingEmail = ()=>{
+
+    if(!this.props.EmailCheck){
+      return  <div></div>; 
+    }
+    
+    else{
+
+
+      return(
+        <p>Email already in use</p>
+
+      )
+    }
+
+
+  }
+
+   renderProfanity = ()=>{
+
+    if(!this.props.Profanity){
+      return  <div></div>; 
+    }
+    
+    else{
+
+
+      return(
+        <p>Relax! No swearing.</p>
+
+      )
+    }
+
+
+  }
+
+    renderCorrectForm = ()=>{
+
+    if(!this.props.properemail){
+      return <div></div>; 
+    }
+    
+    else{
+
+
+      return(
+        <p>Email is in incorrect form</p>
+
+      )
+    }
+
+
+  }
 
   render(){
 
@@ -64,139 +137,28 @@ class FormExampleForm extends React.Component {
 
   const rendersMsg = () =>{
 
-    
-
-    if(this.props.Error!=1 && !this.props.Profanity && !this.props.EmailCheck){
-      return;
-    }
-
-
-    if(this.props.Error == 1 && this.props.Profanity && this.props.EmailCheck){
-
+    if(this.props.Profanity || this.props.properemail || this.props.EmailCheck || this.props.Error==1){
       return(
         <Message negative>
         <Message.Header>Invalid Submission</Message.Header>
-        <p>Email already in use</p>
-        <p>Relax, no swearing be nice!</p>
-        <p>Make sure you fill out all the mandatory fields!</p>
-        <p>Just in case, make sure your review is 600 characters or less</p>
+        {this.renderError()}
+        {this.renderExistingEmail()}
+        {this.renderProfanity()}
+        {this.renderCorrectForm()}
     
       </Message>
 
 
       );
+    }else{
+      return <div></div>;
     }
-
-    if(this.props.Error == 1 && this.props.Profanity ){
-
-      return(
-        <Message negative>
-        <Message.Header>Invalid Submission</Message.Header>
-        <p>Relax, no swearing be nice!</p>
-        <p>Make sure you fill out all the mandatory fields!</p>
-        <p>Just in case, make sure your review is 600 characters or less</p>
-    
-      </Message>
-
-
-      );
-    }
-
-    
-    if(this.props.EmailCheck && this.props.Profanity ){
-
-      return(
-        <Message negative>
-        <Message.Header>Invalid Submission</Message.Header>
-        <p>Email already in use</p>
-        <p>Relax, no swearing be nice!</p>
-     
-      </Message>
-
-
-      );
-    }
-
-    if(this.props.EmailCheck  && this.props.Error==1 ){
-
-      return(
-        <Message negative>
-        <Message.Header>Invalid Submission</Message.Header>
-        <p>Email already in use</p>
-        <p>Make sure you fill out all the mandatory fields!</p>
-        <p>Just in case, make sure your review is 600 characters or less</p>
-     
-      </Message>
-
-
-      );
-    }
-
-
-
-
-
-
-
-
-    if(this.props.Error==1){
-
-      return(
-        <Message negative>
-        <Message.Header>Invalid Submission</Message.Header>
-        <p>Make sure you fill out all the mandatory fields!</p>
-        <p>Just in case, make sure your review is 600 characters or less</p>
-    
-      </Message>
-
-
-      );
-
-
-    }
-
-    if(this.props.EmailCheck){
-
-
-
-
-
-      return(
-        <Message negative>
-        <Message.Header>Invalid Submission</Message.Header>
-        <p>Email already in use</p>
-    
-      </Message>
-
-
-      );
 
 
     }
 
 
-    if(this.props.Profanity){
-
-
-
-
-
-      return(
-        <Message negative>
-        <Message.Header>Invalid Submission</Message.Header>
-        <p>Relax, no swearing be nice!</p>
-    
-      </Message>
-
-
-      );
-
-
-    }
-
-
-  }
-
+  
 
  
 

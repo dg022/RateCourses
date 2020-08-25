@@ -36,7 +36,7 @@ class App extends React.Component {
     Course:"",
     NotFound:false,
     TakeAgain:"", 
-    Difficulty:null,
+    Difficulty:1,
     TextBook:"",
     About:"",
     error:0,
@@ -47,6 +47,7 @@ class App extends React.Component {
     useful:"",
     Profanity:false,
     EmailCheck:false,
+    properemail:false, 
     token:""
 
   };
@@ -81,7 +82,10 @@ SubmitForm = async () =>{
 
   var check = validator.validate(this.state.email); // true
   var profanity =  swearjar.profane(this.state.About); 
+  console.log(profanity)
+ 
   var email = await this.checkEmail()
+  
   
  
  
@@ -100,19 +104,26 @@ SubmitForm = async () =>{
 
     // If this is the case, we want place an error messages saying the mandatory fields have not been filled out  yet
     console.log("Fields are missing, cannot submit form")
+    console.log(email)
 
     if(profanity){
      
       this.setState({Profanity:true})
     }
 
-    if(!email){
+    if(!check){
+      console.log("this was supposed to happen")
+      this.setState({properemail:true})
+      
+    }
 
+    if(!email){
       this.setState({EmailCheck:true})
+      
     }
 
     if(!profanity){
-     
+      console.log("it tried to reset it")
       this.setState({Profanity:false})
     }
 
@@ -121,12 +132,17 @@ SubmitForm = async () =>{
       this.setState({EmailCheck:false})
     }
 
-    if( this.state.TakeAgain=="" || this.state.Difficulty==null || this.state.TextBook==""  || this.state.About.length > 600|| this.state.useful==""){
+    if(check){
+
+      this.setState({properemail:false})
+    }
+
+    if(this.state.email.length==0||this.state.TakeAgain=="" || this.state.Difficulty==null || this.state.TextBook==""  || this.state.About.length > 600|| this.state.useful==""){
 
     this.setState({error:1}); 
     }
 
-    if( this.state.TakeAgain!="" || this.state.Difficulty!=null || this.state.TextBook!=""  || this.state.About.length <= 600|| this.state.useful!=""){
+    if(this.state.TakeAgain!="" && this.state.Difficulty!=null && this.state.TextBook!=""  && this.state.About.length <= 600&& this.state.useful!=""){
 
       this.setState({error:0}); 
       }
@@ -136,20 +152,6 @@ SubmitForm = async () =>{
  
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 decrementDB =  async (id, UpDelta, DownDelta) => {
 
@@ -520,7 +522,7 @@ if(this.state.Reviews.length!=0 || this.state.NotFound == true){
     <div class="header"> <center> Be the first Review!</center></div>
     </div>
     <div class="description"> 
-    <Form   back ={this.back}resetClose={this.resetClose} willClose={this.state.willClose} EmailCheck={this.state.EmailCheck} Profanity={this.state.Profanity} Error={this.state.error} email={this.email} useful={this.useful} SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook}  />
+    <Form  properemail={this.state.properemail} back ={this.back}resetClose={this.resetClose} willClose={this.state.willClose} EmailCheck={this.state.EmailCheck} Profanity={this.state.Profanity} Error={this.state.error} email={this.email} useful={this.useful} SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook}  />
     </div>
         
           </div>
@@ -553,7 +555,7 @@ if(this.state.Reviews.length!=0 || this.state.NotFound == true){
         decrementDB={this.decrementDB} incrementDB={this.incrementDB} Title={this.state.Course}list={this.state.Reviews} />
          
        
-        <Form  back={this.back} useful={this.useful} Profanity={this.state.Profanity} EmailCheck={this.state.EmailCheck} email={this.email} resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
+        <Form properemail={this.state.properemail} back={this.back} useful={this.useful} Profanity={this.state.Profanity} EmailCheck={this.state.EmailCheck} email={this.email} resetClose={this.resetClose} willClose={this.state.willClose} Error={this.state.error}   SubmitForm={this.SubmitForm} TakeAgain={this.TakeAgain} Difficulty={this.Difficulty} About={this.About} TextBook={this.TextBook} Submit  />
         { this.changeBackground()}
       </div>
   

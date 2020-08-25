@@ -114,6 +114,7 @@ class ModalExampleCloseConfig extends Component {
             TakeAgain={this.props.TakeAgain}   
             About={this.props.About}
             email={this.props.email}
+            properemail={this.props.properemail}
             useful={this.props.useful}
 />
 
