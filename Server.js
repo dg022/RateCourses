@@ -14,11 +14,11 @@ var nodemailer = require('nodemailer');
  
 const window = new Window();
 
- const config = require("./config/config.js");
+ // const config = require("./config/config.js");
 const { connect } = require('http2');
-const MAIL = process.env.MAIL ||config.CON.MAIL;
-const PASS = process.env.PASS ||config.CON.PASS;
-var cons= process.env.MOGNO ||config.CON.KEY;
+const MAIL = process.env.MAIL // ||config.CON.MAIL;
+const PASS = process.env.PASS // ||config.CON.PASS;
+var cons= process.env.MOGNO // ||config.CON.KEY;
 if(process.env.MOGNO!=null){
  cons = process.env.MOGNO
  const root = require('path').join(__dirname, 'client', 'build')
