@@ -32,7 +32,7 @@ class ItemExampleItems extends React.Component{
     ron:false,
     ronFlag:false,
     ronDelete:false,
-    id:this.props.list.id, 
+    id:this.props.list.publicid, 
     diff:this.props.list.difficulty,
     takeAgain:this.props.list.takeAgain,
     body:this.props.list.body,
@@ -141,7 +141,7 @@ if(this.state.diff!=null){
 
             <div onMouseLeave={handleLeave} onMouseEnter={handleHover}>
         
-            <Edit   updateState={updateState} data={this.props.list}    id={this.props.list.id}  Title={this.props.Title} on={this.state.ron}  courseTitle={this.props.list} />
+            <Edit   updateState={updateState} data={this.props.list}    id={this.props.list.publicid}  Title={this.props.Title} on={this.state.ron}  courseTitle={this.props.list} />
 
 
             </div>
@@ -150,7 +150,7 @@ if(this.state.diff!=null){
 
             <div onMouseLeave={handleLeaveDelete} onMouseEnter={handleHoverDelete}>
               
-            <Delete deleted= {deleted }    data={this.props.list}    id={this.props.list.id}Title={this.props.Title} on={this.state.ronDelete}   />
+            <Delete deleted= {deleted }    data={this.props.list}    id={this.props.list.publicid}Title={this.props.Title} on={this.state.ronDelete}   />
 
 
               </div>
@@ -179,7 +179,7 @@ if(this.state.diff!=null){
                 </p>
               </div>
              
-              <ThumbsUp  id = {this.props.list.id}  decrementDB={this.props.decrementDB} incrementDB={this.props.incrementDB}  ThumbsUp={this.props.list.thumbsUp}  ThumbsDown={this.props.list.thumbsDown}   />
+              <ThumbsUp title = {this.props.Title}  id = {this.props.list.publicid}    ThumbsUp={this.props.list.thumbsUp}  ThumbsDown={this.props.list.thumbsDown}   />
             </div>
 
             

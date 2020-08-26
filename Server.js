@@ -14,11 +14,11 @@ var nodemailer = require('nodemailer');
  
 const window = new Window();
 
- // const config = require("./config/config.js");
+ const config = require("./config/config.js");
 const { connect } = require('http2');
-const MAIL = process.env.MAIL // ||config.CON.MAIL;
-const PASS = process.env.PASS // ||config.CON.PASS;
-var cons= process.env.MOGNO // ||config.CON.KEY;
+const MAIL = process.env.MAIL  ||config.CON.MAIL;
+const PASS = process.env.PASS  ||config.CON.PASS;
+var cons= process.env.MOGNO  ||config.CON.KEY;
 if(process.env.MOGNO!=null){
  cons = process.env.MOGNO
  const root = require('path').join(__dirname, 'client', 'build')
@@ -75,70 +75,115 @@ app.get('/edit', async (req, res) => {
 
 
 });
-app.get('/updateDislikes', async (req, res) => {
 
-
-  // now we just update the database
-  const UpDelta= Number(req.query.UpDelta);
-  const DownDelta = Number(req.query.DownDelta);
-
+app.get('/decreaseDislikes', async (req, res) => {
+  
   const id =  req.query.id
   const title =  req.query.title
   const doc = await Codes.findOne({"courseTitle":req.query.title});
-  const list  = doc.review; 
+  var list  = doc.review; 
+  
+  
+
+
 
   for(var i = 0; i < list.length; i++){
 
-    if(list[i].id == id){ 
-      const Up = Number(list[i].thumbsUp); 
-      const Down = Number(list[i].thumbsDown); 
-      list[i].thumbsUp = Number(Up + UpDelta)
-      list[i].thumbsDown = Number(Down + DownDelta)
-
+    if(list[i].publicid == id){ 
+     
+      const Down = Number(list[i].thumbsDown);
+      
+      list[i].thumbsDown = Number(Down - 1)
       doc.review = list; 
       await doc.save(); 
       return; 
     }
-
   }
+});
+
+
+app.get('/updateDislikes', async (req, res) => {
   
+  const id =  req.query.id
+  const title =  req.query.title
+  const doc = await Codes.findOne({"courseTitle":req.query.title});
+  var list  = doc.review; 
+
+
+
+
+  for(var i = 0; i < list.length; i++){
+
+    if(list[i].publicid == id){ 
+    
+      const Down = Number(list[i].thumbsDown);
+      list[i].thumbsDown = Number(Down + 1)
+      doc.review = list; 
+      await doc.save(); 
+      return; 
+    }
+  }
 });
 
 
 app.get('/updateLikes', async (req, res) => {
 
-  
-  const UpDelta= Number(req.query.UpDelta);
-  const DownDelta = Number(req.query.DownDelta);
   const id =  req.query.id
   const title =  req.query.title
-
+ 
   const doc = await Codes.findOne({"courseTitle":req.query.title});
 
   var list  = doc.review; 
-  
+
 
 
 
   for(var i = 0; i < list.length; i++){
 
-    if(list[i].id == id){ 
-      const Up = Number(list[i].thumbsUp); 
-      const Down = Number(list[i].thumbsDown); 
-      list[i].thumbsUp = Number(Up + UpDelta)
-      list[i].thumbsDown = Number(Down + DownDelta)
+    if(list[i].publicid == id){ 
+  
+      const Up = Number(list[i].thumbsUp);
+      list[i].thumbsUp = Number(Up + 1)
       doc.review = list; 
       await doc.save(); 
       return; 
     }
   }
-  
-
-
-
-
-
 });
+
+
+app.get('/decreaseLikes', async (req, res) => {
+  
+  const id =  req.query.id
+  const title =  req.query.title
+  const doc = await Codes.findOne({"courseTitle":req.query.title});
+  var list  = doc.review; 
+ 
+
+
+
+  for(var i = 0; i < list.length; i++){
+
+    if(list[i].publicid == id){ 
+     
+      
+      const Up = Number(list[i].thumbsUp);
+      list[i].thumbsUp = Number(Up - 1)
+      doc.review = list; 
+      await doc.save(); 
+      return; 
+    }
+  }
+});
+
+
+
+
+
+
+
+
+
 
 
 app.get('/delete', async (req, res) => { 
@@ -150,7 +195,7 @@ app.get('/delete', async (req, res) => {
   const arr = []
   for(var i = 0; i < list.length; i++){
 
-    if(list[i].id != id){ 
+    if(list[i].publicid != id){ 
       arr.push(list[i])
     }
   
@@ -179,7 +224,6 @@ app.get('/delete', async (req, res) => {
   res.send(true);
   doc.review = arr;
   await doc.save(); 
-
   return; 
 
  
@@ -193,6 +237,8 @@ app.get('/delete', async (req, res) => {
 
 });
 
+
+
   
 
 
@@ -201,15 +247,14 @@ app.get('/findid', async (req, res) => {
   const doc = await Codes.findOne({"courseTitle":req.query.courseTitle})
 
   const id =  req.query.id
-  console.log(id)
+  
   const list  = doc.review; 
-  console.log("THIS OCCURED AT FIND ID")
+
 
   for(var i = 0; i < list.length; i++){
 
     if(list[i].publicid == id){ 
-      console.log(MAIL)
-      console.log(PASS)
+   
       var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
@@ -223,7 +268,12 @@ app.get('/findid', async (req, res) => {
         from: MAIL,
         to: doc.review[i].email,
         subject: 'Edit Code from RateCoursesUWO',
-        text: doc.review[i].id
+        html: 
+        
+        
+        '<h1>Edit Code: </h1><p>' + doc.review[i].id + '</p>'
+        
+        
       };
       
       transporter.sendMail(mailOptions, function(error, info){
@@ -235,7 +285,8 @@ app.get('/findid', async (req, res) => {
       });
       
       
-      console.log("EMAIL SHOULD HAVE SENT")
+
+      
 
       res.send(true);
       return; 

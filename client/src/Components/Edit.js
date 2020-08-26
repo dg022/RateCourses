@@ -21,7 +21,7 @@ class ModalExampleCloseConfig extends Component {
       uval:this.props.data.useful,
       up:this.props.data.thumbsUp,
       down:this.props.data.thumbsDown,
-      id:this.props.id,
+      id:this.props.data.publicid,
       error:0, 
       sent:false,
       Profanity:false,
@@ -148,7 +148,7 @@ About= (term) =>{
       params: {
         courseTitle: this.props.Title,
         review:list, 
-        publicid:this.state.id
+        publicid:this.props.data.publicid
     
       }
 
@@ -167,7 +167,7 @@ About= (term) =>{
 
   SendEmail = async () => {
   
-    console.log(this.props)
+ 
   
     let res = await axios.get('/findid', {
       params: {
@@ -194,8 +194,8 @@ About= (term) =>{
  let res = await axios.get('/checkCode', {
   params: {
     courseTitle: this.props.Title,
-    userEnteredid:this.state.id,
-    publicid:this.props.id
+    userEnteredid:this.state.code,
+    publicid:this.props.data.publicid
 }});
 
   if(res.data==true){

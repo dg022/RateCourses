@@ -1,10 +1,10 @@
 import React from 'react';
 import { Dropdown } from 'semantic-ui-react';
 import "./Thumbs.css";
+import axios from "axios";
 
 
 class ThumbsUp extends React.Component  {
-
 
   
 
@@ -30,21 +30,63 @@ state = {
 
 
 
-incrementDB = (UpDelta, DownDelta) =>{
+increaseDislikes = async () =>{
     
+        let res = await axios.get('/updateDislikes', {
+          params: {
+            id:this.props.id,
+            title:this.props.title
+          }
+        });
 
     
-    this.props.incrementDB(this.props.id, UpDelta, DownDelta)
+    
+}
+
+decreaseDislikes = async () =>{
+    
+    let res = await axios.get('/decreaseDislikes', {
+      params: {
+        id:this.props.id,
+        title:this.props.title
+      }
+    });
+
 
 
 }
 
-decrementDB = (UpDelta, DownDelta) =>{
 
-    // here are calling back the funcito in app.js, with the id for hte given object we are trying to change with the new number of whatever
-    this.props.decrementDB(this.props.id, UpDelta, DownDelta)
+increaseLikes = async () => {
+
+    
+
+
+    let res = await axios.get('/updateLikes', {
+        params: {
+          id:this.props.id,
+          title:this.props.title
+        }
+      });
+
 
 }
+
+decreaseLikes = async () => {
+
+    let res = await axios.get('/decreaseLikes', {
+        params: {
+          id:this.props.id,
+          title:this.props.title
+        }
+      });
+
+
+}
+
+
+
+
 
 
 
@@ -67,7 +109,10 @@ decrementDB = (UpDelta, DownDelta) =>{
             this.setState({Up: this.state.Up+1})
             this.setState({voteUp:true})
             this.setState({voteDown:false})
-            this.incrementDB(1, -1); 
+            
+            this.increaseLikes();
+            this.decreaseDislikes()
+
         }
 
         else if(!this.state.voteUp &&!this.state.voteDown ){
@@ -75,7 +120,8 @@ decrementDB = (UpDelta, DownDelta) =>{
             // UpDelta would be 1, DownDelta would be 0
             this.setState({Up: this.state.Up+1})
             this.setState({voteUp:true})
-            this.incrementDB(1, 0); 
+            this.increaseLikes();
+
         }
     }
 
@@ -95,7 +141,9 @@ decrementDB = (UpDelta, DownDelta) =>{
             this.setState({Down: this.state.Down+1})
             this.setState({voteUp:false})
             this.setState({voteDown:true})
-            this.decrementDB(-1, 1);
+            
+            this.decreaseLikes();
+            this.increaseDislikes();
 
 
         }
@@ -106,7 +154,7 @@ decrementDB = (UpDelta, DownDelta) =>{
             // Only increment the down votes 
             this.setState({Down: this.state.Down+1})
             this.setState({voteDown:true})
-            this.decrementDB(0, 1);
+            this.increaseDislikes()
 
 
 

@@ -62,15 +62,22 @@ class ModalExampleCloseConfig extends Component {
   close = () => this.setState({ open: false, message:false, error:0,  sent:false})
   Submitclose =  async () => {
   
+    let res = await axios.get('/checkCode', {
+      params: {
+        courseTitle: this.props.Title,
+        userEnteredid:this.state.code,
+        publicid:this.props.id
+    }});
+    
  
-        if(this.state.code == this.props.id){
+        if(res.data==true){
         this.setState({ message:true })
         // Here is where you want to send a respond
         
         let res = await axios.get('/delete', {
             params: {
               courseTitle: this.props.Title,
-              id:this.state.id
+              id:this.props.id
           }});
          
           this.props.deleted();
