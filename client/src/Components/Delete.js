@@ -18,9 +18,18 @@ class ModalExampleCloseConfig extends Component {
 
 
 }
+sendFeedback =  (templateId, variables) => {
+  window.emailjs.send(
+    'gmail', templateId,
+    variables
+    ).then(res => {
+      console.log('Email successfully sent!')
+    })
+    // Handle errors here however you like, or use a React error boundary
+    .catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err))
+  }
 
-
-SendEmail = async () => {
+  SendEmail = async () => {
   
  
   
@@ -29,8 +38,7 @@ SendEmail = async () => {
         courseTitle: this.props.Title,
         id:this.state.id
     }});
-
-    console.log("email would have sent")
+    console.log(res.data.toString())
     const templateId = 'template_swHMraBb';
     this.sendFeedback(templateId, {message_html: this.state.id, from_name: "David", reply_to: res.data})
 
@@ -40,7 +48,6 @@ SendEmail = async () => {
 
 
   }
-
 
 
 
@@ -62,7 +69,7 @@ SendEmail = async () => {
 
   }
 
-  close = () => this.setState({ open: false, message:false, error:0})
+  close = () => this.setState({ open: false, message:false, error:0,  sent:false})
   Submitclose =  async () => {
   
  
@@ -89,6 +96,9 @@ SendEmail = async () => {
   }
 
   renderButton=()=>{
+    if(this.state.sent){
+      return;
+    }
 
     if(this.state.message){
         // This is when the person put thir code, and it works, we dont need a button here
@@ -136,6 +146,23 @@ SendEmail = async () => {
 
 
   renderModal =  () =>{
+    if(this.state.sent){
+
+      return(
+
+
+        <Modal.Content>
+
+        Your edit code has been sent to your email!
+
+        </Modal.Content>
+
+
+    );
+
+
+    }
+
 
 
 

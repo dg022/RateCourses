@@ -201,7 +201,6 @@ sendFeedback =  (templateId, variables) => {
         id:this.state.id
     }});
 
-    console.log("email would have sent")
     const templateId = 'template_swHMraBb';
     this.sendFeedback(templateId, {message_html: this.state.id, from_name: "David", reply_to: res.data})
 

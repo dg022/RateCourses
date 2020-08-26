@@ -161,12 +161,19 @@ app.get('/delete', async (req, res) => {
   }
 
   if(arr.length == 0){
+    console.log("this happened")
   doc.review = arr;
   res.send(arr);
+
+  Codes.remove({"courseTitle":req.query.courseTitle }, function(err) {
+    if (!err) {
+            console.log(err)
+    }
+    else {
+          console.log("delted sucessfully")
+    }
+});
   
-
-
-   await doc.save(); 
    return; 
   }
 
