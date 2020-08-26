@@ -245,6 +245,34 @@ app.get('/findid', async (req, res) => {
 
 
 });
+app.get('/sendFeedBack', async (req, res) => { 
+
+
+
+  const response =  req.query.resp
+      var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+          user: MAIL,
+          pass: PASS
+        }
+      });
+      var mailOptions = {
+        from: MAIL,
+        to: MAIL,
+        subject: 'FEEDBACK',
+        text: response
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+      res.send(true);
+});
 
 app.get('/checkEmail', async (req, res) => {
 
