@@ -112,14 +112,12 @@ About= (term) =>{
     if(!this.state.Profanity && this.state.error==0){
       const list = {
         "body": this.state.aval,
-        "email":this.state.eval,
         "difficulty":this.state.dval,
         "takeAgain":this.state.taval,
         "isTextBook":this.state.tbval,
         "thumbsUp":this.state.up,
         "thumbsDown":this.state.down,
-        "id":this.state.id,
-        "useful":this.state.uval
+        "useful":this.state.uval,
       };
     
 
@@ -150,7 +148,7 @@ About= (term) =>{
       params: {
         courseTitle: this.props.Title,
         review:list, 
-        id:this.state.id
+        publicid:this.state.id
     
       }
 
@@ -162,51 +160,24 @@ About= (term) =>{
   }
 
 
-  //SendEmail =  async () => {
-
-    // here you want to query the database, to send an email
-
-    //let res = await axios.get('/findid', {
-      //params: {
-      //  courseTitle: this.props.Title,
-    //    id:this.state.id
-      
-  
-  //  }
-
-  
-    
-  //}
   
 
   
-sendFeedback =  (templateId, variables) => {
-  window.emailjs.send(
-    'gmail', templateId,
-    variables
-    ).then(res => {
-      console.log('Email successfully sent!')
-    })
-    // Handle errors here however you like, or use a React error boundary
-    .catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err))
-  }
+
 
   SendEmail = async () => {
   
- 
+    console.log(this.props)
   
     let res = await axios.get('/findid', {
       params: {
         courseTitle: this.props.Title,
-        id:this.state.id
+        id:this.props.data.publicid
     }});
 
-    const templateId = 'template_swHMraBb';
-    this.sendFeedback(templateId, {message_html: this.state.id, from_name: "David", reply_to: res.data})
-
+    
     this.setState({sent:true})
-    // Here you need to send some kind of message, so that it says "email sent sucessfully"
-
+    
 
 
   }
@@ -215,13 +186,23 @@ sendFeedback =  (templateId, variables) => {
   close = () => this.setState({ open: false, message:false, error:0, sent:false})
   Submitclose = async () => {
   
- 
-  if(this.state.code == this.props.id){
+
+
+ // Right here. this is the issue, here you need to use this.state.code 
+ //make a call to the database, to chec
+
+ let res = await axios.get('/checkCode', {
+  params: {
+    courseTitle: this.props.Title,
+    userEnteredid:this.state.id,
+    publicid:this.props.id
+}});
+
+  if(res.data==true){
   this.setState({ message:true })
   }else{
 
-    // Here you need to add logic to make it display some kind of error
-    //
+    
     this.setState({error:1})
 
 

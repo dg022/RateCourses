@@ -37,9 +37,15 @@ var Users = new Schema({ // example from docs
             "email":{
               "type":"String"
             },
+            "publicid":{
+              "type":"String"
+            }
+
+            ,
             "id":{
               "type":"String"
             }
+
           }
     
     

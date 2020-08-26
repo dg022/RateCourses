@@ -141,7 +141,7 @@ if(this.state.diff!=null){
 
             <div onMouseLeave={handleLeave} onMouseEnter={handleHover}>
         
-            <Edit   updateState={updateState} data={this.props.list}    id={this.props.list.id}Title={this.props.Title} on={this.state.ron}  courseTitle={this.props.list} />
+            <Edit   updateState={updateState} data={this.props.list}    id={this.props.list.id}  Title={this.props.Title} on={this.state.ron}  courseTitle={this.props.list} />
 
 
             </div>

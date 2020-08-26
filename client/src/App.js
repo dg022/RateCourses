@@ -274,7 +274,7 @@ searchDataBase = async () =>{
     this.setState({NotFound:true})
   }else{
     console.log(res.data)
-    this.setState({Reviews:res.data.review})
+    this.setState({Reviews:res.data})
 
 
   }
@@ -293,7 +293,8 @@ goBack = ()=>{
 AddToDataBase = async () =>{
 
   var c = this.makeid(7)
-  this.setState({id:c})
+  var p =  this.makeid(7)
+  this.setState({id:p})
   
    const list = {
     "body": this.state.About,
@@ -304,6 +305,7 @@ AddToDataBase = async () =>{
     "thumbsUp":0,
     "thumbsDown":0,
     "id":c,
+    "publicid":p,
     "useful":this.state.useful
 
   };
@@ -319,17 +321,23 @@ AddToDataBase = async () =>{
       NotFound:this.state.NotFound
     }
   });
+
+  console.log(res.data)
    
   this.setState({ 
     Reviews: []
   })
 
   this.setState({ 
-    Reviews: res.data.review
+    Reviews: res.data
   })
 
-  const templateId = 'template_swHMraBb';
- this.sendFeedback(templateId, {message_html: c, from_name: "David", reply_to: this.state.email})
+  let ses = await axios.get('/findid', {
+    params: {
+      courseTitle: this.props.Title,
+      id:p
+  }});
+
 
 
 

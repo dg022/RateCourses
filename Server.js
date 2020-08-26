@@ -8,9 +8,17 @@ const app = express();
 var cons= ""; 
 const  Posts = require("./models/model.js")
 var mongoose = require("mongoose");
+const Window = require('window');
+var nodemailer = require('nodemailer');
 
- //const config = require("./config/config.js");
-var cons= process.env.MOGNO //||config.KEY;
+ 
+const window = new Window();
+
+ const config = require("./config/config.js");
+const { connect } = require('http2');
+const MAIL = process.env.MAIL ||config.CON.MAIL;
+const PASS = process.env.PASS ||config.CON.PASS;
+var cons= process.env.MOGNO ||config.CON.KEY;
 if(process.env.MOGNO!=null){
  cons = process.env.MOGNO
  const root = require('path').join(__dirname, 'client', 'build')
@@ -27,23 +35,9 @@ var Codes = mongoose.model('Codes', Posts.model);
 
 
 
-
-
-
-
-
-
-
-    //courseTitle: this.state.Course,
-    //review:list, 
-
 app.get('/edit', async (req, res) => {
 
   
-
-  //courseTitle: this.state.Course,
-  //review:list, 
-  //id:this.state.id
 
   const id =  req.query.id
   const title =  req.query.courseTitle
@@ -56,12 +50,22 @@ app.get('/edit', async (req, res) => {
 
   for(var i = 0; i < list.length; i++){
 
-    if(list[i].id == id){ 
+    if(list[i].publicid == id){ 
       
       var obj = JSON.parse(req.query.review)
-      doc.review[i] = obj; 
+      doc.review[i].body = obj.body; 
+      doc.review[i].difficulty = obj.difficulty; 
+      doc.review[i].takeAgain = obj.takeAgain; 
+      doc.review[i].isTextBook = obj.isTextBook; 
+      doc.review[i].thumbsUp = obj.thumbsUp; 
+      doc.review[i].thumbsDown = obj.thumbsDown; 
       await doc.save(); 
-      res.send(doc)
+
+  
+  
+      res.send(true)
+
+
       return; 
     }
 
@@ -119,22 +123,14 @@ app.get('/updateLikes', async (req, res) => {
   for(var i = 0; i < list.length; i++){
 
     if(list[i].id == id){ 
-
       const Up = Number(list[i].thumbsUp); 
       const Down = Number(list[i].thumbsDown); 
-
       list[i].thumbsUp = Number(Up + UpDelta)
       list[i].thumbsDown = Number(Down + DownDelta)
-
       doc.review = list; 
       await doc.save(); 
-     
       return; 
-     
     }
-
-
-
   }
   
 
@@ -161,9 +157,9 @@ app.get('/delete', async (req, res) => {
   }
 
   if(arr.length == 0){
-    console.log("this happened")
+   
   doc.review = arr;
-  res.send(arr);
+  res.send(true);
 
   Codes.remove({"courseTitle":req.query.courseTitle }, function(err) {
     if (!err) {
@@ -177,7 +173,10 @@ app.get('/delete', async (req, res) => {
    return; 
   }
 
-  res.send(arr);
+
+
+
+  res.send(true);
   doc.review = arr;
   await doc.save(); 
 
@@ -194,28 +193,55 @@ app.get('/delete', async (req, res) => {
 
 });
 
+  
+
+
 app.get('/findid', async (req, res) => { 
 
   const doc = await Codes.findOne({"courseTitle":req.query.courseTitle})
 
   const id =  req.query.id
+  console.log(id)
   const list  = doc.review; 
-
+  console.log("THIS OCCURED AT FIND ID")
 
   for(var i = 0; i < list.length; i++){
 
-    if(list[i].id == id){ 
+    if(list[i].publicid == id){ 
+      console.log(MAIL)
+      console.log(PASS)
+      var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+          user: MAIL,
+          pass: PASS
+        }
+      });
 
-      res.send(doc.review[i].email)
+
+      var mailOptions = {
+        from: MAIL,
+        to: doc.review[i].email,
+        subject: 'Edit Code from RateCoursesUWO',
+        text: doc.review[i].id
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+      
+      
+      console.log("EMAIL SHOULD HAVE SENT")
+
+      res.send(true);
       return; 
     }
 
   }
-
-
-
-
-
 
 
 });
@@ -232,13 +258,13 @@ app.get('/checkEmail', async (req, res) => {
  
   
   var obj = JSON.parse(req.query.review)
-  console.log(obj.email)
+ 
   for(var i = 0; i < newList.length; i++){
   
     if(newList[i].email == obj.email){ 
   
       res.send(false)
-      console.log("this EMAIL error ")
+     
       return; 
     }
   
@@ -267,9 +293,15 @@ app.get('/dbrAdd', async (req, res) => {
     query = async () =>{
 
       const loc = await Codes.findOne({"courseTitle":req.query.courseTitle})
-      
-     res.send(loc);
-
+      var obj =  loc.review
+  
+      for(var i = 0; i < obj.length; i++){
+    
+        obj[i].id = "";
+        obj[i].email="";
+    
+      }
+      res.send(obj);
     }
     
 
@@ -278,7 +310,7 @@ app.get('/dbrAdd', async (req, res) => {
    
 
     var newUser = new Codes({"courseTitle":req.query.courseTitle, "review":[obj]});
-    console.log(obj) // you also need here to define _id since, since you set it as required.
+
     newUser.save(function(err, result){
         if(err){
            console.log(err)
@@ -300,27 +332,51 @@ app.get('/dbrAdd', async (req, res) => {
 
 
     const doc = await Codes.findOne({"courseTitle":req.query.courseTitle});
-    var newList  = doc.review; 
-   
 
- 
+
+    
+    var newList  = doc.review; 
     newList.push(obj); 
     doc.review =  newList;
-    await doc.save(); 
-    res.send(doc);
+    await doc.save();
+    var obj =  newList
+  
+    for(var i = 0; i < obj.length; i++){
+  
+      obj[i].id = "";
+      obj[i].email="";
+  
+    }
 
+    res.send(obj);
   }
-
-
-
- 
-
- 
- 
- 
- 
- 
  });
+
+
+
+ app.get('/checkCode', async (req, res) => { 
+
+  const doc = await Codes.findOne({"courseTitle":req.query.courseTitle})
+
+  const publicid =  req.query.publicid
+  const userEnteredid=  req.query.userEnteredid
+  const list  = doc.review; 
+
+
+  for(var i = 0; i < list.length; i++){
+
+    if(list[i].publicid == publicid){ 
+
+      if(list[i].id == userEnteredid )
+      res.send(true)
+      return; 
+    }
+  }
+  res.send(false);
+});
+
+
+
 
 
 // This path is used for get queries, whether to find if a post for a course within a db exists or not, then returning the result. 
@@ -331,18 +387,26 @@ app.get('/dbr', async (req, res) => {
 
   doc = await Codes.findOne({"courseTitle":req.query.department});
   
+  
 
-  res.send(doc);
+  var obj =  doc.review
+
+  for(var i = 0; i < obj.length; i++){
+
+    obj[i].id = "";
+    obj[i].email="";
+
+  }
+
+
+
+
+  res.send(obj);
 
 
  }else{
    res.send(false)
  }
-
-
-
-
-
 });
 
 

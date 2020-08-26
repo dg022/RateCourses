@@ -18,16 +18,7 @@ class ModalExampleCloseConfig extends Component {
 
 
 }
-sendFeedback =  (templateId, variables) => {
-  window.emailjs.send(
-    'gmail', templateId,
-    variables
-    ).then(res => {
-      console.log('Email successfully sent!')
-    })
-    // Handle errors here however you like, or use a React error boundary
-    .catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err))
-  }
+
 
   SendEmail = async () => {
   
@@ -38,10 +29,9 @@ sendFeedback =  (templateId, variables) => {
         courseTitle: this.props.Title,
         id:this.state.id
     }});
-    console.log(res.data.toString())
-    const templateId = 'template_swHMraBb';
-    this.sendFeedback(templateId, {message_html: this.state.id, from_name: "David", reply_to: res.data})
-
+    
+ 
+  
     this.setState({sent:true})
     // Here you need to send some kind of message, so that it says "email sent sucessfully"
 
@@ -82,7 +72,7 @@ sendFeedback =  (templateId, variables) => {
               courseTitle: this.props.Title,
               id:this.state.id
           }});
-          console.log(res)
+         
           this.props.deleted();
         
          
