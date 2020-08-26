@@ -30,8 +30,9 @@ class FormExampleForm extends React.Component {
 
   componentDidMount(){
 
+    if(document.querySelector('#em')!=null){
     document.querySelector('#em').style.marginTop = "2%";
-    
+    }
     
 
 
