@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, Header, Image, Modal } from 'semantic-ui-react'
 import Feedback from './Feedback'
+import axios from "axios"
 function ModalExampleModal() {
   const [open, setOpen] = React.useState(false)
 
@@ -20,7 +21,7 @@ function ModalExampleModal() {
    }
 
 
-  const SendEmail = (message)=> {
+  const SendEmail = async (message)=> {
     
     let ses = await axios.get('/sendFeedBack', {
       params: {
