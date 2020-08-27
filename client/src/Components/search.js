@@ -311,10 +311,9 @@ const Courses = {"Medieval Studies": ['Medieval Studies 1025A/B INTRODUCTION TO 
 const DropdownExampleSearchSelectionTwo = (props) => {
 
   const exposedCampaignOnChange = (e, {value}) => {
-    e.persist();
+;
     
-    console.log("HUH")
-    props.selectCourse(e.target.textContent);
+    props.selectCourse(value);
  
     
   };
@@ -335,7 +334,7 @@ const DropdownExampleSearchSelectionTwo = (props) => {
   const stateOptions = _.map(keys, (state, index) => ({
     key: addressDefinitions.state_abbr[index],
     text: state,
-    value: addressDefinitions.state_abbr[index],
+    value:state
   }))
 
 

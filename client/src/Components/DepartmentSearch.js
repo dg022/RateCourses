@@ -328,15 +328,16 @@ const DropdownExampleSearchSelectionTwo = (props) => {
 });
 
 const exposedCampaignOnChange = (e, {value}) => {
-  e.persist();
-  
-  props.chooseDep(e.target.textContent);
+
+  console.log(value)
+
+  props.chooseDep(value);
   
 };
 
 const map =  xah_obj_to_map ( Courses )
 
-
+console.log(map)
 let keys =  Array.from( map.keys());
 
 
@@ -347,6 +348,8 @@ const addressDefinitions = faker.definitions.address
 const stateOptions = _.map(keys, (state, index) => ({
   key: addressDefinitions.state_abbr[index],
   text: state,
+  value:state
+
   
 
 
@@ -359,7 +362,7 @@ const stateOptions = _.map(keys, (state, index) => ({
 
 
   return(
-  <Dropdown  id="department" onChange={exposedCampaignOnChange} placeholder='Deparment' search selection options={stateOptions} />
+  <Dropdown   id="department"  selectOnNavigation={false} onChange={exposedCampaignOnChange} placeholder='Deparment' search selection options={stateOptions} />
   ); 
 
 

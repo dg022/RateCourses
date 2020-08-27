@@ -174,7 +174,7 @@ if(this.state.tbval!=null){
     </Form.Field>
     <Form.Field>
     <Form.Field
-            label='Would you would take the course again?'    
+            label='Would you take the course again?'    
           />
   <Radio type={1} TakeAgain={this.props.TakeAgain}  taval={this.state.taval}    />
 
@@ -186,7 +186,7 @@ if(this.state.tbval!=null){
 
 </Form.Field>
 <Form.Field
-            label='How Easy was the course?'    
+            label='How easy was the course?'    
           />
       <Scale Difficulty={this.props.Difficulty} dval={this.state.dval}/>
       <Form.Field
@@ -211,10 +211,7 @@ if(this.state.tbval!=null){
           label='About'
           value={this.state.aval}
         />
-    <Form.Field>
-
-      <Checkbox label='I am not a robot' />
-    </Form.Field>
+  
     {rendersMsg()}
   </Form>
   );
@@ -274,7 +271,7 @@ console.log(this.props)
         />
     <Form.Field>
 
-      <Checkbox label='I am not a robot' />
+      
     </Form.Field>
     {rendersMsg()}
   </Form>

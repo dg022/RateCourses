@@ -322,7 +322,7 @@ AddToDataBase = async () =>{
     }
   });
 
-  console.log(res.data)
+  
    
   this.setState({ 
     Reviews: []
@@ -334,7 +334,7 @@ AddToDataBase = async () =>{
 
   let ses = await axios.get('/findid', {
     params: {
-      courseTitle: this.props.Title,
+      courseTitle: this.state.Course,
       id:p
   }});
 
