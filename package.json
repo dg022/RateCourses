@@ -32,7 +32,7 @@
     "emailjs-com": "^2.6.3",
     "express": "^4.17.1",
     "mongoose": "^5.9.25",
-    "nodemailer": "^6.4.11",
+    "nodemailer": "^6.4.16",
     "path": "^0.12.7",
     "window": "^4.2.7"
   }
